@@ -1,0 +1,160 @@
+---
+title: "SimBio: a static typing, modern Python package to simulate reaction networks"
+format:
+  html:
+    number-sections: true
+    anchor-sections: true
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    geometry:
+        - margin=20mm
+    pdf-engine: tectonic
+    number-sections: true
+    colorlinks: true
+---
+
+# Introduction
+
+Chemical Reaction Networks (CRN) models
+species and rates
+Several modalities (ODE, SDE and jump process)
+writing equations directly is error-prone and not easily reusable
+Several packages exist to simulate them
+
+Biosimulators.org, a registry of simulation tools, list at least 15 Python softwares.
+(some) wrappers to external libraries
+script the model definition
+avoid exporting to csv and loading in Python
+non-extendable from python
+large community
+
+Writing models
+GUI (e.g., COPASI)
+DSL (e.g, Antimony)
+Python (e.g, PySB)
+Benefits of IDE integration (syntax highlighting, etc)
+
+Here we present SimBio, a Python package
+that leverages standard modern Python syntax to integrate well with IDEs and static analysis tools.
+It is written in pure Python such that it can be easily introspected and extended from Python.
+
+It focused on providing a user experience, maintainability, and scalability
+
+Clean API to create tools (graphs, tables, etc)
+
+# Results
+
+The code to define and simulate reaction systems
+is split into three Python packages:
+symbolite, to create symbolic expressions;
+poincaré, to define dynamical systems;
+and simbio, to define reaction systems
+and interface with systems biology standards such as SBML.
+
+## Symbolite
+
+Symbolite is a lightweight symbolics package
+to create and inspect mathematical expressions,
+which can be compiled to different backends.
+Currently, we have implementations for NumPy, SymPy and JAX,
+but it is easy to add new backends.
+
+## Poincaré
+
+Poincare is a package to define and simulate dynamical systems.
+It provides a `System` class,
+where we can define `Constant`s, `Parameter`s and `Variable`s,
+and create equations linking a variable's derivative with an expression:
+
+```python
+class Decay(System):
+    x: Variable = initial(default=1)  # Variable with initial condition
+    eq = x.derive() << -x  # equation assigning dx/dt = -x
+```
+
+It allows to define higher-order systems
+by assigning an initial condition to a derivative:
+
+```python
+class Oscillator(System):
+    x: Variable = initial(default=1)
+    v: Derivative = x.derive(initial=0)
+    eq = v.derive() << -x
+```
+
+The benefits of using a class to define the system are multiple:
+
+1. the variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
+2. it provides a namespace such that we can easily define multiple independent models in the same script,
+3. it allows IDEs to provide autocomplete and refactoring capabilities (`Oscillator.<TAB>` shows `x`, `v` and `eq`),
+4. it allows to create instances which can be composed into a bigger model.
+
+For the latter,
+it is important to add the type annotations,
+as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` (PEP 681).
+
+```python
+class BigModel(System):
+    x: Variable = initial(default=1)
+    subsystem = Oscillator(x=x)
+    independent = Oscillator(x=1)  # independent variable created inside
+```
+
+Using type annotations also allows to statically check for typing errors.
+For instance, `Parameter`s can be assigned either a number or a time-dependent expression.
+But can also be linked to an outside variable when composing models.
+As such, they cannot be used to parametrize the initial conditions of variables,
+for which we have to use a `Constant`:
+
+```python
+class Model(System):
+    k: Constant = assign(default=1, constant=True)
+    # two variables sharing initial condition
+    x: Variable = initial(default=c)
+    y: Variable = initial(default=c)
+
+    p: Parameter = assign(default=1)
+    z: Variable = initial(default=p)  # typing error
+```
+
+To simulate a system,
+we create a `Simulator` instance,
+which compiles a given system and interfaces with solvers.
+By default, it creates a first-order ordinary differential equation (ODE) system
+using `numpy` as a backend.
+The Simulator wraps the output in a `pandas.DataFrame`,
+which can be easily plotted with the standard `plot` method.
+
+```python
+sim = Simulator(Oscillator)
+df = sim.solve(save_at=np.linspace(0, 5, 100))
+
+df
+```
+
+```python
+df.plot()
+```
+
+## SimBio
+
+simbio: define and simulate reaction networks, mass-action, SBML, SED-ML
+simulate system with predefined reactions, and stoichiometries
+load from biomodels and run
+Cool stuff
+Interactive
+Pandas
+Generate from sbml?
+Speed leveraging backends
+
+# Conclusion
+
+Modular and extensible set of python libraries
+Leverage IDE integration and static typing for model creation
+
+Introduce 3 layers: symbolite, poincare and simbio
+easier to understand and develop
+usable, extendable, and maintainable by a broader community
+protocols
+change in the future
