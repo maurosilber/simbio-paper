@@ -138,9 +138,43 @@ df.plot()
 
 ## SimBio
 
-simbio: define and simulate reaction networks, mass-action, SBML, SED-ML
-simulate system with predefined reactions, and stoichiometries
-load from biomodels and run
+For reaction networks,
+we are usually interested in first-order differential equations
+relating the rate of change of the network's species.
+
+To facilitate defining these models,
+SimBio defines `Species`,
+which comprises of a `poincare.Variable` and an stoichiometry,
+and `Reaction`s,
+which transform reactants into products taking into account the stoichiometry.
+
+```python
+class Model(Copmartment):
+    """2A -> B"""
+    A: Species = initial(default=1)
+    B: Species = initial(default=0)
+    r = Reaction(reactants=[2 * A], product=[B], rate=1)
+```
+
+It also includes a `MassAction` variant,
+which automatically adds the reactants as part of the rate.
+`MassAction(reactants=[2 * A], product=[B], rate=1)`
+is equivalent to
+`Reaction(reactants=[2 * A], product=[B], rate=1 * A**2)`,
+and many predefined commonly used reactions reactions.
+
+SimBio also supports importing from and exporting to SBML,
+or directly from BioModels:
+
+```python
+from simbio import Simulator
+from simbio.io import biomodels, sbml
+
+model = sbml.load("repressilator.sbml")
+model = biomodels.load_model("BIOMD12")  # repressilator model
+Simulator(model).solve(...)
+```
+
 Cool stuff
 Interactive
 Pandas
