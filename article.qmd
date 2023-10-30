@@ -45,8 +45,8 @@ Clean API to create tools (graphs, tables, etc)
 
 # Results
 
-The code to define and simulate reaction systems
-is split into three Python packages:
+Modular code architecture enhances reusability, extendability and maintainability for the community.
+Hence, we split the code to define and simulate reaction systems into three Python packages:
 symbolite, to create symbolic expressions;
 poincaré, to define dynamical systems;
 and simbio, to define reaction systems
@@ -54,17 +54,16 @@ and interface with systems biology standards such as SBML.
 
 ## Symbolite
 
-Symbolite is a lightweight symbolics package
-to create and inspect mathematical expressions,
-which can be compiled to different backends.
-Currently, we have implementations for NumPy, SymPy and JAX,
+Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
+They can be inspected and compiled to different backends.
+Currently, we have implementations for NumPy (and Numba), SymPy and JAX,
 but it is easy to add new backends.
 
 ## Poincaré
 
 Poincare is a package to define and simulate dynamical systems.
 It provides a `System` class,
-where we can define `Constant`s, `Parameter`s and `Variable`s,
+where we can define `Constant`s, `Parameter`s, `Variable`s,
 and create equations linking a variable's derivative with an expression:
 
 ```python
@@ -74,7 +73,7 @@ class Decay(System):
 ```
 
 It allows to define higher-order systems
-by assigning an initial condition to a derivative:
+by assigning an initial condition to a `Derivative`:
 
 ```python
 class Oscillator(System):
