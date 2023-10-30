@@ -136,6 +136,11 @@ df
 df.plot()
 ```
 
+Switching backends to `"numba"` can improve model runtime
+on a factor upto x30 or more for big or long running models,
+but incurs in a compile time penalty for the first run
+which must be taken into account.
+
 ## SimBio
 
 For reaction networks,
