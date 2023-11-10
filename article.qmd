@@ -20,12 +20,13 @@ Chemical Reaction Networks (CRN)
 are the basis of many models used across the biological sciences and epidemiology.
 They consist of a set of species and reactions that mediate conversions between them.
 Several modalities exist to simulate these systems:
-deterministic Ordinary Differential Equations (ODE) which model a macroscopic behavior,
-Stochastic Differential Equations (SDE) which model microscopic fluctuations,
-and jump processes (Gillespie-like simulations) which take into account the discreteness of the populations.
-Hence, it is useful to write these models in a higher level description
-which can be reused for these different types of simulations.
-equations directly is error-prone and not easily reusable
+deterministic Ordinary Differential Equations (ODE) to model a macroscopic behavior,
+Stochastic Differential Equations (SDE) to model microscopic fluctuations,
+and jump processes (Gillespie-like simulations) to take into account the discreteness of the populations.
+Instead of writing the equations directly for each of these formulations
+which is error-prone and hard to reuse,
+these models can be written in a higher level description
+which can be compiled for these different types of simulations.
 
 Several tools already exist to define and simulate these systems.
 In particular,
