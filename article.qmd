@@ -77,16 +77,15 @@ it is focused on providing an ergonomic experience
 by integrating well with IDEs and static analysis tools
 through the use of standard modern Python syntax.
 From the power-user point of view,
-it can be extended from Python,
-since its coded in pure Python.
+since its coded in pure Python,
+it can be extended from Python.
+Its models can be introspected to create other representations
+such as graphs connecting species and/or reactions,
+or tables with parameters or equations.
 Finally,
 from the developer/maintainer point of view,
-it has a modular architecture with a clear separation of concerns,
+it has a modular architecture with a clear separation of concerns into three packages,
 making it easier to maintain or to contribute new code.
-
-the models can be easily introspected,
-and simulation extended from Python.
-Clean API to create tools (graphs, tables, etc)
 
 # Results
 
@@ -231,6 +230,12 @@ units -> Pint
 interactive
 
 # Discussion
+
+We have written a set of Python packages
+that allow to define and simulate dynamical systems and reaction networks.
+Thay have a modular architecture that makes them easy to extend in different points.
+
+Poincaré and SimBio are focused on their integration with IDE
 
 Modular and extensible set of python libraries
 Leverage IDE integration and static typing for model creation
