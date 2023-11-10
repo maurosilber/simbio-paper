@@ -110,7 +110,9 @@ It provides a `System` class,
 where we can define `Constant`s, `Parameter`s, `Variable`s,
 and create equations linking a variable's derivative with an expression:
 
-```python
+```{python}
+from poincare import Variable, System, initial
+
 class Decay(System):
     x: Variable = initial(default=1)  # Variable with initial condition
     eq = x.derive() << -x  # equation assigning dx/dt = -x
@@ -119,7 +121,9 @@ class Decay(System):
 It allows to define higher-order systems
 by assigning an initial condition to a `Derivative`:
 
-```python
+```{python}
+from poincare import Derivative
+
 class Oscillator(System):
     x: Variable = initial(default=1)
     v: Derivative = x.derive(initial=0)
@@ -137,11 +141,11 @@ For the latter,
 it is important to add the type annotations,
 as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` (PEP 681).
 
-```python
+```{python}
 class BigModel(System):
     x: Variable = initial(default=1)
-    subsystem = Oscillator(x=x)
-    independent = Oscillator(x=1)  # independent variable created inside
+    subsystem = Decay(x=x)
+    independent = Decay(x=1)  # independent variable created inside
 ```
 
 Using type annotations also allows to statically check for typing errors.
@@ -150,9 +154,11 @@ But can also be linked to an outside variable when composing models.
 As such, they cannot be used to parametrize the initial conditions of variables,
 for which we have to use a `Constant`:
 
-```python
+```{python}
+from poincare import Constant, Parameter, assign
+
 class Model(System):
-    k: Constant = assign(default=1, constant=True)
+    c: Constant = assign(default=1, constant=True)
     # two variables sharing initial condition
     x: Variable = initial(default=c)
     y: Variable = initial(default=c)
@@ -169,15 +175,18 @@ using `numpy` as a backend.
 The Simulator wraps the output in a `pandas.DataFrame`,
 which can be easily plotted with the standard `plot` method.
 
-```python
+```{python}
+import numpy as np
+from poincare import Simulator
+
 sim = Simulator(Oscillator)
-df = sim.solve(save_at=np.linspace(0, 5, 100))
+df = sim.solve(save_at=np.linspace(0, 5, 101))
 
 df
 ```
 
-```python
-df.plot()
+```{python}
+df.plot();
 ```
 
 Switching backends to `"numba"` can improve model runtime
@@ -197,12 +206,14 @@ which comprises of a `poincare.Variable` and an stoichiometry,
 and `Reaction`s,
 which transform reactants into products taking into account the stoichiometry.
 
-```python
-class Model(Copmartment):
+```{python}
+from simbio import Compartment, Species, Reaction, initial
+
+class Model(Compartment):
     """2A -> B"""
     A: Species = initial(default=1)
     B: Species = initial(default=0)
-    r = Reaction(reactants=[2 * A], product=[B], rate=1)
+    r = Reaction(reactants=[2 * A], products=[B], rate_law=1)
 ```
 
 It also includes a `MassAction` variant,
