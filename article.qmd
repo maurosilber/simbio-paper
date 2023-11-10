@@ -123,7 +123,7 @@ class Decay(System):
     eq = x.derive() << -x  # equation assigning dx/dt = -x
 ```
 
-It allows to define higher-order systems
+It also allows to define higher-order systems
 by assigning an initial condition to a `Derivative`:
 
 ```{python}
@@ -169,7 +169,7 @@ class Model(System):
     y: Variable = initial(default=c)
 
     p: Parameter = assign(default=1)
-    z: Variable = initial(default=p)  # typing error
+    z: Variable = initial(default=p)  # type error
 ```
 
 To simulate a system,
