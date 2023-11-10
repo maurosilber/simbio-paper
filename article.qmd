@@ -213,13 +213,12 @@ model = biomodels.load_model("BIOMD12")  # repressilator model
 Simulator(model).solve(...)
 ```
 
-Cool stuff
-Interactive
-Pandas
-Generate from sbml?
-Speed leveraging backends
+## Other things
 
-# Conclusion
+units -> Pint
+interactive
+
+# Discussion
 
 Modular and extensible set of python libraries
 Leverage IDE integration and static typing for model creation
