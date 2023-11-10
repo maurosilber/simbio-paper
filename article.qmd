@@ -247,20 +247,31 @@ interactive
 
 # Discussion
 
-We have written a set of Python packages
+In this article,
+we have described a set of Python packages we developed
 that allow to define and simulate dynamical systems and reaction networks.
-Thay have a modular architecture that makes them easy to extend in different points.
+They are focused on a deep integration with IDEs
+such that code analysis tools can flag errors before running the code,
+and help with refactoring and code completion.
+For this,
+we chose to use standard modern Python syntax,
+since the integration with IDEs will be maintained by the big players in the huge Python community.
 
-Poincaré and SimBio are focused on their integration with IDE
+In contrast to previous tools,
+both model definition and compilation into an ODE function is implemented in Python.
+This lowers the barrier to develop different simulation modalities,
+such as perfomance optimizations by leveraging some structure in the model.
+But being in Python does not mean less performance than C/C++ tools,
+as the resulting ODE function can be *jitted* using numba.
 
-Modular and extensible set of python libraries
-Leverage IDE integration and static typing for model creation
-
-Introduce 3 layers: symbolite, poincare and simbio
-easier to understand and develop
-usable, extendable, and maintainable by a broader community
-protocols
-change in the future
+These set of packages have a modular architecture with a clear separation of concerns.
+As such, they can be reused, improved and extended by the broader Python community.
+For example, people outside the systems biology community could
+add a stochastic integrator to poincaré,
+which could then be used from SimBio.
+This architecture also makes them easier to understand,
+reducing the difficulty to contribute fixes or new code,
+assuring their maintainance and continued development into the future.
 
 # References
 
