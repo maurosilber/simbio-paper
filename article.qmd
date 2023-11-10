@@ -1,5 +1,5 @@
 ---
-title: "SimBio: a static typing, modern Python package to simulate reaction networks"
+title: "SimBio: a flexible and extensible Python package for systems modelling"
 format:
   html:
     number-sections: true
