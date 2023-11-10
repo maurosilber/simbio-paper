@@ -16,31 +16,64 @@ format:
 
 # Introduction
 
-Chemical Reaction Networks (CRN) models
-species and rates
-Several modalities (ODE, SDE and jump process)
-writing equations directly is error-prone and not easily reusable
-Several packages exist to simulate them
+Chemical Reaction Networks (CRN)
+are the basis of many models used across the biological sciences and epidemiology.
+They consist of a set of species and reactions that mediate conversions between them.
+Several modalities exist to simulate these systems:
+deterministic Ordinary Differential Equations (ODE) which model a macroscopic behavior,
+Stochastic Differential Equations (SDE) which model microscopic fluctuations,
+and jump processes (Gillespie-like simulations) which take into account the discreteness of the populations.
+Hence, it is useful to write these models in a higher level description
+which can be reused for these different types of simulations.
+equations directly is error-prone and not easily reusable
 
-Biosimulators.org, a registry of simulation tools, list at least 15 Python softwares.
-(some) wrappers to external libraries
-script the model definition
+Several tools already exist to define and simulate these systems.
+In particular,
+Biosimulators.org,
+a registry of simulation tools,
+list at least 15 Python softwares
+among which are included
+COPASI,
+Tellurium,
+GillesPy2
+PySB.
+However,
+some are only Python wrappers to external (C, C++) libraries.
+They allow to "control" the model definition and simulation in a Python script,
+but it is not possible to use existing Python packages
+to change the way the simulation is carried out.
+In other words, they are not extensible from Python.
+
 avoid exporting to csv and loading in Python
-non-extendable from python
 large community
 
-Writing models
-GUI (e.g., COPASI)
-DSL (e.g, Antimony)
-Python (e.g, PySB)
+To write these models,
+there are three main approaches.
+Tools such as COPASI provide a Graphical User Interface (GUI),
+where the components, relations and their values are defined.
+Others use a Domain Specific Language (DSL),
+such as Antimony,
+which is a less verbose version of the System Biology Markup Language (SBML).
+The last approach is to use a programming language such as Python,
+which is the approach used by PySB.
+
 Benefits of IDE integration (syntax highlighting, etc)
 
-Here we present SimBio, a Python package
-that leverages standard modern Python syntax to integrate well with IDEs and static analysis tools.
-It is written in pure Python such that it can be easily introspected and extended from Python.
+Here we present SimBio, a Python package to define and simulate reaction networks.
+From the end-user point of view,
+it is focused on providing an ergonomic experience
+by integrating well with IDEs and static analysis tools
+through the use of standard modern Python syntax.
+From the power-user point of view,
+it can be extended from Python,
+since its coded in pure Python.
+Finally,
+from the developer/maintainer point of view,
+it has a modular architecture with a clear separation of concerns,
+making it easier to maintain or to contribute new code.
 
-It focused on providing a user experience, maintainability, and scalability
-
+the models can be easily introspected,
+and simulation extended from Python.
 Clean API to create tools (graphs, tables, etc)
 
 # Results
