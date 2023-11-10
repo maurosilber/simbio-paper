@@ -144,7 +144,7 @@ The benefits of using a class to define the system are multiple:
 
 For the latter,
 it is important to add the type annotations,
-as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` (PEP 681).
+as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` [@debontePEP681Data2021]:
 
 ```{python}
 class BigModel(System):
