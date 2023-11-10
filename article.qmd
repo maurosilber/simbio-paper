@@ -100,7 +100,11 @@ and interface with systems biology standards such as SBML.
 
 Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
 They can be inspected and compiled to different backends.
-Currently, we have implementations for NumPy (and Numba), SymPy and JAX,
+Currently, we have implementations for
+NumPy [@harrisArrayProgrammingNumPy2020],
+Numba [@lamNumbaLLVMbasedPython2015],
+SymPy [@meurerSymPySymbolicComputing2017],
+and JAX [@jax2018github],
 but it is easy to add new backends.
 
 ## Poincaré
