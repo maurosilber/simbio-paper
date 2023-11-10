@@ -1,5 +1,6 @@
 ---
 title: "SimBio: a flexible and extensible Python package for systems modelling"
+bibliography: bibliography.bib
 format:
   html:
     number-sections: true
@@ -34,10 +35,10 @@ Biosimulators.org,
 a registry of simulation tools,
 list at least 15 Python softwares
 among which are included
-COPASI,
-Tellurium,
-GillesPy2
-PySB.
+COPASI [@hoopsCOPASICOmplexPAthway2006],
+Tellurium [@choiTelluriumExtensiblePythonbased2018],
+GillesPy2 [@matthewGillesPy2BiochemicalModeling2023]
+PySB [@lopezProgrammingBiologicalModels2013].
 However,
 some are only Python wrappers to external (C, C++) libraries.
 They allow to "control" the model definition and simulation in a Python script,
@@ -229,3 +230,8 @@ easier to understand and develop
 usable, extendable, and maintainable by a broader community
 protocols
 change in the future
+
+# References
+
+::: {#refs}
+:::
