@@ -31,37 +31,47 @@ which can be compiled for these different types of simulations.
 
 Several tools already exist to define and simulate these systems.
 In particular,
-Biosimulators.org,
+BioSimulators.org [@shaikhBioSimulatorsCentralRegistry2022],
 a registry of simulation tools,
-list at least 15 Python softwares
-among which are included
-COPASI [@hoopsCOPASICOmplexPAthway2006],
-Tellurium [@choiTelluriumExtensiblePythonbased2018],
-GillesPy2 [@matthewGillesPy2BiochemicalModeling2023]
-PySB [@lopezProgrammingBiologicalModels2013].
-However,
-some are only Python wrappers to external (C, C++) libraries.
-They allow to "control" the model definition and simulation in a Python script,
-but it is not possible to use existing Python packages
+list at least 15 Python softwares.
+Some of them are:
+
+1. COPASI [@hoopsCOPASICOmplexPAthway2006],
+a stand-alone software
+which provides a Graphical User Interface (GUI) to define and simulate models.
+2. Tellurium [@choiTelluriumExtensiblePythonbased2018],
+which defines itself as a Python-based modeling environment
+and uses a C++ library called libRoadRunner [@welshLibRoadRunnerHighPerformance2023] to simulate them.
+3. PySB [@lopezProgrammingBiologicalModels2013],
+a Python library
+that created a DSL using standard Python to define models
+which are then compiled to ODE using a Perl library called BioNetGen [@harrisBioNetGenAdvancesRulebased2016].
+
+A limitation of these tools is their extensibility from Python,
+as they are or use wrapped libraries in other languages.
+As such, they allow to "control" the model definition and simulation in a Python script,
+but we cannot leverage other packages from the huge Python community
 to change the way the simulation is carried out.
-In other words, they are not extensible from Python.
+In some sense, we could say that
+they facilitate not having to export the simulation result to a CSV file
+and then loading it in Python to continue the analysis.
 
-avoid exporting to csv and loading in Python
-large community
+Another weak point is related to the way the models are written.
+While most tools support standards such as the System Biology Markup Language (SBML) [@huckaSBMLL3V2],
+no one is expected to write an SBML file directly.
+Tellurium uses a Domain Specific Language (DSL) called Antimony [@smithAntimonyModularModel2009],
+which can be translated to SBML.
+A DSL permits to reuse of the code *as is* in different programming environments,
+but will not be recognized in Integrated Development Enviromnents (IDE)
+and, then, cannot provide the development experience we have come to expect:
+syntax highlighting, code completion, refactoring, static analysis, among others.
+This has been recognized by the community,
+and an extension for Visual Studio Code has been created as part of a master thesis [@vscode-antimony].
+But maintaining it into the future could be burdensome for the smaller systems biology community.
 
-To write these models,
-there are three main approaches.
-Tools such as COPASI provide a Graphical User Interface (GUI),
-where the components, relations and their values are defined.
-Others use a Domain Specific Language (DSL),
-such as Antimony,
-which is a less verbose version of the System Biology Markup Language (SBML).
-The last approach is to use a programming language such as Python,
-which is the approach used by PySB.
-
-Benefits of IDE integration (syntax highlighting, etc)
-
-Here we present SimBio, a Python package to define and simulate reaction networks.
+To address these two issues,
+we developed SimBio,
+a Python package to define and simulate reaction networks.
 From the end-user point of view,
 it is focused on providing an ergonomic experience
 by integrating well with IDEs and static analysis tools
