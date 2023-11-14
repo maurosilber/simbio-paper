@@ -13,6 +13,8 @@ format:
     pdf-engine: tectonic
     number-sections: true
     colorlinks: true
+  docx:
+    number-sections: true
 ---
 
 # Introduction
