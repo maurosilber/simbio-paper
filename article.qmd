@@ -1,5 +1,5 @@
 ---
-title: "SimBio: a flexible and extensible Python package for systems modelling"
+title: "SimBio: a versatile and expandable Python package for modeling systems."
 bibliography: bibliography.bib
 format:
   html:
@@ -20,16 +20,16 @@ format:
 # Introduction
 
 Chemical Reaction Networks (CRN)
-are the basis of many models used across the biological sciences and epidemiology.
-They consist of a set of species and reactions that mediate conversions between them.
-Several modalities exist to simulate these systems:
-deterministic Ordinary Differential Equations (ODE) to model a macroscopic behavior,
-Stochastic Differential Equations (SDE) to model microscopic fluctuations,
-and jump processes (Gillespie-like simulations) to take into account the discreteness of the populations.
+are the foundation of many models used in biological sciences and epidemiology.
+They are made up of a set of species and reactions that mediate conversions between them.
+There are several ways to simulate these systems:
+deterministic Ordinary Differential Equations (ODEs) to model macroscopic behavior,
+Stochastic Differential Equations (SDEs) to model microscopic fluctuations,
+and jump processes (Gillespie-like simulations) to account for the discreteness of populations.
 Instead of writing the equations directly for each of these formulations
-which is error-prone and hard to reuse,
-these models can be written in a higher level description
-which can be compiled for these different types of simulations.
+which is error-prone and difficult to reuse,
+these models can be written in a higher-level description
+that can be compiled for these different types of simulations.
 
 Several tools already exist to define and simulate these systems.
 In particular,
@@ -49,54 +49,53 @@ a Python library
 that created a DSL using standard Python to define models
 which are then compiled to ODE using a Perl library called BioNetGen [@harrisBioNetGenAdvancesRulebased2016].
 
-A limitation of these tools is their extensibility from Python,
-as they are or use wrapped libraries in other languages.
-As such, they allow to "control" the model definition and simulation in a Python script,
-but we cannot leverage other packages from the huge Python community
-to change the way the simulation is carried out.
-In some sense, we could say that
-they facilitate not having to export the simulation result to a CSV file
-and then loading it in Python to continue the analysis.
+One limitation of these tools is that they are not extensible from Python,
+as they are either built on or use wrapped libraries in other languages.
+This means that they allow you to "control" the model definition and simulation in a Python script,
+but you cannot use other packages from the vast Python community to change the way the simulation is carried out.
+In a way, we could say that
+they make it easier to avoid having to export the simulation results to a CSV file
+and then load them into Python for further analysis.
+TODO: GIVE EXAMPLES
 
-Another weak point is related to the way the models are written.
+Another weakness is related to the way models are written.
 While most tools support standards such as the System Biology Markup Language (SBML) [@huckaSBMLL3V2],
 no one is expected to write an SBML file directly.
 Tellurium uses a Domain Specific Language (DSL) called Antimony [@smithAntimonyModularModel2009],
 which can be translated to SBML.
-A DSL permits to reuse of the code *as is* in different programming environments,
-but will not be recognized in Integrated Development Enviromnents (IDE)
-and, then, cannot provide the development experience we have come to expect:
-syntax highlighting, code completion, refactoring, static analysis, among others.
+A DSL allows code to be reused in different programming environments,
+but it will not be recognized by Integrated Development Environments (IDEs)
+and therefore cannot provide the development experience we have come to expect, such as
+syntax highlighting, code completion, refactoring, and static analysis.
 This has been recognized by the community,
 and an extension for Visual Studio Code has been created as part of a master thesis [@vscode-antimony].
-But maintaining it into the future could be burdensome for the smaller systems biology community.
+However, maintaining it in the future could be burdensome for the smaller systems biology community.
 
-To address these two issues,
-we developed SimBio,
-a Python package to define and simulate reaction networks.
-From the end-user point of view,
-it is focused on providing an ergonomic experience
+We developed SimBio,
+a Python package for defining and simulating reaction networks,
+to address these two issues.
+It focuses on providing an ergonomic experience for end-users
 by integrating well with IDEs and static analysis tools
 through the use of standard modern Python syntax.
-From the power-user point of view,
-since its coded in pure Python,
-it can be extended from Python.
-Its models can be introspected to create other representations
+It can be extended from Python
+since it is coded in pure Python,
+which is beneficial for power users.
+Its models can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
 Finally,
-from the developer/maintainer point of view,
 it has a modular architecture with a clear separation of concerns into three packages,
-making it easier to maintain or to contribute new code.
+making it easier to maintain or to contribute new code,
+which is beneficial for developers and maintainers.
 
 # Results
 
-Modular code architecture enhances reusability, extendability and maintainability for the community.
-Hence, we split the code to define and simulate reaction systems into three Python packages:
+Modular code architecture makes code reusable, extensible, and easier to maintain.
+Therefore, we split the code to define and simulate reaction systems into three Python packages:
 symbolite, to create symbolic expressions;
 poincaré, to define dynamical systems;
-and simbio, to define reaction systems
-and interface with systems biology standards such as SBML.
+and simbio, to define reaction systems and interface with systems biology standards such as SBML.
+TODO: NOT SURE SUBSECTIONS ARE A GOOD IDEA. MAYBE JUST BOLD
 
 ## Symbolite
 
@@ -259,21 +258,20 @@ For this,
 we chose to use standard modern Python syntax,
 since the integration with IDEs will be maintained by the big players in the huge Python community.
 
-In contrast to previous tools,
-both model definition and compilation into an ODE function is implemented in Python.
-This lowers the barrier to develop different simulation modalities,
-such as perfomance optimizations by leveraging some structure in the model.
-But being in Python does not mean less performance than C/C++ tools,
-as the resulting ODE function can be *jitted* using numba.
+Unlike previous tools,
+both model definition and compilation into an ODE function are implemented in Python.
+This lowers the barrier to developing different simulation modalities,
+such as performance optimizations by leveraging some structure in the model.
+However, being in Python does not mean that performance is less than that of C/C++ tools,
+as the resulting ODE function can be JITted using Numba.
 
-These set of packages have a modular architecture with a clear separation of concerns.
-As such, they can be reused, improved and extended by the broader Python community.
-For example, people outside the systems biology community could
-add a stochastic integrator to poincaré,
+These packages are designed with a modular architecture that clearly separates different concerns.
+This makes them easier to reuse, improve, and extend by the broader Python community.
+For example, someone outside the systems biology community could add a stochastic integrator to poincaré,
 which could then be used from SimBio.
 This architecture also makes them easier to understand,
-reducing the difficulty to contribute fixes or new code,
-assuring their maintainance and continued development into the future.
+which reduces the difficulty of contributing fixes or new code,
+and ensures their maintenance and continued development into the future.
 
 # References
 
