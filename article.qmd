@@ -68,7 +68,7 @@ but it will not be recognized by Integrated Development Environments (IDEs)
 and therefore cannot provide the development experience we have come to expect, such as
 syntax highlighting, code completion, refactoring, and static analysis.
 This has been recognized by the community,
-and an extension for Visual Studio Code has been created [@vscode-antimony].
+and an extension for Visual Studio Code has been created [@maTestingDynamicalSystems2021].
 However, maintaining it in the future could be burdensome for the smaller systems biology community.
 TODO: this is missing for other tools
 
