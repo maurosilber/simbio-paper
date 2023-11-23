@@ -68,11 +68,12 @@ but it will not be recognized by Integrated Development Environments (IDEs)
 and therefore cannot provide the development experience we have come to expect, such as
 syntax highlighting, code completion, refactoring, and static analysis.
 This has been recognized by the community,
-and an extension for Visual Studio Code has been created as part of a master thesis [@vscode-antimony].
+and an extension for Visual Studio Code has been created [@vscode-antimony].
 However, maintaining it in the future could be burdensome for the smaller systems biology community.
+TODO: this is missing for other tools
 
 We developed SimBio,
-a Python package for defining and simulating reaction networks,
+an open-source Python package for defining and simulating reaction networks,
 to address these two issues.
 It focuses on providing an ergonomic experience for end-users
 by integrating well with IDEs and static analysis tools
@@ -80,6 +81,7 @@ through the use of standard modern Python syntax.
 It can be extended from Python
 since it is coded in pure Python,
 which is beneficial for power users.
+TODO: high degree of flexibility,  large potential to leverage existing python tools.  For example, ....
 Its models can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
