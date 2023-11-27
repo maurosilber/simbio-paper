@@ -5,6 +5,7 @@ format:
   html:
     number-sections: true
     anchor-sections: true
+    css: article.css
   pdf:
     documentclass: scrartcl
     papersize: a4
