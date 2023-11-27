@@ -120,25 +120,12 @@ but it is easy to add new backends.
 
 ```{python}
 # | echo: false
-import numpy as np
-import seaborn
-from poincare import Derivative, Variable, System, initial
-from poincare import Simulator
-
-
-def plot(model, figheight):
-    ax = (
-        Simulator(model)
-        .solve(save_at=np.linspace(0, 5, 101))
-        .plot(figsize=(2, figheight))
-    )
-    ax.legend(frameon=False)
-    seaborn.despine(ax.figure)
+from poincare import Derivative, System, Variable, initial
 
 
 ```
 
-:::: {#fig-code layout-nrow=3 .column-body-outset}
+:::: {#fig-code layout-nrow=3}
 
 ::: {#fig-first-order layout-ncol=3}
 ```{python}
@@ -150,19 +137,12 @@ class Decay(System):
 ```
 
 $$
-\begin{align}
-    \dot{x} &= -x
-    \\\\
-    x(0) &= 1
-\end{align}
+\dot{x} = -x
 $$
 
-```{python}
-# | echo: false
-plot(Decay, 1)
-
-
-```
+$$
+x(0) = 1
+$$
 
 First-order system of an exponential decay.
 :::
@@ -178,22 +158,16 @@ class Oscillator(System):
 ```
 
 $$
-\begin{align}
-    \ddot{x} = -x
-    \\\\
-    \begin{cases}
-        x(0) &= 1 \\
-        \dot{x}(0) &= 0
-    \end{cases}
-\end{align}
+\ddot{x} = -x
 $$
 
-```{python}
-# | echo: false
-plot(Oscillator, 1.5)
+$$
+\begin{cases}
+    x(0) &= 1 \\
+    \dot{x}(0) &= 0
+\end{cases}
+$$
 
-
-```
 
 Second-order system of an harmonic oscillator.
 :::
@@ -209,28 +183,23 @@ class BigModel(System):
 ```
 
 $$
-\begin{align}
-    \begin{cases}
-        \dot{x} = -x \\
-        \dot{y} = -y
-    \end{cases}
-    \\\\
-    \begin{cases}
-        x(0) &= 1 \\
-        y(0) &= 2
-    \end{cases}
-\end{align}
+\begin{cases}
+    \dot{x} = -x \\
+    \dot{y} = -y
+\end{cases}
 $$
 
-```{python}
-# | echo: false
-plot(BigModel, 1.5)
-
-
-```
+$$
+\begin{cases}
+    x(0) &= 1 \\
+    y(0) &= 2
+\end{cases}
+$$
 
 First-order system of two exponential decays.
 :::
+
+Code and corresponding mathematical expressions for different systems.
 ::::
 
 Poincare is a package to define and simulate dynamical systems.
