@@ -305,11 +305,15 @@ which transform reactants into products taking into account the stoichiometry.
 ```{python}
 from simbio import Compartment, Species, Reaction, initial
 
+
 class Model(Compartment):
     """2A -> B"""
+
     A: Species = initial(default=1)
     B: Species = initial(default=0)
     r = Reaction(reactants=[2 * A], products=[B], rate_law=1)
+
+
 ```
 
 It also includes a `MassAction` variant,
