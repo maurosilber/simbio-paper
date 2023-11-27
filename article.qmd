@@ -99,9 +99,6 @@ Therefore, we split the code to define and simulate reaction systems into three 
 symbolite, to create symbolic expressions;
 poincaré, to define dynamical systems;
 and simbio, to define reaction systems and interface with systems biology standards such as SBML.
-TODO: NOT SURE SUBSECTIONS ARE A GOOD IDEA. MAYBE JUST BOLD
-
-## Symbolite
 
 Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
 They can be inspected and compiled to different backends.
