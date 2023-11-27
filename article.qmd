@@ -240,26 +240,33 @@ class Model(System):
 ```
 
 To simulate a system,
-we create a `Simulator` instance,
+we create a `Simulator` instance (@fig-sim),
 which compiles a given system and interfaces with solvers.
 By default, it creates a first-order ordinary differential equation (ODE) system
 using `numpy` as a backend.
 The Simulator wraps the output in a `pandas.DataFrame`,
 which can be easily plotted with the standard `plot` method.
 
+::: {#fig-sim layout=[[1],[1,1]]}
 ```{python}
 import numpy as np
 from poincare import Simulator
 
 sim = Simulator(Oscillator)
 df = sim.solve(save_at=np.linspace(0, 5, 101))
-
-df
 ```
 
 ```{python}
-df.plot();
+df.head()
 ```
+
+```{python}
+df.plot(figsize=(4, 2))
+```
+
+Simulation of the `Oscillator` system from @fig-second-order,
+which outputs a `pandas.DataFrame`.
+:::
 
 Switching backends to `"numba"` can improve model runtime
 on a factor upto x30 or more for big or long running models,
