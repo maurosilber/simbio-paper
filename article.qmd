@@ -224,20 +224,37 @@ Using type annotations also allows to statically check for typing errors.
 For instance, `Parameter`s can be assigned either a number or a time-dependent expression.
 But can also be linked to an outside variable when composing models.
 As such, they cannot be used to parametrize the initial conditions of variables,
-for which we have to use a `Constant`:
+for which we have to use a `Constant` (@fig-constant).
 
+::: {#fig-constant layout-nrow=2}
 ```{python}
+# | echo: false
 from poincare import Constant, Parameter, assign
 
+
+```
+
+```{python}
 class Model(System):
     c: Constant = assign(default=1, constant=True)
-    # two variables sharing initial condition
     x: Variable = initial(default=c)
     y: Variable = initial(default=c)
 
+
+```
+
+```{python}
+class BadModel(System):
     p: Parameter = assign(default=1)
     z: Variable = initial(default=p)  # type error
+
+
 ```
+
+Constant and Parameter allow to connect initial conditions and equations, respectively.
+Using Parameters as initial conditions raises an error,
+and can be flagged by static type checkers.
+:::
 
 To simulate a system,
 we create a `Simulator` instance (@fig-sim),
