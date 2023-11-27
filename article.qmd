@@ -87,7 +87,9 @@ through the use of standard modern Python syntax.
 They can be extended from Python
 since they are coded in pure Python,
 which is beneficial for power users.
-TODO: high degree of flexibility,  large potential to leverage existing python tools.  For example, ....
+For instance, it is easy to reuse integrators defined in other packages,
+but it is also possible to change the compilation itself
+(the )
 Their models can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
@@ -246,10 +248,9 @@ model = biomodels.load_model("BIOMD12")  # from BioModels
 Simulator(model).solve(...)
 ```
 
-## Other things
+## Reproducibility and performance
 
-units -> Pint
-interactive
+![Performance of the different softwares to solve a subset of BioModels models. (left) Run time for model BIOMD3 as a function of the number of output points. (right) Run time for different models ordered according to the geometric mean of the run times.](src/performance/figures/performance.png){#fig-runtime}
 
 # Discussion
 
