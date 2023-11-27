@@ -118,14 +118,13 @@ but it is easy to add new backends.
 
 ## Poincaré
 
+:::: {#fig-poincare layout-nrow=4}
+
 ```{python}
-# | echo: false
 from poincare import Derivative, System, Variable, initial
 
 
 ```
-
-:::: {#fig-code layout-nrow=3}
 
 ::: {#fig-first-order layout-ncol=3}
 ```{python}
