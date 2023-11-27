@@ -293,48 +293,106 @@ which must be taken into account.
 
 ## SimBio
 
-For reaction networks,
-we are usually interested in first-order differential equations
-relating the rate of change of the network's species.
-
-To facilitate defining these models,
-SimBio defines `Species`,
-which comprises of a `poincare.Variable` and an stoichiometry,
-and `Reaction`s,
-which transform reactants into products taking into account the stoichiometry.
+:::: {#fig-simbio layout-nrow=3}
 
 ```{python}
-from simbio import Compartment, Species, Reaction, initial
+from simbio import Compartment, MassAction, Species, Reaction, initial
 
 
+```
+
+::: {#fig-reaction layout-ncol=2}
+```{python}
 class Model(Compartment):
     """2A -> B"""
 
     A: Species = initial(default=1)
     B: Species = initial(default=0)
-    r = Reaction(reactants=[2 * A], products=[B], rate_law=1)
+    r = Reaction(
+        reactants=[2 * A],
+        products=[B],
+        rate_law=1,
+    )
 
 
 ```
 
-It also includes a `MassAction` variant,
-which automatically adds the reactants as part of the rate.
-`MassAction(reactants=[2 * A], product=[B], rate=1)`
-is equivalent to
-`Reaction(reactants=[2 * A], product=[B], rate=1 * A**2)`,
-and many predefined commonly used reactions reactions.
+$$
+\begin{align}
+&\begin{cases}
+    \dot{A} = -2 \\
+    \dot{B} = +1
+\end{cases}
+\\\\
+&\begin{cases}
+    A(0) &= 1 \\
+    B(0) &= 0
+\end{cases}
+\end{align}
+$$
 
-SimBio also supports importing from and exporting to SBML,
-or directly from BioModels:
+Reaction system.
+:::
 
-```python
-from simbio import Simulator
+::: {#fig-mass-action layout-ncol=2}
+```{python}
+class Model(Compartment):
+    """2A -> B"""
+
+    A: Species = initial(default=1)
+    B: Species = initial(default=0)
+    r = MassAction(
+        reactants=[2 * A],
+        products=[B],
+        rate=1,
+    )
+
+
+```
+
+$$
+\begin{align}
+&\begin{cases}
+    \dot{A} = -2 A^2 \\
+    \dot{B} = +1 A^2
+\end{cases}
+\\\\
+&\begin{cases}
+    A(0) &= 1 \\
+    B(0) &= 0
+\end{cases}
+\end{align}
+$$
+
+Mass-Action system.
+:::
+
+::::
+
+For reaction networks,
+we are interested in first-order differential equations
+relating the rate of change of the species.
+To facilitate defining these models,
+SimBio defines `Species`,
+which comprises of a `poincare.Variable` and an stoichiometry,
+and `Reaction`,
+which transform reactants into products taking into account the stoichiometry (@fig-reaction).
+It also includes `MassAction`, a `Reaction` subclass,
+which automatically adds the reactants as part of the rate law (@fig-mass-action).
+Several commonly used reactions are predefined as `MassAction` subclasses.
+Additionally, SimBio supports importing from and exporting to SBML,
+or directly from BioModels (@fig-simbio-io).
+
+::: {#fig-simbio-io layout-ncol=1}
+```{python}
 from simbio.io import biomodels, sbml
 
 model = sbml.load("repressilator.sbml")  # from existing SBML file
 model = biomodels.load_model("BIOMD12")  # from BioModels
-Simulator(model).solve(...)
 ```
+
+Creation of a model from a local SBML file or one uploaded to BioModels.
+:::
 
 ## Reproducibility and performance
 
