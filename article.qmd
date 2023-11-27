@@ -1,5 +1,5 @@
 ---
-title: "SimBio: a versatile and expandable Python package for modeling systems."
+title: "Poincaré and SimBio: a versatile and extensible Python ecosystem for modeling systems."
 bibliography: bibliography.bib
 format:
   html:
@@ -72,21 +72,23 @@ and an extension for Visual Studio Code has been created [@maTestingDynamicalSys
 However, maintaining it in the future could be burdensome for the smaller systems biology community.
 TODO: this is missing for other tools
 
-We developed SimBio,
-an open-source Python package for defining and simulating reaction networks,
-to address these two issues.
-It focuses on providing an ergonomic experience for end-users
+To address these issues,
+we developed poincaré and SimBio,
+open-source Python packages for defining and simulating systems.
+Poincaré allows to define differential equation systems
+and SimBio builds on top of it to define reaction networks.
+They are focused on providing an ergonomic experience for end-users
 by integrating well with IDEs and static analysis tools
 through the use of standard modern Python syntax.
-It can be extended from Python
-since it is coded in pure Python,
+They can be extended from Python
+since they are coded in pure Python,
 which is beneficial for power users.
 TODO: high degree of flexibility,  large potential to leverage existing python tools.  For example, ....
-Its models can be introspected to create other representations,
+Their models can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
 Finally,
-it has a modular architecture with a clear separation of concerns into three packages,
+they have a modular architecture with a clear separation of concerns,
 making it easier to maintain or to contribute new code,
 which is beneficial for developers and maintainers.
 
