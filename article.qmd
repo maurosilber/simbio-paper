@@ -118,48 +118,138 @@ but it is easy to add new backends.
 
 ## Poincaré
 
-Poincare is a package to define and simulate dynamical systems.
-It provides a `System` class,
-where we can define `Constant`s, `Parameter`s, `Variable`s,
-and create equations linking a variable's derivative with an expression:
-
 ```{python}
-from poincare import Variable, System, initial
+# | echo: false
+import numpy as np
+import seaborn
+from poincare import Derivative, Variable, System, initial
+from poincare import Simulator
 
-class Decay(System):
-    x: Variable = initial(default=1)  # Variable with initial condition
-    eq = x.derive() << -x  # equation assigning dx/dt = -x
+
+def plot(model, figheight):
+    ax = (
+        Simulator(model)
+        .solve(save_at=np.linspace(0, 5, 101))
+        .plot(figsize=(2, figheight))
+    )
+    ax.legend(frameon=False)
+    seaborn.despine(ax.figure)
+
+
 ```
 
-It also allows to define higher-order systems
-by assigning an initial condition to a `Derivative`:
+:::: {#fig-code layout-nrow=3 .column-body-outset}
+
+::: {#fig-first-order layout-ncol=3}
+```{python}
+class Decay(System):
+    x: Variable = initial(default=1)
+    eq = x.derive() << -x
+
+
+```
+
+$$
+\begin{align}
+    \dot{x} &= -x
+    \\\\
+    x(0) &= 1
+\end{align}
+$$
 
 ```{python}
-from poincare import Derivative
+# | echo: false
+plot(Decay, 1)
 
+
+```
+
+First-order system of an exponential decay.
+:::
+
+::: {#fig-second-order layout-ncol=3}
+```{python}
 class Oscillator(System):
     x: Variable = initial(default=1)
     v: Derivative = x.derive(initial=0)
     eq = v.derive() << -x
+
+
 ```
+
+$$
+\begin{align}
+    \ddot{x} = -x
+    \\\\
+    \begin{cases}
+        x(0) &= 1 \\
+        \dot{x}(0) &= 0
+    \end{cases}
+\end{align}
+$$
+
+```{python}
+# | echo: false
+plot(Oscillator, 1.5)
+
+
+```
+
+Second-order system of an harmonic oscillator.
+:::
+
+::: {#fig-composition layout-ncol=3}
+```{python}
+class BigModel(System):
+    x: Variable = initial(default=1)
+    subsystem = Decay(x=x)
+    independent = Decay(x=2)
+
+
+```
+
+$$
+\begin{align}
+    \begin{cases}
+        \dot{x} = -x \\
+        \dot{y} = -y
+    \end{cases}
+    \\\\
+    \begin{cases}
+        x(0) &= 1 \\
+        y(0) &= 2
+    \end{cases}
+\end{align}
+$$
+
+```{python}
+# | echo: false
+plot(BigModel, 1.5)
+
+
+```
+
+First-order system of two exponential decays.
+:::
+::::
+
+Poincare is a package to define and simulate dynamical systems.
+It provides a `System` class,
+where we can define `Constant`s, `Parameter`s, `Variable`s,
+and create equations linking a variable's derivative with an expression (@fig-first-order).
+It also allows to define higher-order systems
+by assigning an initial condition to a `Derivative` (@fig-second-order).
 
 The benefits of using a class to define the system are multiple:
 
 1. the variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
 2. it provides a namespace such that we can easily define multiple independent models in the same script,
 3. it allows IDEs to provide autocomplete and refactoring capabilities (`Oscillator.<TAB>` shows `x`, `v` and `eq`),
-4. it allows to create instances which can be composed into a bigger model.
+4. it allows to create instances which can be composed into a bigger model (@fig-composition).
 
 For the latter,
 it is important to add the type annotations,
 as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` [@debontePEP681Data2021]:
-
-```{python}
-class BigModel(System):
-    x: Variable = initial(default=1)
-    subsystem = Decay(x=x)
-    independent = Decay(x=1)  # independent variable created inside
-```
 
 Using type annotations also allows to statically check for typing errors.
 For instance, `Parameter`s can be assigned either a number or a time-dependent expression.
