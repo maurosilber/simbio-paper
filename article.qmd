@@ -109,7 +109,7 @@ Currently, we have implementations for
 NumPy [@harrisArrayProgrammingNumPy2020];
 Numba [@lamNumbaLLVMbasedPython2015], a Just-in-Time (JIT) compiler to LLVM;
 SymPy [@meurerSymPySymbolicComputing2017], a library for symbolic mathematics;
-and JAX [@jax2018github], a library that support automatic differentation
+and JAX [@jax2018github], a library that support automatic differentiation
 and compilation to GPUs and TPUs;
 but it is easy to add new backends.
 
@@ -286,7 +286,7 @@ It is inspected and plotted with the `pandas` methods.
 :::
 
 Switching backends to `"numba"` can improve model runtime
-on a factor upto x30 or more for big or long running models,
+on a factor up to x30 or more for big or long running models,
 but incurs in a compile time penalty for the first run
 which must be taken into account.
 
