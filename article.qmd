@@ -51,16 +51,14 @@ that created a DSL using standard Python to define models
 which are then compiled to ODE using a Perl library called BioNetGen [@harrisBioNetGenAdvancesRulebased2016].
 
 One limitation of these tools is that they are not extensible from Python,
-as they are either built on or use wrapped libraries in other languages.
-This means that they allow you to "control" the model definition and simulation in a Python script,
-but you cannot use other packages from the vast Python community to change the way the simulation is carried out.
+as they are not fully Python packages
+but wrap libraries in other languages to do the simulation.
+As such, they allow you to "control" the model definition and simulation in a Python script.
+But it is not possible to use other packages from the vast Python community to change the way the simulation is carried out.
 For instance,
 to do a Random Parameter Scan in COPASI,
-we must choose between one of the predefined distributions,
-but cannot use one of the meny distributions from `scipy.stats`.
-In a way, we could say that
-they make it easier to avoid having to export the simulation results to a CSV file
-and then load them into Python for further analysis.
+we must choose between one of 4 predefined distributions,
+but cannot use one of the many distributions from `scipy.stats`.
 
 Another weakness is related to the way models are written.
 While most tools support standards such as the System Biology Markup Language (SBML) [@huckaSBMLL3V2],
@@ -74,7 +72,6 @@ syntax highlighting, code completion, refactoring, and static analysis.
 This has been recognized by the community,
 and an extension for Visual Studio Code has been created [@maTestingDynamicalSystems2021].
 However, maintaining it in the future could be burdensome for the smaller systems biology community.
-TODO: this is missing for other tools
 
 To address these issues,
 we developed poincaré and SimBio,
