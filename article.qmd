@@ -322,8 +322,8 @@ class Model(Compartment):
 $$
 \begin{align}
 &\begin{cases}
-    \dot{A} = -2 \\
-    \dot{B} = +1
+    \frac{dA}{dt} = -2 \\
+    \frac{dB}{dt} = +1
 \end{cases}
 \\\\
 &\begin{cases}
@@ -333,7 +333,7 @@ $$
 \end{align}
 $$
 
-Reaction system.
+Reaction system $2A \rightarrow B$ with rate $1$.
 :::
 
 ::: {#fig-mass-action layout-ncol=2}
@@ -355,8 +355,8 @@ class Model(Compartment):
 $$
 \begin{align}
 &\begin{cases}
-    \dot{A} = -2 A^2 \\
-    \dot{B} = +1 A^2
+    \frac{dA}{dt} = -2 A^2 \\
+    \frac{dB}{dt} = +1 A^2
 \end{cases}
 \\\\
 &\begin{cases}
@@ -366,9 +366,11 @@ $$
 \end{align}
 $$
 
-Mass-Action system.
+Mass-Action system $2A \rightarrow B$ with rate $1 A^2$.
 :::
 
+Examples of similar reaction systems transforming $2A \rightarrow B$.
+For mass-action systems, the rate is proportional to the reactants.
 ::::
 
 For reaction networks,
