@@ -168,7 +168,8 @@ $$
 $$
 
 
-Second-order system of an harmonic oscillator.
+Second-order system of an harmonic oscillator,
+where $\dot{x}$ is named $v$.
 :::
 
 ::: {#fig-composition layout-ncol=3}
@@ -195,7 +196,8 @@ $$
 \end{cases}
 $$
 
-First-order system of two exponential decays.
+First-order system of two exponential decays,
+where $y$ is named $\text{independent.x}$.
 :::
 
 Code and corresponding mathematical expressions for different systems.
