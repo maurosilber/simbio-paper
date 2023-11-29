@@ -237,34 +237,27 @@ But can also be linked to an outside variable when composing models.
 As such, they cannot be used to parametrize the initial conditions of variables,
 for which we have to use a `Constant` (@fig-constant).
 
-::: {#fig-constant layout-nrow=2}
-```{python}
-# | echo: false
-from poincare import Constant, Parameter, assign
+::: {#fig-constant layout-nrow=1}
 
+::: {#fig-parameter layout-nrow=2}
+![](src/ide/constant.png)
 
-```
+![](src/ide/type_error.png)
 
-```{python}
-class Model(System):
-    c: Constant = assign(default=1, constant=True)
-    x: Variable = initial(default=c)
-    y: Variable = initial(default=c)
+`Constant` are assigned with `assign(..., constant=True)` and allow to link `Variable`s initial conditions,
+while trying to use a `Parameter` instead is flagged as type errors (red underlining).
+:::
 
+::: {#fig-composition layout-nrow=1}
+![](src/ide/composition_tooltip.png)
 
-```
+A tooltip is shown when composing models,
+which show the expected variables and their default values.
+The IDE highlights mismatched types (`my_var` is `Variable` and `c` must be a number or a `Constant`)
+and wrong names (`z` is not a name in `Model`).
+:::
 
-```{python}
-class BadModel(System):
-    p: Parameter = assign(default=1)
-    z: Variable = initial(default=p)  # type error
-
-
-```
-
-Constant and Parameter allow to connect initial conditions and equations, respectively.
-Using Parameters as initial conditions raises an error,
-and can be flagged by static type checkers.
+Screenshots of Visual Studio Code showing tooltips and highlighted type errors.
 :::
 
 To simulate a system,
