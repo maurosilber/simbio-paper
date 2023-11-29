@@ -119,7 +119,7 @@ Numba [@lamNumbaLLVMbasedPython2015], a Just-in-Time (JIT) compiler to LLVM;
 SymPy [@meurerSymPySymbolicComputing2017], a library for symbolic mathematics;
 and JAX [@jax2018github], a library that support automatic differentiation
 and compilation to GPUs and TPUs;
-but it is easy to add new backends.
+and it is easy to add new backends.
 
 ## Poincaré
 
@@ -149,6 +149,8 @@ x(0) = 1
 $$
 
 First-order system of an exponential decay.
+The variable `x` stores the initial condition for $x$,
+and the variable `eq` stores the rate equation for $x$.
 :::
 
 ::: {#fig-second-order layout-ncol=3}
@@ -174,14 +176,15 @@ $$
 
 
 Second-order system of an harmonic oscillator,
-where $\dot{x}$ is named $v$.
+where the variable `v` stores the derivative $\dot{x}$
+and the rate equation is specified for the derivative `v`.
 :::
 
 ::: {#fig-composition layout-ncol=3}
 ```{python}
 class BigModel(System):
     x: Variable = initial(default=1)
-    subsystem = Decay(x=x)
+    linked = Decay(x=x)
     independent = Decay(x=2)
 
 
@@ -201,8 +204,10 @@ $$
 \end{cases}
 $$
 
-First-order system of two exponential decays,
-where $y$ is named $\text{independent.x}$.
+First-order system of two exponential decays by composition of the `Decay` system.
+The subsystem `linked` has a reference to the outer variable `x`,
+while the subsystem `independent` defines a new variable with initial condition §2$,
+which on the corresponding mathematical expression was named $y$.
 :::
 
 Code and corresponding mathematical expressions for different systems.
@@ -308,7 +313,7 @@ from simbio import Compartment, MassAction, Species, Reaction, initial
 
 ```
 
-::: {#fig-reaction layout-ncol=2}
+::: {layout-ncol=2}
 ```{python}
 class Model(Compartment):
     """2A -> B"""
@@ -337,11 +342,9 @@ $$
 \end{cases}
 \end{align}
 $$
-
-Reaction system $2A \rightarrow B$ with rate $1$.
 :::
 
-::: {#fig-mass-action layout-ncol=2}
+::: {layout-ncol=2}
 ```{python}
 class Model(Compartment):
     """2A -> B"""
@@ -370,12 +373,12 @@ $$
 \end{cases}
 \end{align}
 $$
-
-Mass-Action system $2A \rightarrow B$ with rate $1 A^2$.
 :::
 
-Examples of similar reaction systems transforming $2A \rightarrow B$.
-For mass-action systems, the rate is proportional to the reactants.
+A reaction system for species $A$ and $B$ with initial conditions $1$ and $0$, respectively.
+A single reaction transforming $2A$ into $B$ is saved in variable `r`.
+The rate $1$ is specified directly for `Reaction`,
+and is proportional to the reactants for `MassAction`.
 ::::
 
 For reaction networks,
@@ -385,9 +388,9 @@ To facilitate defining these models,
 SimBio defines `Species`,
 which comprises of a `poincare.Variable` and an stoichiometry,
 and `Reaction`,
-which transform reactants into products taking into account the stoichiometry (@fig-reaction).
+which transform reactants into products taking into account the stoichiometry (@fig-simbio).
 It also includes `MassAction`, a `Reaction` subclass,
-which automatically adds the reactants as part of the rate law (@fig-mass-action).
+which automatically adds the reactants as part of the rate law (@fig-simbio).
 Several commonly used reactions are predefined as `MassAction` subclasses.
 Additionally, SimBio supports importing from and exporting to SBML,
 or directly from BioModels (@fig-simbio-io).
