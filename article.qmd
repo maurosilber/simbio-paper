@@ -59,6 +59,8 @@ For instance,
 to do a Random Parameter Scan in COPASI,
 we must choose between one of 4 predefined distributions,
 but cannot use one of the many distributions from `scipy.stats`.
+In Tellurium, we cannot choose other Python solvers,
+as adding new integrators has to be done in C++.
 
 Another weakness is related to the way models are written.
 While most tools support standards such as the System Biology Markup Language (SBML) [@huckaSBMLL3V2],
@@ -66,7 +68,7 @@ no one is expected to write an SBML file directly.
 Tellurium uses a Domain Specific Language (DSL) called Antimony [@smithAntimonyModularModel2009],
 which can be translated to SBML.
 A DSL allows code to be reused in different programming environments,
-but it will not be recognized by Integrated Development Environments (IDEs)
+but it will not be recognized by default in Integrated Development Environments (IDEs)
 and therefore cannot provide the development experience we have come to expect, such as
 syntax highlighting, code completion, refactoring, and static analysis.
 This has been recognized by the community,
@@ -82,17 +84,17 @@ But IDEs cannot understand it and, hence, provide help, as this is not the way t
 To address these issues,
 we developed poincaré and SimBio,
 open-source Python packages for defining and simulating systems.
-Poincaré allows to define differential equation systems
+Poincaré allows to define systems of differential equations
 and SimBio builds on top of it to define reaction networks.
 They are focused on providing an ergonomic experience for end-users
 by integrating well with IDEs and static analysis tools
 through the use of standard modern Python syntax.
-They can be extended from Python
-since they are coded in pure Python,
-which is beneficial for power users.
-For instance, it is easy to reuse integrators defined in other packages,
-but it is also possible to change the compilation itself
-(the )
+Since they are coded in pure Python,
+every part from model definition to simulation can be extended from Python itself.
+For example,
+easier changes such as reusing integrators defined in other packages,
+to more complex ones such as changing the compilation process itself
+to leverage some structure in the equations.
 Their models can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
