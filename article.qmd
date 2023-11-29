@@ -72,6 +72,12 @@ syntax highlighting, code completion, refactoring, and static analysis.
 This has been recognized by the community,
 and an extension for Visual Studio Code has been created [@maTestingDynamicalSystems2021].
 However, maintaining it in the future could be burdensome for the smaller systems biology community.
+In the case of PySB,
+it leveraged the highly dynamic nature of Python to create a DSL within it.
+By default, it uses global state to create species and parameters,
+without assigning them to Python variables
+or adding them explicitly to the model.
+But IDEs cannot understand it and, hence, provide help, as this is not the way they expect Python code to be written.
 
 To address these issues,
 we developed poincaré and SimBio,
