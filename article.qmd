@@ -398,6 +398,7 @@ from simbio.io import biomodels, sbml
 
 model = sbml.load("repressilator.sbml")  # from existing SBML file
 model = biomodels.load_model("BIOMD12")  # from BioModels
+model
 ```
 
 Creation of a model from a local SBML file or one uploaded to BioModels.
