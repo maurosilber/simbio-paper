@@ -386,7 +386,7 @@ It also includes `MassAction`, a `Reaction` subclass,
 which automatically adds the reactants as part of the rate law (@fig-simbio).
 Several commonly used reactions are predefined as `MassAction` subclasses.
 Additionally, SimBio supports importing from and exporting to SBML,
-or directly from BioModels (@fig-simbio-io).
+and downloading them directly from BioModels (@fig-simbio-io).
 
 ::: {#fig-simbio-io layout-ncol=1}
 ```{python}
