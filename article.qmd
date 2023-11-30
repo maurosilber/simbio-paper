@@ -416,7 +416,7 @@ we simulated them with COPASI, Tellurium/RoadRunner and simbio.
 For simbio, we considered both the NumPy and numba backends.
 For COPASI and simbio, we used the LSODA solver,
 while using the similar CVODE solver for tellurium.
-In all cases, we used relative and absolute tolerances of  $10^-6$.
+In all cases, we used relative and absolute tolerances of $10^{-6}$.
 We measured separately three stages of the simulation:
 the loading, first/cold run and subsequent/warm runs of each model.
 
