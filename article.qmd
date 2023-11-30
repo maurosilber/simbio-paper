@@ -131,7 +131,7 @@ from poincare import Derivative, System, Variable, initial
 
 ```
 
-::: {#fig-first-order layout-ncol=3}
+::: {#fig-first-order layout-ncol=3 layout-valign="center"}
 ```{python}
 class Decay(System):
     x: Variable = initial(default=1)
@@ -153,7 +153,7 @@ The variable `x` stores the initial condition for $x$,
 and the variable `eq` stores the rate equation for $x$.
 :::
 
-::: {#fig-second-order layout-ncol=3}
+::: {#fig-second-order layout-ncol=3 layout-valign="center"}
 ```{python}
 class Oscillator(System):
     x: Variable = initial(default=1)
@@ -180,7 +180,7 @@ where the variable `v` stores the derivative $\frac{dx}{dt}$
 and the rate equation is specified for the derivative `v`.
 :::
 
-::: {#fig-composition layout-ncol=3}
+::: {#fig-composition layout-ncol=3 layout-valign="center"}
 ```{python}
 class BigModel(System):
     x: Variable = initial(default=1)
@@ -239,7 +239,7 @@ for which we have to use a `Constant` (@fig-constant).
 
 ::: {#fig-constant layout-nrow=1}
 
-::: {#fig-parameter layout-nrow=2}
+::: {#fig-parameter layout-nrow=2 layout-valign="bottom"}
 ![](src/ide/constant.png)
 
 ![](src/ide/type_error.png)
@@ -248,7 +248,7 @@ for which we have to use a `Constant` (@fig-constant).
 while trying to use a `Parameter` instead is flagged as type errors (red underlining).
 :::
 
-::: {#fig-composition layout-nrow=1}
+::: {#fig-composition layout-nrow=1 layout-valign="bottom"}
 ![](src/ide/composition_tooltip.png)
 
 A tooltip is shown when composing models,
@@ -306,7 +306,7 @@ from simbio import Compartment, MassAction, Species, Reaction, initial
 
 ```
 
-::: {layout-ncol=2}
+::: {layout-ncol=2 layout-valign="center"}
 ```{python}
 class Model(Compartment):
     """2A -> B"""
@@ -337,7 +337,7 @@ $$
 $$
 :::
 
-::: {layout-ncol=2}
+::: {layout-ncol=2 layout-valign="center"}
 ```{python}
 class Model(Compartment):
     """2A -> B"""
