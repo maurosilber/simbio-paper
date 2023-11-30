@@ -384,7 +384,11 @@ and `Reaction`,
 which transform reactants into products taking into account the stoichiometry (@fig-simbio).
 It also includes `MassAction`, a `Reaction` subclass,
 which automatically adds the reactants as part of the rate law (@fig-simbio).
-Several commonly used reactions are predefined as `MassAction` subclasses.
+Several commonly used reactions are predefined as `MassAction` subclasses,
+such as
+`MichaelisMenten` ($S + E \rightarrow ES -> P + E$)
+and its approximate form without the intermediate species $ES$,
+and it is also simple to implement your own as subclasses of `Reaction` or `MassAction`.
 Additionally, SimBio supports importing from and exporting to SBML,
 and downloading them directly from BioModels (@fig-simbio-io).
 
