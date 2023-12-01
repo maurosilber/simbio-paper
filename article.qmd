@@ -402,11 +402,10 @@ Creation of a model from a local SBML file or one uploaded to BioModels.
 
 To test the reproducibility of results of SimBio,
 we considered the first 100 curated models from BioModels.
-As SimBio does not yet support the full SBML standard,
-for instance, events,
-we simulated only 60 of those.
+As SimBio does not yet support the full SBML standard (for instance, events),
+we could only simulate 60 of those.
 Using the results from COPASI as ground truth,
-SimBio reproduces the results within the solver tolerances.
+SimBio reproduces the results with numerical differences depending on the solver tolerance.
 
 To test the performance,
 we simulated them with COPASI, Tellurium/RoadRunner and simbio.
