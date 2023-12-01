@@ -237,24 +237,26 @@ But can also be linked to an outside variable when composing models.
 As such, they cannot be used to parametrize the initial conditions of variables,
 for which we have to use a `Constant` (@fig-constant).
 
-::: {#fig-constant layout-nrow=1}
+::: {#fig-constant layout-nrow=1 layout-valign="bottom"}
 
-::: {#fig-parameter layout-nrow=2 layout-valign="bottom"}
-![](src/ide/constant.png)
+::: {#fig-parameter}
+![](src/ide/ide1.png)
 
-![](src/ide/type_error.png)
-
-`Constant` are assigned with `assign(..., constant=True)` and allow to link `Variable`s initial conditions,
+`Constant` are assigned with `assign(..., constant=True)` and can be used to link `Variable`s initial conditions,
 while trying to use a `Parameter` instead is flagged as type errors (red underlining).
+The IDE automatically recognizes `e` as an `Equation`,
+and provides autocompletion of the variables.
 :::
 
 ::: {#fig-composition layout-nrow=1 layout-valign="bottom"}
-![](src/ide/composition_tooltip.png)
+![](src/ide/ide2.png)
 
 A tooltip is shown when composing models,
 which show the expected variables and their default values.
-The IDE highlights mismatched types (`my_var` is `Variable` and `c` must be a number or a `Constant`)
-and wrong names (`z` is not a name in `Model`).
+The IDE highlights
+wrong names (`z` is not a name in `Model`)
+and
+mismatched types (`x` is `Variable` and `a` must be a number or a `Constant`)
 :::
 
 Screenshots of Visual Studio Code showing tooltips and highlighted type errors.
