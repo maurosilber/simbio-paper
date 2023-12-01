@@ -225,31 +225,24 @@ Using type annotations also allows to statically check for typing errors.
 For instance, `Parameter`s can be assigned either a number or a time-dependent expression.
 But can also be linked to an outside variable when composing models.
 As such, they cannot be used to parametrize the initial conditions of variables,
-for which we have to use a `Constant` (@fig-constant).
+for which we have to use a `Constant` (@fig-ide).
 
-::: {#fig-constant layout-nrow=1 layout-valign="bottom"}
-
-::: {#fig-parameter}
+::: {#fig-ide layout-ncol=2 layout-valign="bottom"}
 ![](src/ide/ide1.png)
 
+![](src/ide/ide2.png)
+
+Screenshots of Visual Studio Code showing tooltips and highlighted type errors.
 `Constant` are assigned with `assign(..., constant=True)` and can be used to link `Variable`s initial conditions,
 while trying to use a `Parameter` instead is flagged as type errors (red underlining).
 The IDE automatically recognizes `e` as an `Equation`,
 and provides autocompletion of the variables.
-:::
-
-::: {#fig-composition layout-nrow=1 layout-valign="bottom"}
-![](src/ide/ide2.png)
-
 A tooltip is shown when composing models,
 which show the expected variables and their default values.
 The IDE highlights
 wrong names (`z` is not a name in `Model`)
 and
 mismatched types (`x` is `Variable` and `a` must be a number or a `Constant`)
-:::
-
-Screenshots of Visual Studio Code showing tooltips and highlighted type errors.
 :::
 
 To simulate a system,
