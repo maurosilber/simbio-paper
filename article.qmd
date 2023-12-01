@@ -8,6 +8,13 @@ format:
     css: article.css
 ---
 
+```{python}
+# | echo: false
+import matplotlib
+
+matplotlib.rc("figure", figsize=(4, 2))
+```
+
 # Introduction
 
 Chemical Reaction Networks (CRN)
@@ -210,7 +217,7 @@ and create equations linking a variable's derivative with an expression (@fig-fi
 It also allows to define higher-order systems
 by assigning an initial condition to a `Derivative` (@fig-second-order).
 
-The benefits of using a class to define the system are multiple:
+There are many benefits of using classes to define the systems:
 
 1. the variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
 2. it provides a namespace such that we can easily define multiple independent models in the same script,
@@ -267,7 +274,7 @@ df.head()
 ```
 
 ```{python}
-df.plot(figsize=(4, 2))
+df.plot();
 ```
 
 Simulation of the `Oscillator` system from @fig-second-order.
