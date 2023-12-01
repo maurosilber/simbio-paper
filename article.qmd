@@ -6,16 +6,6 @@ format:
     number-sections: true
     anchor-sections: true
     css: article.css
-  pdf:
-    documentclass: scrartcl
-    papersize: a4
-    geometry:
-        - margin=20mm
-    pdf-engine: tectonic
-    number-sections: true
-    colorlinks: true
-  docx:
-    number-sections: true
 ---
 
 # Introduction
