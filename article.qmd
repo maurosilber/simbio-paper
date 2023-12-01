@@ -408,7 +408,7 @@ Creation of a model from a local SBML file or one uploaded to BioModels.
 
 ## Reproducibility and performance
 
-![Performance of the different softwares to solve a subset of BioModels models. (left) Run time for model BIOMD3 as a function of the number of output points. (right) Run time for different models ordered according to the geometric mean of the run times, using 300 output points.](src/performance/figures/performance.png){#fig-runtime}
+![Performance of different softwares to solve models from the cureted section of BioModels. (left) Run time for the model BIOMD3 as a function of the number of output points. (right) Run time for different models for 300 output points, using the geometric mean of the different softwares to order them.](src/performance/figures/performance.png){#fig-runtime}
 
 To test the reproducibility of results of SimBio,
 we considered the first 100 curated models from BioModels.
