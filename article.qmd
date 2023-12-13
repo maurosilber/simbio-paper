@@ -220,19 +220,17 @@ by assigning an initial condition to a `Derivative` (@fig-second-order).
 Utilizing classes for system definition offers several advantages:
 
 1. The variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
-2. It provides a namespace such that allows easily definition of multiple independent models in the same script,
+2. It provides a namespace such that allows to easily define of multiple independent models in the same script,
 3. It allows IDEs to provide autocomplete and refactoring capabilities (`Oscillator.<TAB>` shows `x`, `v` and `eq`),
 4. It allows creation of instances which can be composed into a bigger model (@fig-composition).
 
-For the latter (???, not clear rephrase, probably after the next sentence),
-it is important to add the type annotations,
-as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` [@debontePEP681Data2021]:
-
-Type annotations play a significant role in static type checking, helping to identify typing errors.
-For instance, `Parameter`s can be assigned either a number or a time-dependent expression.
-But can also be linked to an external variable when composing models.
-As such, they (what?) cannot be used to parametrize the initial conditions of variables,
-for which we have to use a `Constant` (@fig-ide). (message not clear, rephrase)
+For this last point,
+IDEs that support `dataclass_transform` [@debontePEP681Data2021] can provide a tooltip with the expected signature (@fig-composition).
+This requires the use of type annotations
+which play a more significant role in static type checking,
+as they can help to identify errors before running the code.
+For instance, to parametrize the initial conditions of variables we have to use a `Constant`.
+If we try to use a `Parameter`, which could be a time-dependent expression, it is flagged as a type error (@fig-ide).
 
 ::: {#fig-ide layout-ncol=2 layout-valign="bottom"}
 ![](src/ide/ide1.svg)
