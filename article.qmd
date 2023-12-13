@@ -18,8 +18,8 @@ matplotlib.rc("figure", figsize=(4, 2))
 # Introduction
 
 Chemical Reaction Networks (CRNs)
-are a fundamental concept of modelling in numerous fields including systems biology, biochemistry, chemical engineering and epidemeology.
-They are comprised of a set of chemical species or biological entities and represntation of complex interaction and transformation between them through a series reactions.
+are a fundamental concept of modelling in numerous fields including systems biology, biochemistry, chemical engineering and epidemiology.
+They are comprised of a set of chemical species or biological entities and representation of complex interaction and transformation between them through a series reactions.
 These systems can be modelled and simulated through multiple approaches:
 deterministic Ordinary Differential Equations (ODEs) to model macroscopic behavior,
 Stochastic Differential Equations (SDEs) to model microscopic fluctuations,
@@ -32,7 +32,7 @@ that can be compiled for these different types of simulations.
 Several tools already exist for defining and simulating CRNs.
 BioSimulators.org [@shaikhBioSimulatorsCentralRegistry2022],
 a registry of simulation tools,
-list at least 15 Python software including COPASI [@hoopsCOPASICOmplexPAthway2006], Tellurium [@choiTelluriumExtensiblePythonbased2018] and pySB [@lopezProgrammingBiologicalModels2013]. 
+list at least 15 Python software including COPASI [@hoopsCOPASICOmplexPAthway2006], Tellurium [@choiTelluriumExtensiblePythonbased2018] and PySB [@lopezProgrammingBiologicalModels2013]. 
 COPASI is a standalone software with a GUI for defining and simulating models.
 It's widely used for its user-friendly interface and comprehensive features.
 There are also python bindings and interfaces for COPASI to allow advanced scripting.
@@ -59,7 +59,7 @@ as direct SBML coding is impractical.
 A DSL allows reuse of code in different programming environments,
 but it will not be recognized by default in Integrated Development Environments (IDEs).
 Therefore DSLs cannot provide the development experience such as syntax highlighting, code completion, refactoring, and static analysis,
-unless such support is specifcally developed.
+unless such support is specifically developed.
 Tellurium uses a Domain Specific Language (DSL) called Antimony [@smithAntimonyModularModel2009],
 which can be translated to SBML.
 An extension for Visual Studio Code was developed, but its maintenance could be demanding task for the systems biology community.
@@ -86,13 +86,13 @@ to complex ones like altering the compilation process to leverage some structure
 The models built using these packages can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
-Futhermore,
+Furthermore,
 they have a modular architecture with a clear separation of concerns,
 making it easier to maintain or to contribute new code,
 which is beneficial for developers and maintainers.
 We showcased the reliability of these tools by benchmarking them against the simulation results from other tools.
 We also highlighted the substantial performance improvements our tools offer,
-as this is crucial for construction and simulaiton of models of whole cells and organisms,
+as this is crucial for construction and simulation of models of whole cells and organisms,
 which necessitate the simulation of significantly large-scale models.
 
 
@@ -218,7 +218,7 @@ Utilizing classes for system definition offers several advantages:
 1. The variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
 2. It provides a namespace such that allows easily definition of multiple independent models in the same script,
 3. It allows IDEs to provide autocomplete and refactoring capabilities (`Oscillator.<TAB>` shows `x`, `v` and `eq`),
-4. It allows creatoion of instances which can be composed into a bigger model (@fig-composition).
+4. It allows creation of instances which can be composed into a bigger model (@fig-composition).
 
 For the latter (???, not clear rephrase, probably after the next sentence),
 it is important to add the type annotations,
@@ -397,7 +397,7 @@ Creation of a model from a local SBML file or one uploaded to BioModels.
 
 ## Reproducibility and performance
 
-![Performance of different softwares to solve models from the cureted section of BioModels. (left) Run time for the model BIOMD3 as a function of the number of output points. (right) Run time for different models for 300 output points, using the geometric mean of the different softwares to order them.](src/performance/figures/performance.png){#fig-runtime}
+![Performance of different softwares to solve models from the curated section of BioModels. (left) Run time for the model BIOMD3 as a function of the number of output points. (right) Run time for different models for 300 output points, using the geometric mean of the different softwares to order them.](src/performance/figures/performance.png){#fig-runtime}
 
 To evaluate SimBio's reproducibility,
 we analyzed curated SBML models from BioModels (ref needed).
