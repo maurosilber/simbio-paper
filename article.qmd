@@ -382,7 +382,7 @@ such as
 and its approximate form without the intermediate species $ES$,
 and it is also simple to implement your own as subclasses of `Reaction` or `MassAction`.
 Additionally, SimBio supports importing from and exporting to SBML,
-and downloading them directly from BioModels (@fig-simbio-io).
+and downloading them directly from BioModels [@malik-sheriffBioModels15Years2020] (@fig-simbio-io).
 
 ::: {#fig-simbio-io layout-ncol=1}
 ```{python}
@@ -401,7 +401,7 @@ Creation of a model from a local SBML file or one uploaded to BioModels.
 ![Performance of different softwares to solve models from the curated section of BioModels. (left) Run time for the model BIOMD3 as a function of the number of output points. (right) Run time for different models for 300 output points, using the geometric mean of the different softwares to order them.](src/performance/figures/performance.png){#fig-runtime}
 
 To evaluate SimBio's reproducibility,
-we analyzed curated SBML models from BioModels (ref needed).
+we analyzed curated SBML models from BioModels [@malik-sheriffBioModels15Years2020].
 Among the first 100 curated models from BioModels we selected 60 which did not contains events,
 as SimBio doesn't support events yet.
 We simulated the selected models with COPASI
