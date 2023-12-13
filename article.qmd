@@ -17,88 +17,84 @@ matplotlib.rc("figure", figsize=(4, 2))
 
 # Introduction
 
-Chemical Reaction Networks (CRN)
-are the foundation of many models used in biological sciences and epidemiology.
-They are made up of a set of species and reactions that mediate conversions between them.
-There are several ways to simulate these systems:
+Chemical Reaction Networks (CRNs)
+are a fundamental concept of modelling in numerous fields including systems biology, biochemistry, chemical engineering and epidemeology.
+They are comprised of a set of chemical species or biological entities and represntation of complex interaction and transformation between them through a series reactions.
+These systems can be modelled and simulated through multiple approaches:
 deterministic Ordinary Differential Equations (ODEs) to model macroscopic behavior,
 Stochastic Differential Equations (SDEs) to model microscopic fluctuations,
 and jump processes (Gillespie-like simulations) to account for the discreteness of populations.
-Instead of writing the equations directly for each of these formulations
+Instead of directly writing the equations for each of these formulations
 which is error-prone and difficult to reuse,
 these models can be written in a higher-level description
 that can be compiled for these different types of simulations.
 
-Several tools already exist to define and simulate these systems.
-In particular,
+Several tools already exist for defining and simulating CRNs.
 BioSimulators.org [@shaikhBioSimulatorsCentralRegistry2022],
 a registry of simulation tools,
-list at least 15 Python softwares.
-Some of them are:
-
-1. COPASI [@hoopsCOPASICOmplexPAthway2006],
-a stand-alone software
-which provides a Graphical User Interface (GUI) to define and simulate models.
-2. Tellurium [@choiTelluriumExtensiblePythonbased2018],
-which defines itself as a Python-based modeling environment
-and uses a C++ library called libRoadRunner [@welshLibRoadRunnerHighPerformance2023] to simulate them.
-3. PySB [@lopezProgrammingBiologicalModels2013],
-a Python library
+list at least 15 Python software including COPASI [@hoopsCOPASICOmplexPAthway2006], Tellurium [@choiTelluriumExtensiblePythonbased2018] and pySB [@lopezProgrammingBiologicalModels2013]. 
+COPASI is a standalone software with a GUI for defining and simulating models.
+It's widely used for its user-friendly interface and comprehensive features.
+There are also python bindings and interfaces for COPASI to allow advanced scripting.
+Tellurium is a Python-based modeling environment,
+however, it uses a C++ library called libRoadRunner in the backend to simulate models.
+PySB is a Python library
 that created a DSL using standard Python to define models
 which are then compiled to ODE using a Perl library called BioNetGen [@harrisBioNetGenAdvancesRulebased2016].
 
 One limitation of these tools is that they are not extensible from Python,
 as they are not fully Python packages
 but wrap libraries in other languages to do the simulation.
-As such, they allow you to "control" the model definition and simulation in a Python script.
-But it is not possible to use other packages from the vast Python community to change the way the simulation is carried out.
-For instance,
-to do a Random Parameter Scan in COPASI,
-we must choose between one of 4 predefined distributions,
-but cannot use one of the many distributions from `scipy.stats`.
-In Tellurium, we cannot choose other Python solvers,
-as adding new integrators has to be done in C++.
+While they enable model definition and simulation control via Python scripts,
+they don't fully leverage Python's extensive package ecosystem.
+For example, in COPASI, users are restricted to predefined distributions for Random Parameter Scans
+and cannot utilize the diverse distributions available in `scipy.stats`
+Similarly, Tellurium doesn’t allow the use of Python solvers,
+as adding new integrators requires C++ implementation.
 
-Another weakness is related to the way models are written.
-While most tools support standards such as the System Biology Markup Language (SBML) [@huckaSBMLL3V2],
-no one is expected to write an SBML file directly.
+Another challenge is the way models are written.
+Many tools use a Domain Specific Language (DSL) for coding,
+and support the System Biology Markup Language (SBML) as an exchange format [@huckaSBMLL3V2],
+as direct SBML coding is impractical.
+A DSL allows reuse of code in different programming environments,
+but it will not be recognized by default in Integrated Development Environments (IDEs).
+Therefore DSLs cannot provide the development experience such as syntax highlighting, code completion, refactoring, and static analysis,
+unless such support is specifcally developed.
 Tellurium uses a Domain Specific Language (DSL) called Antimony [@smithAntimonyModularModel2009],
 which can be translated to SBML.
-A DSL allows code to be reused in different programming environments,
-but it will not be recognized by default in Integrated Development Environments (IDEs)
-and therefore cannot provide the development experience we have come to expect, such as
-syntax highlighting, code completion, refactoring, and static analysis.
-This has been recognized by the community,
-and an extension for Visual Studio Code has been created [@maTestingDynamicalSystems2021].
-However, maintaining it in the future could be burdensome for the smaller systems biology community.
-In the case of PySB,
-it leveraged the highly dynamic nature of Python to create a DSL within it.
+An extension for Visual Studio Code was developed, but its maintenance could be demanding task for the systems biology community.
+PySB, using Python’s dynamic nature, created a DSL within Python.
 By default, it uses global state to create species and parameters,
 without assigning them to Python variables
-or adding them explicitly to the model.
-But IDEs cannot understand it and, hence, provide help, as this is not the way they expect Python code to be written.
+or adding them explicitly to the model,
+but this approach is not fully compatible with IDEs,
+affecting the development experience.
 
-To address these issues,
+To overcome these limitations,
 we developed poincaré and SimBio,
 open-source Python packages for defining and simulating systems.
-Poincaré allows to define systems of differential equations
-and SimBio builds on top of it to define reaction networks.
-They are focused on providing an ergonomic experience for end-users
-by integrating well with IDEs and static analysis tools
+Poincaré allows defining differential equation systems,
+while SimBio builds on it for defining reaction networks.
+They are focused on providing an ergonomic experience to end-users by integrating well with IDEs and static analysis tools
 through the use of standard modern Python syntax.
-Since they are coded in pure Python,
-every part from model definition to simulation can be extended from Python itself.
-For example,
-easier changes such as reusing integrators defined in other packages,
-to more complex ones such as changing the compilation process itself
-to leverage some structure in the equations.
-Their models can be introspected to create other representations,
+Since they are coded in Python,
+every part from model definition to simulation can be extended from Python syntax.
+Being ?first-ever? pure Python packages for systems modelling,
+they offer extensive extensibility,
+from simple tasks like reusing integrators defined in other packages,
+to complex ones like altering the compilation process to leverage some structure in the equations (For example...).
+The models built using these packages can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
-Finally,
+Futhermore,
 they have a modular architecture with a clear separation of concerns,
 making it easier to maintain or to contribute new code,
 which is beneficial for developers and maintainers.
+We showcased the reliability of these tools by benchmarking them against the simulation results from other tools.
+We also highlighted the substantial performance improvements our tools offer,
+as this is crucial for construction and simulaiton of models of whole cells and organisms,
+which necessitate the simulation of significantly large-scale models.
+
 
 # Results
 
@@ -109,16 +105,16 @@ poincaré, to define dynamical systems;
 and simbio, to define reaction systems and interface with systems biology standards such as SBML.
 
 Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
-They can be inspected and compiled to different backends.
+Symbolite expressions can be inspected and compiled to various backends.
 Currently, we have implementations for
 NumPy [@harrisArrayProgrammingNumPy2020];
 Numba [@lamNumbaLLVMbasedPython2015], a Just-in-Time (JIT) compiler to LLVM;
 SymPy [@meurerSymPySymbolicComputing2017], a library for symbolic mathematics;
 and JAX [@jax2018github], a library that support automatic differentiation
-and compilation to GPUs and TPUs;
-and it is easy to add new backends.
+and compilation to GPUs and TPUs.
+Symbolite is designed to facilitate the easy integration of new backends. The source code, documentation to install and use these packages and tutorials are available at the `github page link`. 
 
-## Poincaré
+## Versatile modelling and simulation of dynamical systems with Poincaré
 
 :::: {#fig-poincare layout-nrow=4}
 
@@ -212,27 +208,27 @@ Code and corresponding mathematical expressions for different systems.
 
 Poincare is a package to define and simulate dynamical systems.
 It provides a `System` class,
-where we can define `Constant`s, `Parameter`s, `Variable`s,
+where one can define `Constant`s, `Parameter`s, `Variable`s,
 and create equations linking a variable's derivative with an expression (@fig-first-order).
 It also allows to define higher-order systems
 by assigning an initial condition to a `Derivative` (@fig-second-order).
 
-There are many benefits of using classes to define the systems:
+Utilizing classes for system definition offers several advantages:
 
-1. the variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
-2. it provides a namespace such that we can easily define multiple independent models in the same script,
-3. it allows IDEs to provide autocomplete and refactoring capabilities (`Oscillator.<TAB>` shows `x`, `v` and `eq`),
-4. it allows to create instances which can be composed into a bigger model (@fig-composition).
+1. The variable name to which a component is assigned can be automatically saved in the component for introspection (i.e., `Oscilator.x.name == "x"`),
+2. It provides a namespace such that allows easily definition of multiple independent models in the same script,
+3. It allows IDEs to provide autocomplete and refactoring capabilities (`Oscillator.<TAB>` shows `x`, `v` and `eq`),
+4. It allows creatoion of instances which can be composed into a bigger model (@fig-composition).
 
-For the latter,
+For the latter (???, not clear rephrase, probably after the next sentence),
 it is important to add the type annotations,
 as it can provide a signature autocompletion in IDEs supporting the `dataclass_transform` [@debontePEP681Data2021]:
 
-Using type annotations also allows to statically check for typing errors.
+Type annotations play a significant role in static type checking, helping to identify typing errors.
 For instance, `Parameter`s can be assigned either a number or a time-dependent expression.
-But can also be linked to an outside variable when composing models.
-As such, they cannot be used to parametrize the initial conditions of variables,
-for which we have to use a `Constant` (@fig-ide).
+But can also be linked to an external variable when composing models.
+As such, they (what?) cannot be used to parametrize the initial conditions of variables,
+for which we have to use a `Constant` (@fig-ide). (message not clear, rephrase)
 
 ::: {#fig-ide layout-ncol=2 layout-valign="bottom"}
 ![](src/ide/ide1.png)
@@ -251,12 +247,14 @@ wrong names (`z` is not a name in `Model`)
 and
 mismatched types (`x` is `Variable` and `a` must be a number or a `Constant`)
 :::
+(add arrows to the figure)
 
 To simulate a system,
-we create a `Simulator` instance (@fig-sim),
+we created a `Simulator` instance (@fig-sim),
 which compiles a given system and interfaces with solvers.
 By default, it creates a first-order ordinary differential equation (ODE) system
 using `numpy` as a backend.
+This can be easily switched to other solvers. 
 The Simulator wraps the output in a `pandas.DataFrame`,
 which can be easily plotted with the standard `plot` method.
 
@@ -285,10 +283,10 @@ It is inspected and plotted with the `pandas` methods.
 
 Switching backends to `"numba"` can improve model runtime
 on a factor up to x30 or more for big or long running models,
-but incurs in a compile time penalty for the first run
+however incurs in a compile time penalty for the first run
 which must be taken into account.
 
-## SimBio
+## Extensible definition of reaction networks using SimBio
 
 :::: {#fig-simbio layout-nrow=3}
 
@@ -366,16 +364,17 @@ The rate $1$ is specified directly for `Reaction`,
 and is proportional to the reactants for `MassAction`.
 ::::
 
-For reaction networks,
-we are interested in first-order differential equations
-relating the rate of change of the species.
-To facilitate defining these models,
-SimBio defines `Species`,
-which comprises of a `poincare.Variable` and an stoichiometry,
+For the reaction networks,
+our focus is on first-order differential equations
+that describe the rate of change of species.
+SimBio simplifies the definition of these network models by introducing `Species`,
+which consists of a `poincare.Variable` and stoichiometry,
 and `Reaction`,
-which transform reactants into products taking into account the stoichiometry (@fig-simbio).
-It also includes `MassAction`, a `Reaction` subclass,
-which automatically adds the reactants as part of the rate law (@fig-simbio).
+a construct that converts reactants into products taking into account the stoichiometry (@fig-simbio).
+Additionally, SimBio features `MassAction`, a subclass of `Reaction`,
+which intuitively incorporates reactants into the rate law (@fig-simbio).
+(is `RateLaw` not better term than `MassAction` ?)
+
 Several commonly used reactions are predefined as `MassAction` subclasses,
 such as
 `MichaelisMenten` ($S + E \rightarrow ES -> P + E$)
@@ -400,21 +399,21 @@ Creation of a model from a local SBML file or one uploaded to BioModels.
 
 ![Performance of different softwares to solve models from the cureted section of BioModels. (left) Run time for the model BIOMD3 as a function of the number of output points. (right) Run time for different models for 300 output points, using the geometric mean of the different softwares to order them.](src/performance/figures/performance.png){#fig-runtime}
 
-To test the reproducibility of results of SimBio,
-we considered the first 100 curated models from BioModels.
-As SimBio does not yet support the full SBML standard (for instance, events),
-we could only simulate 60 of those.
-Using the results from COPASI as ground truth,
-SimBio reproduces the results with numerical differences depending on the solver tolerance.
+To evaluate SimBio's reproducibility,
+we analyzed curated SBML models from BioModels (ref needed).
+Among the first 100 curated models from BioModels we selected 60 which did not contains events,
+as SimBio doesn't support events yet.
+We simulated the selected models with COPASI
+and used the simulated results as ground truth,
+and demonstrated that SimBio reproduces the results with minor numerical differences depending on the solver tolerance.
 
-To test the performance,
-we simulated them with COPASI, Tellurium/RoadRunner and simbio.
-For simbio, we considered both the NumPy and numba backends.
-For COPASI and simbio, we used the LSODA solver,
-while using the similar CVODE solver for tellurium.
-In all cases, we used relative and absolute tolerances of $10^{-6}$.
-We measured separately three stages of the simulation:
-the loading, first/cold run and subsequent/warm runs of each model.
+For performance testing,
+we ran simulations using COPASI, Tellurium/RoadRunner, and SimBio.
+Within SimBio, both NumPy and Numba backends were considered.
+The LSODA solver was used for COPASI and SimBio,
+while for Tellurium the comparable CVODE solver was used.
+In all cases, we used relative and absolute tolerances of $10^{-6}$. We measured three simulation stages:
+loading, the initial (cold) run, and subsequent (warm) runs for each model.
 
 For COPASI and Tellurium/RoadRunner,
 we noted that its runtime depended on the number of evaluation points,
@@ -434,29 +433,26 @@ which is also true for the other models we tested (@fig-runtime, right).
 # Discussion
 
 In this article,
-we have described a set of Python packages we developed
-that allow to define and simulate dynamical systems and reaction networks.
-They are focused on a deep integration with IDEs
-such that code analysis tools can flag errors before running the code,
-and help with refactoring and code completion.
-For this,
-we chose to use standard modern Python syntax,
-since the integration with IDEs will be maintained by the big players in the huge Python community.
+we introduced a suite of Python packages we developed
+for defining and simulating dynamical systems and reaction networks.
+These packages are deeply integrated with Integrated Development Environments (IDEs),
+enabling code analysis tools to identify errors prior to execution and assist in refactoring and code completion.
+We adopted standard modern Python syntax to ensure seamless IDE integration, supported by the extensive Python community.
 
-Unlike previous tools,
-both model definition and compilation into an ODE function are implemented in Python.
-This lowers the barrier to developing different simulation modalities,
-such as performance optimizations by leveraging some structure in the model.
-However, being in Python does not mean that performance is less than that of C/C++ tools,
-as the resulting ODE function can be JITted using Numba.
+Our approach differs from previous tools in that both the model definition and its compilation into an Ordinary Differential Equation (ODE) function are entirely Python-based.
+This approach simplifies the development of various simulation methods,
+including performance enhancements that exploit specific model structures. Importantly, being Python-based does not compromise performance compared to C/C++ tools, as the ODE functions can be Just-In-Time (JIT) compiled using Numba.
 
-These packages are designed with a modular architecture that clearly separates different concerns.
-This makes them easier to reuse, improve, and extend by the broader Python community.
-For example, someone outside the systems biology community could add a stochastic integrator to poincaré,
-which could then be used from SimBio.
-This architecture also makes them easier to understand,
-which reduces the difficulty of contributing fixes or new code,
-and ensures their maintenance and continued development into the future.
+The inclusion of SBML support facilitates the effortless reuse of models created by the systems biology community,
+along with the vast collection of public models hosted in the BioModels repository.
+The modular architecture of these packages facilitates their reuse, enhancement, and extension by the wider Python community.
+For instance, an individual from outside the systems biology field could contribute a stochastic integrator to poincaré,
+which would then be available in SimBio.
+This clear separation of concerns also makes the packages more comprehensible,
+lowering the barrier for contributing improvements or new features.
+Such an architecture ensures their maintainability and ongoing development well into the future.
+
+`Gen Comment: I amnto sure whether the number of figures are already over the limit, you may have to combine figures, while doing so, if space permits create a small schematics / summary figure, with icons and texts showing the significance / and applicability of the tools developed.`
 
 # References
 
