@@ -379,7 +379,7 @@ which intuitively incorporates reactants into the rate law (@fig-simbio).
 
 Several commonly used reactions are predefined as `MassAction` subclasses,
 such as
-`MichaelisMenten` ($S + E \rightarrow ES -> P + E$)
+`MichaelisMenten` ($S + E \leftrightarrow ES \rightarrow P + E$)
 and its approximate form without the intermediate species $ES$,
 and it is also simple to implement your own as subclasses of `Reaction` or `MassAction`.
 Additionally, SimBio supports importing from and exporting to SBML,
