@@ -82,7 +82,8 @@ every part from model definition to simulation can be extended from Python synta
 Being the first-ever pure Python packages for systems modelling,
 they offer extensive extensibility,
 from simple tasks like reusing integrators defined in other packages,
-to complex ones like altering the compilation process to leverage some structure in the equations (For example...).
+to complex ones like altering the compilation process to leverage some structure in the equations.
+**TODO: For example...**
 The models built using these packages can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
@@ -374,7 +375,7 @@ and `Reaction`,
 a construct that converts reactants into products taking into account the stoichiometry (@fig-simbio).
 Additionally, SimBio features `MassAction`, a subclass of `Reaction`,
 which intuitively incorporates reactants into the rate law (@fig-simbio).
-(is `RateLaw` not better term than `MassAction` ?)
+**TODO: is `RateLaw` not better term than `MassAction`?**
 
 Several commonly used reactions are predefined as `MassAction` subclasses,
 such as
@@ -453,7 +454,7 @@ This clear separation of concerns also makes the packages more comprehensible,
 lowering the barrier for contributing improvements or new features.
 Such an architecture ensures their maintainability and ongoing development well into the future.
 
-`Gen Comment: I amnto sure whether the number of figures are already over the limit, you may have to combine figures, while doing so, if space permits create a small schematics / summary figure, with icons and texts showing the significance / and applicability of the tools developed.`
+**TODO: I amnto sure whether the number of figures are already over the limit, you may have to combine figures, while doing so, if space permits create a small schematics / summary figure, with icons and texts showing the significance / and applicability of the tools developed.**
 
 # References
 
