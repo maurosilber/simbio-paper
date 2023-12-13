@@ -79,7 +79,7 @@ They are focused on providing an ergonomic experience to end-users by integratin
 through the use of standard modern Python syntax.
 Since they are coded in Python,
 every part from model definition to simulation can be extended from Python syntax.
-Being ?first-ever? pure Python packages for systems modelling,
+Being the first-ever pure Python packages for systems modelling,
 they offer extensive extensibility,
 from simple tasks like reusing integrators defined in other packages,
 to complex ones like altering the compilation process to leverage some structure in the equations (For example...).
