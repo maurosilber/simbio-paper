@@ -1,6 +1,6 @@
 from poincare import System, Variable, initial  # noqa: I001
 
-from .autocomplete import Model
+from .ide1 import Model
 
 
 
