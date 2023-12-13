@@ -231,9 +231,9 @@ As such, they (what?) cannot be used to parametrize the initial conditions of va
 for which we have to use a `Constant` (@fig-ide). (message not clear, rephrase)
 
 ::: {#fig-ide layout-ncol=2 layout-valign="bottom"}
-![](src/ide/ide1.png)
+![](src/ide/ide1.svg)
 
-![](src/ide/ide2.png)
+![](src/ide/ide2.svg)
 
 Screenshots of Visual Studio Code showing tooltips and highlighted type errors.
 `Constant` are assigned with `assign(..., constant=True)` and can be used to link `Variable`s initial conditions,
@@ -247,7 +247,6 @@ wrong names (`z` is not a name in `Model`)
 and
 mismatched types (`x` is `Variable` and `a` must be a number or a `Constant`)
 :::
-(add arrows to the figure)
 
 To simulate a system,
 we created a `Simulator` instance (@fig-sim),
