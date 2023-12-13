@@ -1,0 +1,35 @@
+name: simbio-paper
+channels:
+  - conda-forge
+  - alubbock
+dependencies:
+  - ipykernel
+  - nbformat
+  - nbclient
+  - tectonic
+  - ipywidgets
+  - python=3.11
+  - typing_extensions
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - pint
+  - pint-pandas
+  - tabulate
+  - numba
+  - pysb
+  - tqdm
+  - pytest
+  - pydantic
+  - lxml
+  - rich
+  - numbalsoda
+  - pip
+  - pip:
+    - symbolite
+    - poincare
+    - simbio[io]
+    - copasi-basico
+    - tellurium
