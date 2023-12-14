@@ -453,8 +453,6 @@ This clear separation of concerns also makes the packages more comprehensible,
 lowering the barrier for contributing improvements or new features.
 Such an architecture ensures their maintainability and ongoing development well into the future.
 
-**TODO: I amnto sure whether the number of figures are already over the limit, you may have to combine figures, while doing so, if space permits create a small schematics / summary figure, with icons and texts showing the significance / and applicability of the tools developed.**
-
 # References
 
 ::: {#refs}
