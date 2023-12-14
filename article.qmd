@@ -83,7 +83,10 @@ Being the first-ever pure Python packages for systems modelling,
 they offer extensive extensibility,
 from simple tasks like reusing integrators defined in other packages,
 to complex ones like altering the compilation process to leverage some structure in the equations.
-**TODO: For example...**
+For example,
+using a for-loop in the compiled equations could improve the runtime performance
+if there is some repetitive structure in the system,
+as happens in spatial modelling.
 The models built using these packages can be introspected to create other representations,
 such as graphs connecting species and/or reactions,
 or tables with parameters or equations.
