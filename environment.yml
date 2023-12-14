@@ -6,8 +6,6 @@ dependencies:
   - ipykernel
   - nbformat
   - nbclient
-  - tectonic
-  - ipywidgets
   - python=3.11
   - typing_extensions
   - numpy
