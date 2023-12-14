@@ -233,7 +233,7 @@ IDEs that support `dataclass_transform` [@debontePEP681Data2021] can provide a t
 This requires the use of type annotations
 which play a more significant role in static type checking,
 as they can help to identify errors before running the code.
-For instance, to parametrize the initial conditions of variables we have to use a `Constant`.
+For instance, to parameterize the initial conditions of variables we have to use a `Constant`.
 If we try to use a `Parameter`, which could be a time-dependent expression, it is flagged as a type error (@fig-ide).
 
 ::: {#fig-ide layout-ncol=2 layout-valign="bottom"}
@@ -373,7 +373,7 @@ For the reaction networks,
 our focus is on first-order differential equations
 that describe the rate of change of species.
 SimBio simplifies the definition of these network models by introducing `Species`,
-which consists of a `poincare.Variable` and stoichiometry,
+which consists of a `poincare.Variable` and a stoichiometric number,
 and `Reaction`,
 a construct that converts reactants into products taking into account the stoichiometry (@fig-simbio).
 Additionally, SimBio features `MassAction`, a subclass of `Reaction`,
