@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
     push:
         branches: main
-  
+
 jobs:
     build-deploy:
         runs-on: ubuntu-latest
@@ -22,14 +22,14 @@ jobs:
             with:
                 python-version: '3.11'
                 cache: 'pip'
-        
+
         -   name: Install dependencies
             run: python3 -m pip install jupyter matplotlib numba numbalsoda simbio[io]
-  
+
         -   name: Render and Publish
             uses: quarto-dev/quarto-actions/publish@v2
             with:
                 path: article.qmd
                 target: gh-pages
             env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

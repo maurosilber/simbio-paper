@@ -1,13 +1,6 @@
-from poincare import System, Variable, initial  # noqa: I001
+from poincare import System, Variable, initial
 
 from .ide1 import Model
-
-
-
-
-
-
-
 
 
 class BigModel(System):

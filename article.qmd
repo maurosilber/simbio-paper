@@ -32,7 +32,7 @@ that can be compiled for these different types of simulations.
 Several tools already exist for defining and simulating CRNs.
 BioSimulators.org [@shaikhBioSimulatorsCentralRegistry2022],
 a registry of simulation tools,
-list at least 15 Python software including COPASI [@hoopsCOPASICOmplexPAthway2006], Tellurium [@choiTelluriumExtensiblePythonbased2018] and PySB [@lopezProgrammingBiologicalModels2013]. 
+list at least 15 Python software including COPASI [@hoopsCOPASICOmplexPAthway2006], Tellurium [@choiTelluriumExtensiblePythonbased2018] and PySB [@lopezProgrammingBiologicalModels2013].
 COPASI is a standalone software with a GUI for defining and simulating models.
 It's widely used for its user-friendly interface and comprehensive features.
 There are also python bindings and interfaces for COPASI to allow advanced scripting.
@@ -259,7 +259,7 @@ we created a `Simulator` instance (@fig-sim),
 which compiles a given system and interfaces with solvers.
 By default, it creates a first-order ordinary differential equation (ODE) system
 using `numpy` as a backend.
-This can be easily switched to other solvers. 
+This can be easily switched to other solvers.
 The Simulator wraps the output in a `pandas.DataFrame`,
 which can be easily plotted with the standard `plot` method.
 
