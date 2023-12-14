@@ -375,7 +375,6 @@ and `Reaction`,
 a construct that converts reactants into products taking into account the stoichiometry (@fig-simbio).
 Additionally, SimBio features `MassAction`, a subclass of `Reaction`,
 which intuitively incorporates reactants into the rate law (@fig-simbio).
-**TODO: is `RateLaw` not better term than `MassAction`?**
 
 Several commonly used reactions are predefined as `MassAction` subclasses,
 such as
