@@ -30,6 +30,36 @@ abstract: >
     and facilitates code completion and refactoring.
 
     We believe that this Python-centric approach positions Poincaré and SimBio as valuable tools for the modeling community.
+
+authors:
+    -   name: Mauro Silberberg
+        orcid: 0000-0002-2402-1100
+        email: maurosilber@df.uba.ar
+        affiliations:
+        -   ref: UBA
+        -   ref: CONICET
+    -   name: Rahuman S. Malik-Sheriff
+        orcid: 0000-0003-0705-9809
+        email: sheriff@ebi.ac.uk
+        affiliations:
+        -   ref: EBI
+    -   name: Hernán E. Grecco
+        corresponding: true
+        orcid: 0000-0002-1165-4320
+        email: hgrecco@df.uba.ar
+        affiliations:
+        -   ref: UBA
+        -   ref: CONICET
+
+affiliations:
+    -   id: UBA
+        name: Universidad de Buenos Aires, Facultad de Ciencias Exactas y Naturales, Departamento de Física. Buenos Aires, Argentina.
+    -   id: CONICET
+        name: CONICET - Universidad de Buenos Aires, Instituto de Física de Buenos Aires (IFIBA). Buenos Aires, Argentina
+    -   id: EBI
+        name: European Bioinformatics Institute, European Molecular Biology Laboratory (EMBL-EBI), Wellcome Trust Genome Campus, Cambridge, UK
+        url: https://ebi.ac.uk/
+
 bibliography: bibliography.bib
 format:
   html:
