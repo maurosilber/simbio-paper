@@ -1,29 +1,35 @@
 ---
 title: "Poincaré and SimBio: a versatile and extensible Python ecosystem for modeling systems."
 abstract: >
+    Chemical Reaction Networks (CRNs) are a fundamental concept of modelling in numerous fields,
+    including systems biology, biochemistry, chemical engineering and epidemiology.
+    Formulating them in a higher-level description
+    allows to solve them with different approaches,
+    such as deterministic or stochastic simulations.
+    Existing Python tools for CRN modeling wrap external C/C++ libraries for modelling and simulation,
+    which limits their extensibility to new simulation approaches
+    or to reuse packages from the vast Python community.
+    
     This work introduces two novel Python packages:
     Poincaré, for definition and simulation of dynamical systems,
     and SimBio, which builds on top of Poincaré to
     facilitate the definition of Chemical Reaction Networks (CRNs),
     and add support for the Systems Biology Markup Language (SBML).
 
-    To ensure a user-friendly experience,
-    they use of standard typed modern Python syntax
-    that provide a seamless integration with Integrated Development Environments (IDEs),
-    enhances code analysis tools, enabling error identification before execution,
-    and facilitates code completion and refactoring.
-
-    In contrast to existing Python tools for CRN modeling,
-    that wrap external C/C++ libraries for simulation,
     Poincaré and SimBio are pure Python packages,
     which allows to extend their simulation capabilities by writing Python or leveraging other Python packages.
     But this does not compromise performance,
     as code can be Just-In-Time compiled with Numba,
     and benchmarks show comparable or superior performance to other tools.
 
-    In conclusion, the Python-centric approach,
-    coupled with the packages' extensibiltiy,
-    positions Poincaré and SimBio as valuable tools for the modeling community.
+    Additionally,
+    to ensure a user-friendly experience,
+    they use of standard typed modern Python syntax
+    that provide a seamless integration with Integrated Development Environments (IDEs),
+    enhances code analysis tools, enabling error identification before execution,
+    and facilitates code completion and refactoring.
+
+    We believe that this Python-centric approach positions Poincaré and SimBio as valuable tools for the modeling community.
 bibliography: bibliography.bib
 format:
   html:
