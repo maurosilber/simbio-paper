@@ -418,7 +418,7 @@ and downloading them directly from BioModels [@malik-sheriffBioModels15Years2020
 # Avoids printing the "downloading" message
 from simbio.io import biomodels, sbml
 
-sbml.load("repressilator.sbml")
+biomodels.load_model("BIOMD12")
 ```
 
 ::: {#fig-simbio-io layout-ncol=1}
