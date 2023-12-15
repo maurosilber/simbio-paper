@@ -387,6 +387,15 @@ and it is also simple to implement your own as subclasses of `Reaction` or `Mass
 Additionally, SimBio supports importing from and exporting to SBML,
 and downloading them directly from BioModels [@malik-sheriffBioModels15Years2020] (@fig-simbio-io).
 
+```{python}
+# | echo: false
+# Pre-download SBML file, which is saved to a cache.
+# Avoids printing the "downloading" message
+from simbio.io import biomodels, sbml
+
+sbml.load("repressilator.sbml")
+```
+
 ::: {#fig-simbio-io layout-ncol=1}
 ```{python}
 from simbio.io import biomodels, sbml
