@@ -48,7 +48,7 @@ but wrap libraries in other languages to do the simulation.
 While they enable model definition and simulation control via Python scripts,
 they don't fully leverage Python's extensive package ecosystem.
 For example, in COPASI, users are restricted to predefined distributions for Random Parameter Scans
-and cannot utilize the diverse distributions available in `scipy.stats`
+and cannot utilize the diverse distributions available in `scipy.stats`.
 Similarly, Tellurium doesn’t allow the use of Python solvers,
 as adding new integrators requires C++ implementation.
 
