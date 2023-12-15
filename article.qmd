@@ -413,6 +413,7 @@ and downloading them directly from BioModels [@malik-sheriffBioModels15Years2020
 
 ```{python}
 # | echo: false
+# | output: false
 # Pre-download SBML file, which is saved to a cache.
 # Avoids printing the "downloading" message
 from simbio.io import biomodels, sbml
