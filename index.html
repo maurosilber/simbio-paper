@@ -404,10 +404,26 @@ x(0) = 1
 </div>
 <p>For the reaction networks, our focus is on first-order differential equations that describe the rate of change of species. SimBio simplifies the definition of these network models by introducing <code>Species</code>, which consists of a <code>poincare.Variable</code> and a stoichiometric number, and <code>Reaction</code>, a construct that converts reactants into products taking into account the stoichiometry (<a href="#fig-simbio">Figure&nbsp;4</a>). Additionally, SimBio features <code>MassAction</code>, a subclass of <code>Reaction</code>, which intuitively incorporates reactants into the rate law (<a href="#fig-simbio">Figure&nbsp;4</a>).</p>
 <p>Several commonly used reactions are predefined as <code>MassAction</code> subclasses, such as <code>MichaelisMenten</code> (<span class="math inline">\(S + E \leftrightarrow ES \rightarrow P + E\)</span>) and its approximate form without the intermediate species <span class="math inline">\(ES\)</span>, and it is also simple to implement your own as subclasses of <code>Reaction</code> or <code>MassAction</code>. Additionally, SimBio supports importing from and exporting to SBML, and downloading them directly from BioModels <span class="citation" data-cites="malik-sheriffBioModels15Years2020">(<a href="#ref-malik-sheriffBioModels15Years2020" role="doc-biblioref">Malik-Sheriff et al. 2020</a>)</span> (<a href="#fig-simbio-io">Figure&nbsp;5</a>).</p>
+<div class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
+
+<table>
+<thead>
+</thead><colgroup span="3"></colgroup><tbody><tr><th colspan="3" scope="colgroup">Elowitz2000 - Repressilator</th></tr>
+<tr><th>type      </th><th style="text-align: right;">  total</th><th>names                                                         </th></tr>
+
+</tbody><tbody>
+<tr><td>variables </td><td style="text-align: right;">      6</td><td>PX, PY, PZ, X, Y, Z                                           </td></tr>
+<tr><td>parameters</td><td style="text-align: right;">     17</td><td>cell, beta, alpha0, alpha, eff, n, KM, tau_mRNA, tau_prot, ...</td></tr>
+<tr><td>equations </td><td style="text-align: right;">     12</td><td>Reaction1, Reaction2, Reaction3, Reaction4, Reaction5, ...    </td></tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="fig-simbio-io" class="quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" data-execution_count="12" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-execution_count="13" style="flex-basis: 100.0%;justify-content: center;">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> simbio.io <span class="im">import</span> biomodels, sbml</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sbml.load(<span class="st">"repressilator.sbml"</span>)  <span class="co"># from existing SBML file</span></span>
@@ -418,7 +434,7 @@ x(0) = 1
 SHA256 hash of downloaded file: 095974e1f674e2154effce9c2c02a8d209d450821ea5a8f9a73127f3b2edfde9
 Use this value as the 'known_hash' argument of 'pooch.retrieve' to ensure that the file hasn't changed if it is downloaded again in the future.</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="13">
 
 <table>
 <thead>
