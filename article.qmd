@@ -42,6 +42,11 @@ authors:
         email: sheriff@ebi.ac.uk
         affiliations:
         -   ref: EBI
+    -   name: Henning Hermjakob
+        orcid: 0000-0001-8479-0262
+        email: hhe@ebi.ac.uk
+        affiliations:
+        -   ref: EBI
     -   name: Hernán E. Grecco
         corresponding: true
         orcid: 0000-0002-1165-4320
