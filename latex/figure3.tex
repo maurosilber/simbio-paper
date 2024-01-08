@@ -6,11 +6,11 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
-\ImportTok{from}\NormalTok{ poincare }\ImportTok{import}\NormalTok{ Simulator}
+\KeywordTok{import} \ClassTok{numpy} \KeywordTok{as} \ClassTok{np}
+\KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Simulator}
 
-\NormalTok{sim }\OperatorTok{=}\NormalTok{ Simulator(Oscillator)}
-\NormalTok{df }\OperatorTok{=}\NormalTok{ sim.solve(save\_at}\OperatorTok{=}\NormalTok{np.linspace(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{101}\NormalTok{))}
+\VariableTok{sim} \OperatorTok{=} \ClassTok{Simulator}\KeywordTok{(\ClassTok{Oscillator})}
+\VariableTok{df} \OperatorTok{=} \VariableTok{sim}.\FunctionTok{solve}\KeywordTok{(}\VariableTok{save\_at}\OperatorTok{=}\ClassTok{np}.\FunctionTok{linspace}(\ValueTok{0}, \ValueTok{5}, \ValueTok{101})\KeywordTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -24,7 +24,7 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df.head()}
+\VariableTok{df}.\FunctionTok{head}\KeywordTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -53,7 +53,7 @@ time & & \\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df.plot()}\OperatorTok{;}
+\VariableTok{df}.\FunctionTok{plot}\KeywordTok{()}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 

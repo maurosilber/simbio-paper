@@ -6,7 +6,7 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{from}\NormalTok{ simbio }\ImportTok{import}\NormalTok{ Compartment, MassAction, Species, RateLaw, initial}
+\KeywordTok{from}\ClassTok{ simbio }\KeywordTok{import}\ClassTok{ Compartment, MassAction, Species, RateLaw, \FunctionTok{initial}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -24,16 +24,16 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ Model(Compartment):}
+\KeywordTok{class}\ClassTok{ Model(Compartment)}:
     \CommentTok{"""2A {-}\textgreater{} B"""}
 
-\NormalTok{    A: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\NormalTok{    B: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-\NormalTok{    r }\OperatorTok{=}\NormalTok{ RateLaw(}
-\NormalTok{        reactants}\OperatorTok{=}\NormalTok{[}\DecValTok{2} \OperatorTok{*}\NormalTok{ A],}
-\NormalTok{        products}\OperatorTok{=}\NormalTok{[B],}
-\NormalTok{        rate\_law}\OperatorTok{=}\DecValTok{1}\NormalTok{,}
-\NormalTok{    )}
+\VariableTok{    A}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{1}\KeywordTok{)}
+\VariableTok{    B}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{0}\KeywordTok{)}
+\VariableTok{    r }\OperatorTok{=}\ClassTok{ RateLaw}\KeywordTok{(}
+\VariableTok{        reactants}\OperatorTok{=}\KeywordTok{[}\ValueTok{2} \OperatorTok{*}\VariableTok{ A}\KeywordTok{]},
+\VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
+\VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
+\KeywordTok{    )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -74,16 +74,16 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ Model(Compartment):}
+\KeywordTok{class}\ClassTok{ Model(Compartment)}:
     \CommentTok{"""2A {-}\textgreater{} B"""}
 
-\NormalTok{    A: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\NormalTok{    B: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-\NormalTok{    r }\OperatorTok{=}\NormalTok{ MassAction(}
-\NormalTok{        reactants}\OperatorTok{=}\NormalTok{[}\DecValTok{2} \OperatorTok{*}\NormalTok{ A],}
-\NormalTok{        products}\OperatorTok{=}\NormalTok{[B],}
-\NormalTok{        rate}\OperatorTok{=}\DecValTok{1}\NormalTok{,}
-\NormalTok{    )}
+\VariableTok{    A}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{1}\KeywordTok{)}
+\VariableTok{    B}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{0}\KeywordTok{)}
+\VariableTok{    r }\OperatorTok{=}\ClassTok{ MassAction}\KeywordTok{(}
+\VariableTok{        reactants}\OperatorTok{=}\KeywordTok{[}\ValueTok{2} \OperatorTok{*}\VariableTok{ A}\KeywordTok{]},
+\VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
+\VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
+\KeywordTok{    )}
 \end{Highlighting}
 \end{Shaded}
 

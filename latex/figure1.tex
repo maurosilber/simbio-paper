@@ -6,7 +6,7 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{from}\NormalTok{ poincare }\ImportTok{import}\NormalTok{ Derivative, System, Variable, initial}
+\KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Derivative}, \ClassTok{System}, \ClassTok{Variable}, \FunctionTok{initial}
 \end{Highlighting}
 \end{Shaded}
 
@@ -24,9 +24,9 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ Decay(System):}
-\NormalTok{    x: Variable }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\NormalTok{    eq }\OperatorTok{=}\NormalTok{ x.derive() }\OperatorTok{\textless{}\textless{}} \OperatorTok{{-}}\NormalTok{x}
+\KeywordTok{class} \ClassTok{Decay(System)}\OperatorTok{:}
+    \VariableTok{x}\OperatorTok{:} \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
+    \VariableTok{eq} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -76,10 +76,10 @@ x(0) = 1
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ Oscillator(System):}
-\NormalTok{    x: Variable }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\NormalTok{    v: Derivative }\OperatorTok{=}\NormalTok{ x.derive(initial}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-\NormalTok{    eq }\OperatorTok{=}\NormalTok{ v.derive() }\OperatorTok{\textless{}\textless{}} \OperatorTok{{-}}\NormalTok{x}
+\KeywordTok{class} \ClassTok{Oscillator(System)}\OperatorTok{:}
+    \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
+    \VariableTok{v}: \ClassTok{Derivative} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{(\VariableTok{initial}\OperatorTok{=}\ValueTok{0})}
+    \VariableTok{eq} \OperatorTok{=} \VariableTok{v}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -132,10 +132,10 @@ equation is specified for the derivative \texttt{v}.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ BigModel(System):}
-\NormalTok{    x: Variable }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\NormalTok{    linked }\OperatorTok{=}\NormalTok{ Decay(x}\OperatorTok{=}\NormalTok{x)}
-\NormalTok{    independent }\OperatorTok{=}\NormalTok{ Decay(x}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{class} \ClassTok{BigModel(System)}:
+    \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
+    \VariableTok{linked} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\VariableTok{x})}
+    \VariableTok{independent} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\ValueTok{2})}
 \end{Highlighting}
 \end{Shaded}
 
