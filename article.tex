@@ -312,6 +312,8 @@ assigning them to Python variables or adding them explicitly to the
 model, but this approach is not fully compatible with IDEs, affecting
 the development experience.
 
+\input{latex/figure1.tex}
+
 To overcome these limitations, we developed poincaré and SimBio,
 open-source Python packages for defining and simulating systems.
 Poincaré allows defining differential equation systems, while SimBio
@@ -341,6 +343,8 @@ significantly large-scale models.
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
+\input{latex/figure2.tex}
+
 Modular code architecture makes code reusable, extensible, and easier to
 maintain. Therefore, we split the code to define and simulate reaction
 systems into three Python packages: symbolite, to create symbolic
@@ -367,7 +371,7 @@ new backends.
 \subsection{Versatile modelling and simulation of dynamical systems with
 Poincaré}\label{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}}
 
-\input{latex/figure1.tex}
+\input{latex/figure3.tex}
 
 Poincare is a package to define and simulate dynamical systems. It
 provides a \texttt{System} class, where one can define
@@ -398,6 +402,8 @@ Utilizing classes for system definition offers several advantages:
   model (Figure~\ref{fig-composition}).
 \end{enumerate}
 
+\input{latex/figure4.tex}
+
 For this last point, IDEs that support \texttt{dataclass\_transform} (De
 Bonte and Traut 2021) can provide a tooltip with the expected signature
 (Figure~\ref{fig-composition}). This requires the use of type
@@ -408,8 +414,6 @@ use a \texttt{Constant}. If we try to use a \texttt{Parameter}, which
 could be a time-dependent expression, it is flagged as a type error
 (Figure~\ref{fig-ide}).
 
-\input{latex/figure2.tex}
-
 To simulate a system, we created a \texttt{Simulator} instance
 (Figure~\ref{fig-sim}), which compiles a given system and interfaces
 with solvers. By default, it creates a first-order ordinary differential
@@ -417,8 +421,6 @@ equation (ODE) system using \texttt{numpy} as a backend. This can be
 easily switched to other solvers. The Simulator wraps the output in a
 \texttt{pandas.DataFrame}, which can be easily plotted with the standard
 \texttt{plot} method.
-
-\input{latex/figure3.tex}
 
 Switching backends to \texttt{"numba"} can improve model runtime on a
 factor up to x30 or more for big or long running models, however incurs
@@ -428,8 +430,6 @@ account.
 \hypertarget{extensible-definition-of-reaction-networks-using-simbio}{%
 \subsection{Extensible definition of reaction networks using
 SimBio}\label{extensible-definition-of-reaction-networks-using-simbio}}
-
-\input{latex/figure4.tex}
 
 For the reaction networks, our focus is on first-order differential
 equations that describe the rate of change of species. SimBio simplifies
