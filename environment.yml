@@ -7,14 +7,9 @@ dependencies:
   - nbformat
   - nbclient
   - python=3.11
-  - typing_extensions
-  - numpy
-  - pandas
-  - scipy
+  - poincare
   - matplotlib
   - seaborn
-  - pint
-  - pint-pandas
   - tabulate
   - numba
   - pysb
@@ -26,8 +21,6 @@ dependencies:
   - numbalsoda
   - pip
   - pip:
-    - symbolite
-    - poincare
     - simbio[io]
     - copasi-basico
     - tellurium
