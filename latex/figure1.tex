@@ -1,0 +1,189 @@
+\begin{figure}[t]
+
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ poincare }\ImportTok{import}\NormalTok{ Derivative, System, Variable, initial}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering
+
+\begin{minipage}[c]{0.6\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Decay(System):}
+\NormalTok{    x: Variable }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{    eq }\OperatorTok{=}\NormalTok{ x.derive() }\OperatorTok{\textless{}\textless{}} \OperatorTok{{-}}\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.2\linewidth}
+
+{\centering 
+
+\[
+\frac{dx}{dt} = -x
+\]
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.2\linewidth}
+
+{\centering 
+
+\[
+x(0) = 1
+\]
+
+}
+
+\end{minipage}%
+
+\subcaption{First-order system of an exponential decay. The variable
+\texttt{x} stores the initial condition for \(x\), and the variable
+\texttt{eq} stores the rate equation for \(x\).}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{minipage}[c]{0.6\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Oscillator(System):}
+\NormalTok{    x: Variable }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{    v: Derivative }\OperatorTok{=}\NormalTok{ x.derive(initial}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\NormalTok{    eq }\OperatorTok{=}\NormalTok{ v.derive() }\OperatorTok{\textless{}\textless{}} \OperatorTok{{-}}\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.2\linewidth}
+
+{\centering 
+
+\[
+\frac{d^2x}{dt^2} = -x
+\]
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.2\linewidth}
+
+{\centering 
+
+\[
+\begin{cases}
+    x(0) &= 1 \\
+    \frac{dx}{dt}(0) &= 0
+\end{cases}
+\]
+
+}
+
+\end{minipage}%
+
+\subcaption{Second-order system of an harmonic oscillator, where the
+variable \texttt{v} stores the derivative \(\frac{dx}{dt}\) and the rate
+equation is specified for the derivative \texttt{v}.}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{minipage}[c]{0.6\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ BigModel(System):}
+\NormalTok{    x: Variable }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{    linked }\OperatorTok{=}\NormalTok{ Decay(x}\OperatorTok{=}\NormalTok{x)}
+\NormalTok{    independent }\OperatorTok{=}\NormalTok{ Decay(x}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.2\linewidth}
+
+{\centering 
+
+\[
+\begin{cases}
+    \frac{dx}{dt} = -x \\
+    \frac{dy}{dt} = -y
+\end{cases}
+\]
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.2\linewidth}
+
+{\centering 
+
+\[
+\begin{cases}
+    x(0) &= 1 \\
+    y(0) &= 2
+\end{cases}
+\]
+
+}
+
+\end{minipage}%
+
+\subcaption{First-order system of two exponential decays by composition of
+the \texttt{Decay} system. The subsystem \texttt{linked} has a reference
+to the outer variable \texttt{x}, while the subsystem
+\texttt{independent} defines a new variable with initial condition $2$,
+which on the corresponding mathematical expression was named \(y\).}
+
+}
+
+\end{minipage}%
+
+\caption{\label{fig-poincare}Code and corresponding mathematical
+expressions for different systems.}
+
+\end{figure}

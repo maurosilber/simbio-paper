@@ -1,0 +1,37 @@
+\begin{figure}[t]
+
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ simbio.io }\ImportTok{import}\NormalTok{ biomodels, sbml}
+
+\NormalTok{model }\OperatorTok{=}\NormalTok{ sbml.load(}\StringTok{"repressilator.sbml"}\NormalTok{)  }\CommentTok{\# from existing SBML file}
+\NormalTok{model }\OperatorTok{=}\NormalTok{ biomodels.load\_model(}\StringTok{"BIOMD12"}\NormalTok{)  }\CommentTok{\# from BioModels}
+\NormalTok{model}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}{@{}lll@{}}
+    \toprule\noalign{}
+    Elowitz2000 - Repressilator \\
+    type & total & names \\
+    \midrule\noalign{}
+    \endhead
+    \bottomrule\noalign{}
+    \endlastfoot
+    variables  &  6 & PX, PY, PZ, X, Y, Z \\
+    parameters & 17 & cell, beta, alpha0, alpha, eff, n, KM, tau\_mRNA, tau\_prot, ... \\
+    equations  & 12 & Reaction1, Reaction2, Reaction3, Reaction4, Reaction5, ... \\
+\end{longtable}
+
+}
+
+\end{minipage}%
+
+\caption{\label{fig-simbio-io}Creation of a model from a local SBML file
+or one uploaded to BioModels.}
+
+\end{figure}

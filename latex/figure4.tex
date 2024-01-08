@@ -1,0 +1,123 @@
+\begin{figure}[t]
+
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ simbio }\ImportTok{import}\NormalTok{ Compartment, MassAction, Species, RateLaw, initial}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{minipage}[c]{0.50\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Model(Compartment):}
+    \CommentTok{"""2A {-}\textgreater{} B"""}
+
+\NormalTok{    A: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{    B: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\NormalTok{    r }\OperatorTok{=}\NormalTok{ RateLaw(}
+\NormalTok{        reactants}\OperatorTok{=}\NormalTok{[}\DecValTok{2} \OperatorTok{*}\NormalTok{ A],}
+\NormalTok{        products}\OperatorTok{=}\NormalTok{[B],}
+\NormalTok{        rate\_law}\OperatorTok{=}\DecValTok{1}\NormalTok{,}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.50\linewidth}
+
+{\centering 
+
+\[
+\begin{cases}
+    \frac{dA}{dt} = -2 \\
+    \frac{dB}{dt} = +1
+\end{cases}
+\begin{cases}
+    A(0) &= 1 \\
+    B(0) &= 0
+\end{cases}
+\]
+
+}
+
+\end{minipage}%
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\begin{minipage}[c]{0.50\linewidth}
+
+{\centering 
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Model(Compartment):}
+    \CommentTok{"""2A {-}\textgreater{} B"""}
+
+\NormalTok{    A: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{    B: Species }\OperatorTok{=}\NormalTok{ initial(default}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\NormalTok{    r }\OperatorTok{=}\NormalTok{ MassAction(}
+\NormalTok{        reactants}\OperatorTok{=}\NormalTok{[}\DecValTok{2} \OperatorTok{*}\NormalTok{ A],}
+\NormalTok{        products}\OperatorTok{=}\NormalTok{[B],}
+\NormalTok{        rate}\OperatorTok{=}\DecValTok{1}\NormalTok{,}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[c]{0.50\linewidth}
+
+{\centering 
+
+\[
+\begin{cases}
+    \frac{dA}{dt} = -2 A^2 \\
+    \frac{dB}{dt} = +1 A^2
+\end{cases}
+\begin{cases}
+    A(0) &= 1 \\
+    B(0) &= 0
+\end{cases}
+\]
+
+}
+
+\end{minipage}%
+
+}
+
+\end{minipage}%
+
+\caption{\label{fig-simbio}A reaction system for species \(A\) and \(B\)
+with initial conditions \(1\) and \(0\), respectively. A single reaction
+transforming \(2A\) into \(B\) is saved in variable \texttt{r}. The rate
+\(1\) is specified directly for \texttt{RateLaw}, and is proportional to
+the reactants for \texttt{MassAction}.}
+
+\end{figure}
