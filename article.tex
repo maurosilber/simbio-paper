@@ -295,6 +295,8 @@ cannot utilize the diverse distributions available in
 \texttt{scipy.stats}. Similarly, Tellurium doesn't allow the use of
 Python solvers, as adding new integrators requires C++ implementation.
 
+\input{latex/figure1.tex}
+
 Another challenge is the way models are written. Many tools use a Domain
 Specific Language (DSL) for coding, and support the System Biology
 Markup Language (SBML) as an exchange format (Hucka et al., n.d.), as
@@ -312,8 +314,6 @@ default, it uses global state to create species and parameters, without
 assigning them to Python variables or adding them explicitly to the
 model, but this approach is not fully compatible with IDEs, affecting
 the development experience.
-
-\input{latex/figure1.tex}
 
 To overcome these limitations, we developed poincaré and SimBio,
 open-source Python packages for defining and simulating systems.
