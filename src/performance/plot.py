@@ -64,6 +64,7 @@ if __name__ == "__main__":
 
     match sys.argv[1:]:
         case ["save"]:
-            fig.savefig(path / "figures/performance.png")
+            for format in ["png", "pdf", "svg"]:
+                fig.savefig(path / f"figures/performance.{format}")
         case _:
             plt.show()
