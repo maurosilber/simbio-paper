@@ -124,8 +124,10 @@ if __name__ == "__main__":
     path = Path(__file__).parent
 
     models = pd.read_csv(path / "models.txt")
-    results = models.progress_apply(
+    results: pd.DataFrame = models.progress_apply(
         lambda x: pd.Series(run_model(**x, runner=runner)),
         axis="columns",
     )
-    results.to_csv(path / f"results/{output}.csv", index=False)
+    results_dir = path / "results"
+    results_dir.mkdir(exist_ok=True)
+    results.to_csv(results_dir / f"{output}.csv", index=False)
