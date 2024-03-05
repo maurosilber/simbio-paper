@@ -190,6 +190,20 @@
 \usepackage{authblk}
 \renewcommand\Affilfont{\small}
 
+\usepackage{acronym}
+\acrodef{CRN}[CRN]{chemical reaction network}
+\acrodef{DSL}[DSL]{domain-specific language}
+\acrodef{GPU}[GPU]{graphical processing unit}
+\acrodef{GUI}[GUI]{graphical user interface}
+\acrodef{IDE}[IDE]{integrated development environment}
+\acrodef{JIT}[JIT]{just-in-time}
+\acrodef{ODE}[ODE]{ordinary differential equation}
+\acrodef{PyPI}[PyPI]{Python package index}
+\acrodef{RHS}[RHS]{right-hand side}
+\acrodef{SBML}[SBML]{System Biology Markup Language}
+\acrodef{SDE}[SDE]{stochastic differential equation}
+\acrodef{TPU}[TPU]{tensor processing unit}
+
 \title{Poincaré and SimBio: a versatile and extensible Python ecosystem
 for modeling systems.}
 \author[1,2]{Mauro Silberberg}
@@ -204,18 +218,18 @@ for modeling systems.}
 \begin{document}
 \maketitle
 \begin{abstract}
-Chemical Reaction Networks (CRNs) play a pivotal role in diverse fields
+\Acf{CRN} play a pivotal role in diverse fields
 such as systems biology, biochemistry, chemical engineering, and
-epidemiology. High-level modelling of CRNs enables various simulation
+epidemiology. High-level modelling of \acp{CRN} enables various simulation
 approaches, including deterministic and stochastic methods. However,
-existing Python tools for CRN modelling typically wrap external C/C++
+existing Python tools for \ac{CRN} modelling typically wrap external C/C++
 libraries for modelling and simulation, limiting their extensibility and
 integration with the broader Python ecosystem. In response, we developed
 Poincaré and SimBio, two novel Python packages for the definition and
-simulation of dynamical systems and CRNs. Poincaré serves as a
+simulation of dynamical systems and \acp{CRN}. Poincaré serves as a
 foundation for dynamical system modelling, while SimBio extends this
-functionality to CRNs, including support for the Systems Biology Markup
-Language (SBML). Poincaré and SimBio are developed as pure Python
+functionality to \acp{CRN}, including support for the 
+SBML. Poincaré and SimBio are developed as pure Python
 packages enabling users to easily extend their simulation capabilities
 by writing new or leveraging other Python packages. Moreover, this does
 not compromise the performance, as code can be Just-In-Time compiled
@@ -224,24 +238,26 @@ repository, demonstrate that these tools may provide a potentially
 superior performance advantage, compared to other existing tools.
 Additionally, to ensure a user-friendly experience, our packages use
 standard typed modern Python syntax that provides a seamless integration
-with Integrated Development Environments (IDEs). Our Python-centric approach
+with \acp{IDE}. Our Python-centric approach
 significantly enhances code analysis, error detection, and refactoring
 capabilities, positioning Poincaré and SimBio as valuable tools for the
 modelling community.
 \end{abstract}
 \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
 
+\acresetall % reset acronyms after abstract
+
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Chemical Reaction Networks (CRNs) are a fundamental concept of modelling
+\Acp{CRN} are a fundamental concept of modelling
 in numerous fields including systems biology, biochemistry, chemical
 engineering and epidemiology. They are comprised of a set of chemical
 species or biological entities
 and a set of reactions that mediate transformations between them. These
 systems can be modelled and simulated through multiple approaches:
-deterministic Ordinary Differential Equations (ODEs) to model
-macroscopic behavior, Stochastic Differential Equations (SDEs) to model
+deterministic \acp{ODE} to model
+macroscopic behavior, \acp{SDE} to model
 microscopic fluctuations, and jump processes (Gillespie-like
 simulations) to account for the discreteness of populations. Instead of
 directly writing the equations for each of these formulations which is
@@ -249,17 +265,17 @@ error-prone and difficult to reuse, these models can be written in a
 higher-level description that can be compiled for these different types
 of simulations.
 
-Several tools already exist for defining and simulating CRNs.
+Several tools already exist for defining and simulating \acp{CRN}.
 BioSimulators.org (Shaikh et al. 2022), a registry of simulation tools,
 list at least 15 Python software including COPASI (Hoops et al. 2006),
 Tellurium (Choi et al. 2018) and PySB (Lopez et al. 2013). COPASI is a
-standalone software with a GUI for defining and simulating models. It's
+standalone software with a \ac{GUI} for defining and simulating models. It's
 widely used for its user-friendly interface and comprehensive features.
 There are also python bindings and interfaces for COPASI to allow
 advanced scripting. Tellurium is a Python-based modeling environment,
 however, it uses a C++ library called libRoadRunner in the backend to
-simulate models. PySB is a Python library that created a DSL using
-standard Python to define models which are then compiled to ODE using a
+simulate models. PySB is a Python library that created a \ac{DSL} using
+standard Python to define models which are then compiled to \acp{ODE} using a
 Perl library called BioNetGen (L. A. Harris et al. 2016).
 
 One limitation of these tools is that they are not extensible from
@@ -274,22 +290,21 @@ Python solvers, as adding new integrators requires C++ implementation.
 
 \input{latex/figure1.tex}
 
-Another challenge is the way models are written. Many tools use a Domain
-Specific Language (DSL) for coding, and support the System Biology
-Markup Language (SBML) as an exchange format (Hucka et al., n.d.), as
-direct SBML coding is impractical. A DSL allows reuse of code in
+Another challenge is the way models are written. Many tools use a \ac{DSL} for coding, and support the
+\ac{SBML} as an exchange format (Hucka et al., n.d.), as
+direct \ac{SBML} coding is impractical. A \ac{DSL} allows reuse of code in
 different programming environments, but it will not be recognized by
-default in Integrated Development Environments (IDEs). Therefore DSLs
+default in \acp{IDE}. Therefore \acp{DSL}
 cannot provide the development experience such as syntax highlighting,
 code completion, refactoring, and static analysis, unless such support
-is specifically developed. Tellurium uses a Domain Specific Language
-(DSL) called Antimony (Smith et al. 2009), which can be translated to
-SBML. An extension for Visual Studio Code was developed, but its
+is specifically developed. Tellurium uses a
+\ac{DSL} called Antimony (Smith et al. 2009), which can be translated to
+\ac{SBML}. An extension for Visual Studio Code was developed, but its
 maintenance could be a demanding task for the systems biology community.
-PySB, using Python's dynamic nature, created a DSL within Python. By
+PySB, using Python's dynamic nature, created a \ac{DSL} within Python. By
 default, it uses global state to create species and parameters, without
 assigning them to Python variables or adding them explicitly to the
-model, but this approach is not fully compatible with IDEs, affecting
+model, but this approach is not fully compatible with \acp{IDE}, affecting
 the development experience.
 
 To overcome these limitations, we developed poincaré and SimBio,
@@ -297,7 +312,7 @@ open-source Python packages for defining and simulating systems.
 Poincaré allows one to define differential equation systems, while SimBio
 builds on it for defining reaction networks. They are focused on
 providing an ergonomic experience to end-users by integrating well with
-IDEs and static analysis tools through the use of standard modern Python
+\acp{IDE} and static analysis tools through the use of standard modern Python
 syntax. Since they are coded in Python, every part from model definition
 to simulation can be extended from Python syntax. Being the first-ever
 pure Python packages for systems modelling, they offer extensive
@@ -328,10 +343,10 @@ maintain. Therefore, we split the code to define and simulate reaction
 systems into three Python packages: symbolite, to create symbolic
 expressions; poincaré, to define dynamical systems; and simbio, to
 define reaction systems and interface with systems biology standards
-such as SBML. These are pure Python packages with standard dependencies
+such as \ac{SBML}. These are pure Python packages with standard dependencies
 from the PyData scientific stack such as NumPy (C. R. Harris et al.
-2020) and pandas (McKinney 2010). They are published in PyPI (the Python
-Package Index), where links to the source code and documentation hosted
+2020) and pandas (McKinney 2010). They are published in the \acf{PyPI}
+, where links to the source code and documentation hosted
 in GitHub can be found, and can be easily installed with
 \texttt{pip\ install\ \textless{}package\_name\textgreater{}}.
 
@@ -339,10 +354,10 @@ Symbolite is a lightweight symbolics package to create algebraic
 mathematical expressions. Symbolite expressions can be inspected and
 compiled to various backends. Currently, we have implementations for
 NumPy (C. R. Harris et al. 2020); Numba (Lam, Pitrou, and Seibert 2015),
-a Just-in-Time (JIT) compiler to LLVM; SymPy (Meurer et al. 2017), a
+a \ac{JIT} compiler to LLVM; SymPy (Meurer et al. 2017), a
 library for symbolic mathematics; and JAX (Bradbury et al. 2018), a
-library that support automatic differentiation and compilation to GPUs
-and TPUs. Symbolite is designed to facilitate the easy integration of
+library that support automatic differentiation and compilation to \acp{GPU}
+and \acp{TPU}. Symbolite is designed to facilitate the easy integration of
 new backends.
 
 \hypertarget{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}{%
@@ -372,7 +387,7 @@ Utilizing classes for system definition offers several advantages:
   It provides a namespace that allows to easily define multiple
   independent models in the same script,
 \item
-  It allows IDEs to provide autocomplete and refactoring capabilities
+  It allows \acp{IDE} to provide autocomplete and refactoring capabilities
   (\texttt{Oscillator.\textless{}TAB\textgreater{}} shows \texttt{x},
   \texttt{v} and \texttt{eq}),
 \item
@@ -382,7 +397,7 @@ Utilizing classes for system definition offers several advantages:
 
 \input{latex/figure4.tex}
 
-For this last point, IDEs that support \texttt{dataclass\_transform} (De
+For this last point, \acp{IDE} that support \texttt{dataclass\_transform} (De
 Bonte and Traut 2021) can provide a tooltip with the expected signature
 (Figure~\ref{fig-composition}). This requires the use of type
 annotations which play a more significant role in static type checking,
@@ -393,9 +408,9 @@ could be a time-dependent expression, it is flagged as a type error
 (Figure~\ref{fig-ide}).
 
 To simulate a system, we created a \texttt{Simulator} instance
-(Figure~\ref{fig-sim}), which compiles a given system and interfaces
-with solvers. By default, it creates a first-order ordinary differential
-equation (ODE) system using \texttt{numpy} as a backend. This can be
+(Figure~\ref{fig-sim}), which compiles the \ac{RHS} of a given system and interfaces
+with \ac{ODE} solvers. By default, it creates a first-order
+\ac{ODE} system using \texttt{numpy} as a backend. This can be
 easily switched to other solvers. The Simulator wraps the output in a
 \texttt{pandas.DataFrame}, which can be easily plotted with the standard
 \texttt{plot} method.
@@ -425,7 +440,7 @@ subclasses, such as \texttt{MichaelisMenten}
 form without the intermediate species \(ES\), and it is also simple to
 implement your own as subclasses of \texttt{RateLaw} or
 \texttt{MassAction}. Additionally, SimBio supports importing from and
-exporting to SBML, and downloading them directly from BioModels
+exporting to \ac{SBML}, and downloading them directly from BioModels
 (Malik-Sheriff et al. 2020) (Figure~\ref{fig-simbio-io}).
 
 \input{latex/figure5.tex}
@@ -436,7 +451,7 @@ performance}\label{reproducibility-and-performance}}
 
 \input{latex/figure6.tex}
 
-To evaluate SimBio's reproducibility, we analyzed curated SBML models
+To evaluate SimBio's reproducibility, we analyzed curated \ac{SBML} models
 from BioModels (Malik-Sheriff et al. 2020). Among the first 100 curated
 models from BioModels we selected 60 which did not contains events, as
 SimBio doesn't support events yet. We simulated the selected models with
@@ -458,8 +473,8 @@ happen with SimBio (Figure~\ref{fig-runtime}, left). While SimBio's
 NumPy backend is slower than both COPASI and RoadRunner, we obtained an
 order of magnitude speed-up using the numba backend putting it on par
 with them. A user might have to consider the trade-off between
-compilation and run times, as the compilation of the right-hand-side
-(RHS) code might take longer than the runtime itself, and not be worth
+compilation and run times, as the compilation of the
+\ac{RHS} code might take longer than the runtime itself, and not be worth
 it for running the model only once. Another speed-up in the runtime can
 be had by switching the LSODA \texttt{scipy} solver for a more efficient
 \texttt{numbalsoda} implementation, which avoids the Python interpreter
@@ -472,21 +487,21 @@ other methods, which is also true for the other models we tested
 
 In this article, we introduced a suite of Python packages we developed
 for defining and simulating dynamical systems and reaction networks.
-These packages are deeply integrated with Integrated Development
-Environments (IDEs), enabling code analysis tools to identify errors
+These packages are deeply integrated with
+\acp{IDE}, enabling code analysis tools to identify errors
 prior to execution and assist in refactoring and code completion. We
 adopted standard modern Python syntax to ensure seamless IDE
 integration, supported by the extensive Python community.
 
 Our approach differs from previous tools in that both the model
-definition and its compilation into an Ordinary Differential Equation
-(ODE) function are entirely Python-based. This approach simplifies the
+definition and its compilation into an
+\ac{ODE} function are entirely Python-based. This approach simplifies the
 development of various simulation methods, including performance
 enhancements that exploit specific model structures. Importantly, being
 Python-based does not compromise performance compared to C/C++ tools, as
-the ODE functions can be Just-In-Time (JIT) compiled using Numba.
+the \ac{ODE} functions can be \ac{JIT} compiled using Numba.
 
-The inclusion of SBML support facilitates the effortless reuse of models
+The inclusion of \ac{SBML} support facilitates the effortless reuse of models
 created by the systems biology community, along with the vast collection
 of public models hosted in the BioModels repository. The modular
 architecture of these packages facilitates their reuse, enhancement, and
@@ -597,7 +612,5 @@ Sauro. 2009. {``Antimony: A Modular Model Definition Language.''}
 \url{https://doi.org/10.1093/bioinformatics/btp401}.
 
 \end{CSLReferences}
-
-
 
 \end{document}
