@@ -224,7 +224,7 @@ repository, demonstrate that these tools may provide a potentially
 superior performance advantage, compared to other existing tools.
 Additionally, to ensure a user-friendly experience, our packages use
 standard typed modern Python syntax that provides a seamless integration
-with Integrated Development Environments (IDEs). Python-centric approach
+with Integrated Development Environments (IDEs). Our Python-centric approach
 significantly enhances code analysis, error detection, and refactoring
 capabilities, positioning Poincaré and SimBio as valuable tools for the
 modelling community.
@@ -285,7 +285,7 @@ code completion, refactoring, and static analysis, unless such support
 is specifically developed. Tellurium uses a Domain Specific Language
 (DSL) called Antimony (Smith et al. 2009), which can be translated to
 SBML. An extension for Visual Studio Code was developed, but its
-maintenance could be demanding task for the systems biology community.
+maintenance could be a demanding task for the systems biology community.
 PySB, using Python's dynamic nature, created a DSL within Python. By
 default, it uses global state to create species and parameters, without
 assigning them to Python variables or adding them explicitly to the
@@ -294,7 +294,7 @@ the development experience.
 
 To overcome these limitations, we developed poincaré and SimBio,
 open-source Python packages for defining and simulating systems.
-Poincaré allows defining differential equation systems, while SimBio
+Poincaré allows one to define differential equation systems, while SimBio
 builds on it for defining reaction networks. They are focused on
 providing an ergonomic experience to end-users by integrating well with
 IDEs and static analysis tools through the use of standard modern Python
@@ -367,9 +367,9 @@ Utilizing classes for system definition offers several advantages:
 \item
   The variable name to which a component is assigned can be
   automatically saved in the component for introspection (i.e.,
-  \texttt{Oscilator.x.name\ ==\ "x"}),
+  \texttt{Oscillator.x.name\ ==\ "x"}),
 \item
-  It provides a namespace such that allows to easily define of multiple
+  It provides a namespace that allows to easily define multiple
   independent models in the same script,
 \item
   It allows IDEs to provide autocomplete and refactoring capabilities
@@ -400,7 +400,7 @@ easily switched to other solvers. The Simulator wraps the output in a
 \texttt{pandas.DataFrame}, which can be easily plotted with the standard
 \texttt{plot} method.
 
-Switching backends to \texttt{"numba"} can improve model runtime on a
+Switching backends to \texttt{"numba"} can improve model runtime by a
 factor up to x30 or more for big or long running models, however incurs
 in a compile time penalty for the first run which must be taken into
 account.
