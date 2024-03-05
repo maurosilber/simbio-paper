@@ -234,8 +234,8 @@ packages enabling users to easily extend their simulation capabilities
 by writing new or leveraging other Python packages. Moreover, this does
 not compromise the performance, as code can be Just-In-Time compiled
 with Numba. Our benchmark tests using curated models from the BioModels
-repository, demonstrate that these tools may provide a potentially
-superior performance advantage, compared to other existing tools.
+repository demonstrate that these tools may provide a potentially
+superior performance advantage compared to other existing tools.
 Additionally, to ensure a user-friendly experience, our packages use
 standard typed modern Python syntax that provides a seamless integration
 with \acp{IDE}. Our Python-centric approach
@@ -260,7 +260,7 @@ deterministic \acp{ODE} to model
 macroscopic behavior, \acp{SDE} to model
 microscopic fluctuations, and jump processes (Gillespie-like
 simulations) to account for the discreteness of populations. Instead of
-directly writing the equations for each of these formulations which is
+directly writing the equations for each of these formulations, which is
 error-prone and difficult to reuse, these models can be written in a
 higher-level description that can be compiled for these different types
 of simulations.
@@ -275,7 +275,7 @@ There are also python bindings and interfaces for COPASI to allow
 advanced scripting. Tellurium is a Python-based modeling environment,
 however, it uses a C++ library called libRoadRunner in the backend to
 simulate models. PySB is a Python library that created a \ac{DSL} using
-standard Python to define models which are then compiled to \acp{ODE} using a
+standard Python to define models, which are then compiled to \acp{ODE} using a
 Perl library called BioNetGen (L. A. Harris et al. 2016).
 
 One limitation of these tools is that they are not extensible from
@@ -391,7 +391,7 @@ Utilizing classes for system definition offers several advantages:
   (\texttt{Oscillator.\textless{}TAB\textgreater{}} shows \texttt{x},
   \texttt{v} and \texttt{eq}),
 \item
-  It allows creation of instances which can be composed into a bigger
+  It allows creation of instances that can be composed into a bigger
   model (Figure~\ref{fig-composition}).
 \end{enumerate}
 
@@ -400,7 +400,7 @@ Utilizing classes for system definition offers several advantages:
 For this last point, \acp{IDE} that support \texttt{dataclass\_transform} (De
 Bonte and Traut 2021) can provide a tooltip with the expected signature
 (Figure~\ref{fig-ide}). This requires the use of type
-annotations which play a more significant role in static type checking,
+annotations, which play a more significant role in static type checking
 as they can help to identify errors before running the code. For
 instance, to parameterize the initial conditions of variables we have to
 use a \texttt{Constant}. If we try to use a \texttt{Parameter}, which
@@ -408,7 +408,7 @@ could be a time-dependent expression, it is flagged as a type error
 (Figure~\ref{fig-ide}).
 
 To simulate a system, we created a \texttt{Simulator} instance
-(Figure~\ref{fig-sim}), which compiles the \ac{RHS} of a given system and interfaces
+(Figure~\ref{fig-sim}) that compiles the \ac{RHS} of a given system and interfaces
 with \ac{ODE} solvers. By default, it creates a first-order
 \ac{ODE} system using \texttt{numpy} as a backend. This can be
 easily switched to other solvers. The Simulator wraps the output in a
@@ -417,7 +417,7 @@ easily switched to other solvers. The Simulator wraps the output in a
 
 Switching backends to \texttt{"numba"} can improve model runtime by a
 factor up to x30 or more for big or long running models, however incurs
-in a compile time penalty for the first run which must be taken into
+in a compile time penalty for the first run that must be taken into
 account.
 
 \hypertarget{extensible-definition-of-reaction-networks-using-simbio}{%
@@ -431,7 +431,7 @@ which consists of a \texttt{poincare.Variable} and a stoichiometric
 number, and \texttt{RateLaw}, a construct that converts reactants into
 products taking into account the stoichiometry
 (Figure~\ref{fig-simbio}). Additionally, SimBio features
-\texttt{MassAction}, a subclass of \texttt{RateLaw}, which intuitively
+\texttt{MassAction}, a subclass of \texttt{RateLaw}, that intuitively
 incorporates reactants into the rate law (Figure~\ref{fig-simbio}).
 
 Several commonly used reactions are predefined as \texttt{MassAction}
@@ -453,7 +453,7 @@ performance}\label{reproducibility-and-performance}}
 
 To evaluate SimBio's reproducibility, we analyzed curated \ac{SBML} models
 from BioModels (Malik-Sheriff et al. 2020). Among the first 100 curated
-models from BioModels we selected 60 which did not contains events, as
+models from BioModels we selected 60 that did not contains events, as
 SimBio doesn't support events yet. We simulated the selected models with
 COPASI and used the simulated results as ground truth, and demonstrated
 that SimBio reproduces the results with minor numerical differences
@@ -477,7 +477,7 @@ compilation and run times, as the compilation of the
 \ac{RHS} code might take longer than the runtime itself, and not be worth
 it for running the model only once. Another speed-up in the runtime can
 be had by switching the LSODA \texttt{scipy} solver for a more efficient
-\texttt{numbalsoda} implementation, which avoids the Python interpreter
+\texttt{numbalsoda} implementation that avoids the Python interpreter
 between each of the integration steps. This last combination beats all
 other methods, which is also true for the other models we tested
 (Figure~\ref{fig-runtime}, right).
