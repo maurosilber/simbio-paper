@@ -266,9 +266,9 @@ higher-level description that can be compiled for these different types
 of simulations.
 
 Several tools already exist for defining and simulating \acp{CRN}.
-BioSimulators.org (Shaikh et al. 2022), a registry of simulation tools,
-list at least 15 Python software including COPASI (Hoops et al. 2006),
-Tellurium (Choi et al. 2018) and PySB (Lopez et al. 2013). COPASI is a
+BioSimulators.org \cite{shaikhBioSimulatorsCentralRegistry2022}, a registry of simulation tools,
+list at least 15 Python software including COPASI \cite{hoopsCOPASICOmplexPAthway2006},
+Tellurium \cite{choiTelluriumExtensiblePythonbased2018} and PySB \cite{lopezProgrammingBiologicalModels2013}. COPASI is a
 standalone software with a \ac{GUI} for defining and simulating models. It's
 widely used for its user-friendly interface and comprehensive features.
 There are also python bindings and interfaces for COPASI to allow
@@ -276,7 +276,7 @@ advanced scripting. Tellurium is a Python-based modeling environment,
 however, it uses a C++ library called libRoadRunner in the backend to
 simulate models. PySB is a Python library that created a \ac{DSL} using
 standard Python to define models, which are then compiled to \acp{ODE} using a
-Perl library called BioNetGen (L. A. Harris et al. 2016).
+Perl library called BioNetGen \cite{harrisBioNetGenAdvancesRulebased2016}.
 
 One limitation of these tools is that they are not extensible from
 Python, as they are not fully Python packages but wrap libraries in
@@ -291,14 +291,14 @@ Python solvers, as adding new integrators requires C++ implementation.
 \input{latex/figure1.tex}
 
 Another challenge is the way models are written. Many tools use a \ac{DSL} for coding, and support the
-\ac{SBML} as an exchange format (Hucka et al., n.d.), as
+\ac{SBML} as an exchange format \cite{huckaSBMLL3V2}, as
 direct \ac{SBML} coding is impractical. A \ac{DSL} allows reuse of code in
 different programming environments, but it will not be recognized by
 default in \acp{IDE}. Therefore \acp{DSL}
 cannot provide the development experience such as syntax highlighting,
 code completion, refactoring, and static analysis, unless such support
 is specifically developed. Tellurium uses a
-\ac{DSL} called Antimony (Smith et al. 2009), which can be translated to
+\ac{DSL} called Antimony \cite{smithAntimonyModularModel2009}, which can be translated to
 \ac{SBML}. An extension for Visual Studio Code was developed, but its
 maintenance could be a demanding task for the systems biology community.
 PySB, using Python's dynamic nature, created a \ac{DSL} within Python. By
@@ -344,8 +344,8 @@ systems into three Python packages: symbolite, to create symbolic
 expressions; poincaré, to define dynamical systems; and simbio, to
 define reaction systems and interface with systems biology standards
 such as \ac{SBML}. These are pure Python packages with standard dependencies
-from the PyData scientific stack such as NumPy (C. R. Harris et al.
-2020) and pandas (McKinney 2010). They are published in the \acf{PyPI}
+from the PyData scientific stack such as NumPy \cite{harrisArrayProgrammingNumPy2020}
+and pandas \cite{mckinneyDataStructuresStatistical2010}. They are published in the \acf{PyPI}
 , where links to the source code and documentation hosted
 in GitHub can be found, and can be easily installed with
 \texttt{pip\ install\ \textless{}package\_name\textgreater{}}.
@@ -353,9 +353,9 @@ in GitHub can be found, and can be easily installed with
 Symbolite is a lightweight symbolics package to create algebraic
 mathematical expressions. Symbolite expressions can be inspected and
 compiled to various backends. Currently, we have implementations for
-NumPy (C. R. Harris et al. 2020); Numba (Lam, Pitrou, and Seibert 2015),
-a \ac{JIT} compiler to LLVM; SymPy (Meurer et al. 2017), a
-library for symbolic mathematics; and JAX (Bradbury et al. 2018), a
+NumPy \cite{harrisArrayProgrammingNumPy2020}; Numba \cite{lamNumbaLLVMbasedPython2015},
+a \ac{JIT} compiler to LLVM; SymPy \cite{meurerSymPySymbolicComputing2017}, a
+library for symbolic mathematics; and JAX \cite{jax2018github}, a
 library that support automatic differentiation and compilation to \acp{GPU}
 and \acp{TPU}. Symbolite is designed to facilitate the easy integration of
 new backends.
@@ -397,8 +397,8 @@ Utilizing classes for system definition offers several advantages:
 
 \input{latex/figure4.tex}
 
-For this last point, \acp{IDE} that support \texttt{dataclass\_transform} (De
-Bonte and Traut 2021) can provide a tooltip with the expected signature
+For this last point, \acp{IDE} that support \texttt{dataclass\_transform} \cite{debontePEP681Data2021}
+can provide a tooltip with the expected signature
 (Figure~\ref{fig-ide}). This requires the use of type
 annotations, which play a more significant role in static type checking
 as they can help to identify errors before running the code. For
@@ -441,7 +441,7 @@ form without the intermediate species \(ES\), and it is also simple to
 implement your own as subclasses of \texttt{RateLaw} or
 \texttt{MassAction}. Additionally, SimBio supports importing from and
 exporting to \ac{SBML}, and downloading them directly from BioModels
-(Malik-Sheriff et al. 2020) (Figure~\ref{fig-simbio-io}).
+\cite{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
 
 \input{latex/figure5.tex}
 
@@ -452,7 +452,7 @@ performance}\label{reproducibility-and-performance}}
 \input{latex/figure6.tex}
 
 To evaluate SimBio's reproducibility, we analyzed curated \ac{SBML} models
-from BioModels (Malik-Sheriff et al. 2020). Among the first 100 curated
+from BioModels \cite{malik-sheriffBioModels15Years2020}. Among the first 100 curated
 models from BioModels we selected 60 that did not contains events, as
 SimBio doesn't support events yet. We simulated the selected models with
 COPASI and used the simulated results as ground truth, and demonstrated
@@ -520,97 +520,7 @@ Source code repositories for these packages can be found at
 \url{https://github.com/maurosilber/poincare} and
 \url{https://github.com/hgrecco/simbio}.
 
-\hypertarget{references}{%
-\section{References}\label{references}}
-
-\hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-jax2018github}{}}%
-Bradbury, James, Roy Frostig, Peter Hawkins, Matthew James Johnson,
-Chris Leary, Dougal Maclaurin, George Necula, et al. 2018. {``{JAX}:
-Composable Transformations of {Python}+{NumPy} Programs.''}
-
-\leavevmode\vadjust pre{\hypertarget{ref-choiTelluriumExtensiblePythonbased2018}{}}%
-Choi, Kiri, J Kyle Medley, Matthias König, Kaylene Stocking, Lucian
-Smith, Stanley Gu, and Herbert M Sauro. 2018. {``Tellurium: {An}
-Extensible Python-Based Modeling Environment for Systems and Synthetic
-Biology.''} \emph{Bio Systems} 171 (September): 74--79.
-\url{https://doi.org/10.1016/j.biosystems.2018.07.006}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-debontePEP681Data2021}{}}%
-De Bonte, Erik, and Eric Traut. 2021. {``{PEP} 681 {\textendash} {Data
-Class Transforms}.''} \emph{Python Enhancement Proposals}.
-https://peps.python.org/pep-0681/.
-
-\leavevmode\vadjust pre{\hypertarget{ref-harrisArrayProgrammingNumPy2020}{}}%
-Harris, Charles R., K. Jarrod Millman, Stéfan J. van der Walt, Ralf
-Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020.
-{``Array Programming with {NumPy}.''} \emph{Nature} 585 (7825): 357--62.
-\url{https://doi.org/10.1038/s41586-020-2649-2}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-harrisBioNetGenAdvancesRulebased2016}{}}%
-Harris, Leonard A, Justin S Hogg, José-Juan Tapia, John A P Sekar,
-Sanjana Gupta, Ilya Korsunsky, Arshi Arora, Dipak Barua, Robert P
-Sheehan, and James R Faeder. 2016. {``{BioNetGen} 2.2: Advances in
-Rule-Based Modeling.''} \emph{Bioinformatics (Oxford, England)} 32 (21):
-3366--68. \url{https://doi.org/10.1093/bioinformatics/btw469}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-hoopsCOPASICOmplexPAthway2006}{}}%
-Hoops, Stefan, Sven Sahle, Ralph Gauges, Christine Lee, Jürgen Pahle,
-Natalia Simus, Mudita Singhal, Liang Xu, Pedro Mendes, and Ursula
-Kummer. 2006. {``{COPASI}{\textemdash}a {COmplex PAthway SImulator}.''}
-\emph{Bioinformatics} 22 (24): 3067--74.
-\url{https://doi.org/10.1093/bioinformatics/btl485}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-huckaSBMLL3V2}{}}%
-Hucka, Michael, Frank Bergmann, Stefan Hoops, Sarah M Keating, Nicolas
-Le Novère, Chris J Myers, Brett G Olivier, et al. n.d. {``{SBML
-L3V2}.''}
-
-\leavevmode\vadjust pre{\hypertarget{ref-lamNumbaLLVMbasedPython2015}{}}%
-Lam, Siu Kwan, Antoine Pitrou, and Stanley Seibert. 2015. {``Numba: A
-{LLVM-based Python JIT} Compiler.''} In \emph{Proceedings of the {Second
-Workshop} on the {LLVM Compiler Infrastructure} in {HPC}}, 1--6. {LLVM}
-'15. {New York, NY, USA}: {Association for Computing Machinery}.
-\url{https://doi.org/10.1145/2833157.2833162}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lopezProgrammingBiologicalModels2013}{}}%
-Lopez, Carlos F, Jeremy L Muhlich, John A Bachman, and Peter K Sorger.
-2013. {``Programming Biological Models in {Python} Using {PySB}.''}
-\emph{Molecular Systems Biology} 9 (January): 646.
-\url{https://doi.org/10.1038/msb.2013.1}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-malik-sheriffBioModels15Years2020}{}}%
-Malik-Sheriff, Rahuman S, Mihai Glont, Tung V N Nguyen, Krishna Tiwari,
-Matthew G Roberts, Ashley Xavier, Manh T Vu, et al. 2020.
-{``{BioModels}{\textemdash}15 Years of Sharing Computational Models in
-Life Science.''} \emph{Nucleic Acids Research} 48 (D1): D407--15.
-\url{https://doi.org/10.1093/nar/gkz1055}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mckinneyDataStructuresStatistical2010}{}}%
-McKinney, Wes. 2010. {``Data {Structures} for {Statistical Computing} in
-{Python}.''} In \emph{Python in {Science Conference}}, 56--61. {Austin,
-Texas}. \url{https://doi.org/10.25080/Majora-92bf1922-00a}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-meurerSymPySymbolicComputing2017}{}}%
-Meurer, Aaron, Christopher P. Smith, Mateusz Paprocki, Ondřej Čertík,
-Sergey B. Kirpichev, Matthew Rocklin, AmiT Kumar, et al. 2017.
-{``{SymPy}: Symbolic Computing in {Python}.''} \emph{PeerJ Computer
-Science} 3 (January): e103. \url{https://doi.org/10.7717/peerj-cs.103}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-shaikhBioSimulatorsCentralRegistry2022}{}}%
-Shaikh, Bilal, Lucian P Smith, Dan Vasilescu, Gnaneswara Marupilla,
-Michael Wilson, Eran Agmon, Henry Agnew, et al. 2022.
-{``{BioSimulators}: A Central Registry of Simulation Engines and
-Services for Recommending Specific Tools.''} \emph{Nucleic Acids
-Research} 50 (W1): W108--14. \url{https://doi.org/10.1093/nar/gkac331}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-smithAntimonyModularModel2009}{}}%
-Smith, Lucian P., Frank T. Bergmann, Deepak Chandran, and Herbert M.
-Sauro. 2009. {``Antimony: A Modular Model Definition Language.''}
-\emph{Bioinformatics} 25 (18): 2452--54.
-\url{https://doi.org/10.1093/bioinformatics/btp401}.
-
-\end{CSLReferences}
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
 
 \end{document}
