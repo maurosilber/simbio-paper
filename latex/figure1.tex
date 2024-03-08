@@ -4,11 +4,11 @@
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Derivative}, \ClassTok{System}, \ClassTok{Variable}, \FunctionTok{initial}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
 }
 
@@ -22,13 +22,13 @@
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{class} \ClassTok{Decay}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
     \VariableTok{x}\OperatorTok{:} \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
     \VariableTok{eq} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
 }
 
@@ -74,14 +74,14 @@ x(0) = 1
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{class} \ClassTok{Oscillator}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
     \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
     \VariableTok{v}: \ClassTok{Derivative} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{(\VariableTok{initial}\OperatorTok{=}\ValueTok{0})}
     \VariableTok{eq} \OperatorTok{=} \VariableTok{v}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
 }
 
@@ -130,14 +130,14 @@ equation is specified for the derivative \texttt{v}.}
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{class} \ClassTok{BigModel}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}:
     \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
     \VariableTok{linked} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\VariableTok{x})}
     \VariableTok{independent} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\ValueTok{2})}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
 }
 

@@ -4,7 +4,7 @@
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{import} \ClassTok{numpy} \KeywordTok{as} \ClassTok{np}
 \KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Simulator}
@@ -12,7 +12,7 @@
 \VariableTok{sim} \OperatorTok{=} \ClassTok{Simulator}\KeywordTok{(\ClassTok{Oscillator})}
 \VariableTok{df} \OperatorTok{=} \VariableTok{sim}.\FunctionTok{solve}\KeywordTok{(}\VariableTok{save\_at}\OperatorTok{=}\ClassTok{np}.\FunctionTok{linspace}\KeywordTok{(}\ValueTok{0}, \ValueTok{5}, \ValueTok{101}\KeywordTok{))}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
 }
 
@@ -22,13 +22,13 @@
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \VariableTok{df}.\FunctionTok{head}\KeywordTok{()}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
-\begin{Shaded2}
+\begin{CodeOutput}
     \begin{longtable}[]{@{}lll@{}}
         \toprule\noalign{}
         & x & v \\
@@ -43,7 +43,7 @@
         0.15 & 0.988772 & -0.149440 \\
         0.20 & 0.980069 & -0.198672 \\
     \end{longtable}
-\end{Shaded2}
+\end{CodeOutput}
     
 }
 
@@ -53,17 +53,17 @@
 
 {\centering 
 
-\begin{Shaded}
+\begin{CodeInput}
 \begin{Highlighting}[]
 \VariableTok{df}.\FunctionTok{plot}\KeywordTok{()}\OperatorTok{;}
 \end{Highlighting}
-\end{Shaded}
+\end{CodeInput}
 
-\begin{Shaded2}
+\begin{CodeOutput}
     \begin{figure}[H]
         \includegraphics{article_files/figure-latex/cell-9-output-1.pdf}
     \end{figure}
-\end{Shaded2}
+\end{CodeOutput}
 
 }
 
