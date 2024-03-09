@@ -21,6 +21,6 @@ dependencies:
   - numbalsoda
   - pip
   - pip:
-    - simbio[io]>=0.3
+    - simbio[io]>=0.3.2
     - copasi-basico
     - tellurium

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, Sequence
 
 import numpy as np
 import scipy.integrate
@@ -19,9 +19,13 @@ class SimBio(Runner):
     rtol: float
     solver: type[LSODA] | type[CVODE]
     backend: Literal["numpy", "numba"]
+    ignore_namespaces: Sequence[str]
 
     def load_model(self, sbml: str):
-        self.runner = Simulator(loads(sbml), backend=self.backend)
+        self.runner = Simulator(
+            loads(sbml, ignore_namespaces=self.ignore_namespaces),
+            backend=self.backend,
+        )
         return self
 
     def run_model(self, *, stop: float, n_points: int):
