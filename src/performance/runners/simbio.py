@@ -19,7 +19,16 @@ class SimBio(Runner):
     rtol: float
     solver: type[LSODA] | type[CVODE]
     backend: Literal["numpy", "numba"]
-    ignore_namespaces: Sequence[str]
+    ignore_namespaces: Sequence[str] = (
+        "jd",
+        "jd2",
+        "celldesigner",
+        "html",
+        "math",
+        "sbml",
+        "rdf",
+        "jigcell",
+    )
 
     def load_model(self, sbml: str):
         self.runner = Simulator(
