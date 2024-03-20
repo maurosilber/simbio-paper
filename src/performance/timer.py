@@ -116,10 +116,10 @@ if __name__ == "__main__":
     models = pd.read_csv(path / "times.txt")
     for _, (model_num, log_time) in tqdm(models.iterrows(), total=len(models)):
         model_id = f"BIOMD{model_num}"
-        path = (output_path / model_id).with_suffix(".csv")
-        if path.exists():
+        model_path = (output_path / model_id).with_suffix(".csv")
+        if model_path.exists():
             continue
         result = pd.DataFrame(
             [run_model(model_id, 10.0**log_time, runner=runner) for _ in range(10)]
         )
-        result.to_csv(output_path)
+        result.to_csv(model_path)
