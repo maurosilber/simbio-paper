@@ -1,7 +1,6 @@
 name: simbio-paper
 channels:
   - conda-forge
-  - alubbock
 dependencies:
   - ipykernel
   - nbformat
@@ -12,7 +11,6 @@ dependencies:
   - seaborn
   - tabulate
   - numba
-  - pysb
   - tqdm
   - pytest
   - pydantic
