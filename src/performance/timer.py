@@ -113,7 +113,7 @@ if __name__ == "__main__":
     path = Path(__file__).parent
     output_path = path / "results" / "-".join(sys.argv[1:])
     output_path.mkdir(exist_ok=True, parents=True)
-    models = pd.read_csv(path / "times.txt", header=None)
+    models = pd.read_csv(path / "times.txt")
     for _, (model_num, log_time) in tqdm(models.iterrows(), total=len(models)):
         model_id = f"BIOMD{model_num}"
         path = (output_path / model_id).with_suffix(".csv")
