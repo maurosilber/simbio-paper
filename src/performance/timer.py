@@ -83,19 +83,19 @@ if __name__ == "__main__":
             from .runners.copasi import COPASI as runner
         case ["roadrunner"]:
             from .runners.roadrunner import Tellurium as runner
-        case ["simbio", "numpy", "lsoda"]:
+        case ["simbio-numpy-lsoda"]:
             from .runners.simbio import LSODA, SimBio
 
             runner = partial(SimBio, backend="numpy", solver=LSODA)
-        case ["simbio", "numpy", "cvode"]:
+        case ["simbio-numpy-cvode"]:
             from .runners.simbio import CVODE, SimBio
 
             runner = partial(SimBio, backend="numpy", solver=CVODE)
-        case ["simbio", "numba", "lsoda"]:
+        case ["simbio-numba-lsoda"]:
             from .runners.simbio import LSODA, SimBio
 
             runner = partial(SimBio, backend="numba", solver=LSODA)
-        case ["simbio", "numba", "numbalsoda"]:
+        case ["simbio-numba-numbalsoda"]:
             from .runners.simbio import LSODA, SimBio
 
             runner = partial(
@@ -103,7 +103,7 @@ if __name__ == "__main__":
                 backend="numba",
                 solver=partial(LSODA, implementation="numbalsoda"),
             )
-        case ["simbio", "numba", "cvode"]:
+        case ["simbio-numba-cvode"]:
             from .runners.simbio import CVODE, SimBio
 
             runner = partial(SimBio, backend="numba", solver=CVODE)
@@ -111,7 +111,7 @@ if __name__ == "__main__":
             raise ValueError(sys.argv[1:])
 
     path = Path(__file__).parent
-    output_path = path / "results" / "-".join(sys.argv[1:])
+    output_path = path / "results" / sys.argv[1]
     output_path.mkdir(exist_ok=True, parents=True)
     models = pd.read_csv(path / "times.txt")
     for _, (model_num, log_time) in tqdm(models.iterrows(), total=len(models)):
