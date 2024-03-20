@@ -4,11 +4,7 @@ from dataclasses import dataclass
 from time import perf_counter
 from typing import Protocol
 
-import pandas as pd
 from biomodels import get_omex
-from tqdm import tqdm
-
-tqdm.pandas()
 
 
 class Runner(Protocol):
@@ -31,7 +27,6 @@ def time(
     runner: Runner,
     model: Model,
     n_points: list[int],
-    n_runs: int,
 ) -> dict[str, float]:
     time_start = perf_counter()
     runner.load_model(model.sbml)
@@ -46,10 +41,9 @@ def time(
 
     for n in n_points:
         start = perf_counter()
-        for _ in range(n_runs):
-            runner.run_model(stop=model.stop, n_points=n)
+        runner.run_model(stop=model.stop, n_points=n)
         stop = perf_counter()
-        output[str(n)] = (stop - start) / n_runs
+        output[str(n)] = stop - start
     return output
 
 
@@ -64,7 +58,6 @@ def run_model(model_id: str, t_end: float, *, runner: type[Runner]):
             runner=runner(atol=1e-9, rtol=1e-6),
             model=model,
             n_points=[10, 30, 100, 300, 1000, 3000],
-            n_runs=100,
         )
 
     except Exception:
@@ -81,6 +74,9 @@ if __name__ == "__main__":
     import sys
     from functools import partial
     from pathlib import Path
+
+    import pandas as pd
+    from tqdm import tqdm
 
     match sys.argv[1:]:
         case ["copasi"]:
@@ -114,15 +110,16 @@ if __name__ == "__main__":
         case _:
             raise ValueError(sys.argv[1:])
 
-    output = "-".join(sys.argv[1:])
-
     path = Path(__file__).parent
-
-    models = pd.read_csv(path / "models.txt")
-    results: pd.DataFrame = models.progress_apply(
-        lambda x: pd.Series(run_model(**x, runner=runner)),
-        axis="columns",
-    )
-    results_dir = path / "results"
-    results_dir.mkdir(exist_ok=True)
-    results.to_csv(results_dir / f"{output}.csv", index=False)
+    output_path = path / "results" / "-".join(sys.argv[1:])
+    output_path.mkdir(exist_ok=True, parents=True)
+    models = pd.read_csv(path / "times.txt", header=None)
+    for _, (model_num, log_time) in tqdm(models.iterrows(), total=len(models)):
+        model_id = f"BIOMD{model_num}"
+        path = (output_path / model_id).with_suffix(".csv")
+        if path.exists():
+            continue
+        result = pd.DataFrame(
+            [run_model(model_id, 10.0**log_time, runner=runner) for _ in range(10)]
+        )
+        result.to_csv(output_path)
