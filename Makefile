@@ -15,5 +15,7 @@ article.html: article.qmd \
 $(ROOT)/performance/figures/performance.png: $(RESULTS)
 	python -m performance.plot save
 
+results: $(RESULTS)
+
 $(RESULTS): $(ROOT)/performance/models.txt
 	python -m performance.timer $(notdir $@)
