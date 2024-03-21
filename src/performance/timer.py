@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from time import perf_counter
 from typing import Protocol
@@ -31,8 +32,12 @@ def time(
     time_start = perf_counter()
     runner.load_model(model.sbml)
     time_loaded = perf_counter()
-    runner.run_model(stop=model.stop, n_points=n_points[0])
-    time_first_run = perf_counter()
+    try:
+        runner.run_model(stop=model.stop, n_points=n_points[0])
+    except Exception:
+        time_first_run = math.nan
+    else:
+        time_first_run = perf_counter()
 
     output = {
         "load": time_loaded - time_start,
@@ -41,8 +46,12 @@ def time(
 
     for n in n_points:
         start = perf_counter()
-        runner.run_model(stop=model.stop, n_points=n)
-        stop = perf_counter()
+        try:
+            runner.run_model(stop=model.stop, n_points=n)
+        except Exception:
+            stop = math.nan
+        else:
+            stop = perf_counter()
         output[str(n)] = stop - start
     return output
 
