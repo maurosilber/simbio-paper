@@ -221,15 +221,19 @@ and pandas \cite{mckinneyDataStructuresStatistical2010}. They are published in t
 in GitHub can be found, and can be easily installed with
 \texttt{pip\ install\ \textless{}package\_name\textgreater{}}.
 
-Symbolite is a lightweight symbolics package to create algebraic
-mathematical expressions. Symbolite expressions can be inspected and
-compiled to various backends. Currently, we have implementations for
-NumPy \cite{harrisArrayProgrammingNumPy2020}; Numba \cite{lamNumbaLLVMbasedPython2015},
-a \ac{JIT} compiler to LLVM; SymPy \cite{meurerSymPySymbolicComputing2017}, a
-library for symbolic mathematics; and JAX \cite{jax2018github}, a
-library that support automatic differentiation and compilation to \acp{GPU}
-and \acp{TPU}. Symbolite is designed to facilitate the easy integration of
-new backends.
+Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
+Unlike SymPy \cite{meurerSymPySymbolicComputing2017},
+a widely-used Python library for symbolic mathematics,
+it only provides the building of an expression tree
+which can be inspected and compiled to various backends.
+Symbolite is designed to facilitate the integration of new backends.
+Currently, we have implementations for
+NumPy \cite{harrisArrayProgrammingNumPy2020};
+Numba \cite{lamNumbaLLVMbasedPython2015},
+a \ac{JIT} compiler to LLVM;
+SymPy \cite{meurerSymPySymbolicComputing2017};
+and JAX \cite{jax2018github}, a
+library that support automatic differentiation and compilation to \acp{GPU} and \acp{TPU}.
 
 \hypertarget{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}{%
 \subsection{Versatile modelling and simulation of dynamical systems with
