@@ -209,17 +209,17 @@ which necessitate the simulation of significantly large-scale models.
 
 \input{latex/figure2.tex}
 
-Modular code architecture makes code reusable, extensible, and easier to
-maintain. Therefore, we split the code to define and simulate reaction
-systems into three Python packages: symbolite, to create symbolic
-expressions; poincaré, to define dynamical systems; and simbio, to
-define reaction systems and interface with systems biology standards
-such as \ac{SBML}. These are pure Python packages with standard dependencies
-from the PyData scientific stack such as NumPy \cite{harrisArrayProgrammingNumPy2020}
-and pandas \cite{mckinneyDataStructuresStatistical2010}. They are published in the \acf{PyPI}
-, where links to the source code and documentation hosted
-in GitHub can be found, and can be easily installed with
-\texttt{pip\ install\ \textless{}package\_name\textgreater{}}.
+Modular code architecture makes code reusable, extensible, and easier to maintain.
+Therefore, we split the code into three Python packages:
+symbolite, to create symbolic expressions;
+poincaré, to define dynamical systems;
+and simbio, to define \acp{CRN} and interface with systems biology standards such as \ac{SBML}.
+These are pure Python packages with standard dependencies from the PyData scientific stack
+such as NumPy \cite{harrisArrayProgrammingNumPy2020} and pandas \cite{mckinneyDataStructuresStatistical2010}.
+They are published in the \acf{PyPI},
+where links to the source code and documentation hosted in GitHub can be found,
+and can be easily installed with \texttt{pip\ install\ simbio},
+which installs symbolite and poincare as dependencies.
 
 Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
 Unlike SymPy \cite{meurerSymPySymbolicComputing2017},
