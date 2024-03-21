@@ -365,33 +365,30 @@ other methods, which is also true for the other models we tested
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-In this article, we introduced a suite of Python packages we developed
-for defining and simulating dynamical systems and reaction networks.
-These packages are deeply integrated with
-\acp{IDE}, enabling code analysis tools to identify errors
-prior to execution and assist in refactoring and code completion. We
-adopted standard modern Python syntax to ensure seamless IDE
-integration, supported by the extensive Python community.
+In this article,
+we introduced a suite of Python packages we developed
+for defining and simulating dynamical systems and \acp{CRN}.
+These packages are deeply integrated with \acp{IDE},
+enabling code analysis tools to identify errors prior to execution
+and assist in refactoring and code completion.
+We adopted standard modern Python syntax to ensure seamless IDE integration,
+supported by the extensive Python community.
 
 Our approach differs from previous tools in that both the model
-definition and its compilation into an
-\ac{ODE} function are entirely Python-based. This approach simplifies the
-development of various simulation methods, including performance
-enhancements that exploit specific model structures. Importantly, being
-Python-based does not compromise performance compared to C/C++ tools, as
-the \ac{ODE} functions can be \ac{JIT} compiled using Numba.
+definition and its compilation into an \ac{ODE} function are entirely Python-based.
+This approach simplifies the development of various simulation methods,
+including performance enhancements that exploit specific model structures.
+Importantly, being Python-based does not compromise performance compared to C/C++ tools,
+as the \ac{RHS} functions can be \ac{JIT} compiled using Numba.
 
-The inclusion of \ac{SBML} support facilitates the effortless reuse of models
-created by the systems biology community, along with the vast collection
-of public models hosted in the BioModels repository. The modular
-architecture of these packages facilitates their reuse, enhancement, and
-extension by the wider Python community. For instance, an individual
-from outside the systems biology field could contribute a stochastic
-integrator to poincaré, which would then be available in SimBio. This
-clear separation of concerns also makes the packages more
-comprehensible, lowering the barrier for contributing improvements or
-new features. Such an architecture ensures their maintainability and
-ongoing development well into the future.
+The inclusion of \ac{SBML} support facilitates the effortless reuse of models created by the systems biology community,
+along with the vast collection of public models hosted in the BioModels repository.
+The modular architecture of these packages facilitates their reuse, enhancement, and extension by the wider Python community.
+For instance, an individual from outside the systems biology field could contribute a stochastic integrator to poincaré,
+which would then be available in SimBio.
+This clear separation of concerns also makes the packages more comprehensible,
+lowering the barrier for contributing improvements or new features.
+Such an architecture ensures their maintainability and ongoing development well into the future.
 
 \hypertarget{resources}{%
 \section{Resources}\label{resources}}
