@@ -328,36 +328,40 @@ performance}\label{reproducibility-and-performance}}
 
 \input{latex/figure6.tex}
 
-To evaluate SimBio's reproducibility, we analyzed curated \ac{SBML} models
-from BioModels \cite{malik-sheriffBioModels15Years2020}. Among the first 100 curated
-models from BioModels we selected 60 that did not contains events, as
-SimBio doesn't support events yet. We simulated the selected models with
-COPASI and used the simulated results as ground truth, and demonstrated
-that SimBio reproduces the results with minor numerical differences
-depending on the solver tolerance.
+To evaluate SimBio's reproducibility,
+we used the \ac{SBML} test suite \cite{SBMLTestSuite},
+which provides a set of \ac{SBML} models
+and the expected result of a simulation.
+Excluding models that use not yet supported \ac{SBML} feature,
+every simulation returned correct results within the solver tolerances.
 
-For performance testing, we ran simulations using COPASI,
-Tellurium/RoadRunner, and SimBio. Within SimBio, both NumPy and Numba
-backends were considered. The LSODA solver was used for COPASI and
-SimBio, while for Tellurium the comparable CVODE solver was used. In all
-cases, we used relative and absolute tolerances of \(10^{-6}\). We
-measured three simulation stages: loading, the initial (cold) run, and
-subsequent (warm) runs for each model.
+To evaluate SimBio's performance,
+we used curated \ac{SBML} models from BioModels \cite{malik-sheriffBioModels15Years2020}.
+Among the first 250 curated models,
+we considered the 117 that used supported \ac{SBML} features.
+We ran simulations using COPASI, Tellurium/RoadRunner, and SimBio.
+Within SimBio, both NumPy and Numba
+backends were considered.
+The LSODA solver was used for COPASI and SimBio,
+while for Tellurium the comparable CVODE solver was used.
+In all cases, we used relative and absolute tolerances of \(10^{-6}\).
+We measured three simulation stages:
+loading, the initial (cold) run, and subsequent (warm) runs for each model.
 
-For COPASI and Tellurium/RoadRunner, we noted that its runtime depended
-on the number of evaluation points, something that does not seem to
-happen with SimBio (Figure~\ref{fig-runtime}, left). While SimBio's
-NumPy backend is slower than both COPASI and RoadRunner, we obtained an
-order of magnitude speed-up using the numba backend putting it on par
-with them. A user might have to consider the trade-off between
-compilation and run times, as the compilation of the
-\ac{RHS} code might take longer than the runtime itself, and not be worth
-it for running the model only once. Another speed-up in the runtime can
-be had by switching the LSODA \texttt{scipy} solver for a more efficient
-\texttt{numbalsoda} implementation that avoids the Python interpreter
-between each of the integration steps. This last combination beats all
-other methods, which is also true for the other models we tested
-(Figure~\ref{fig-runtime}, right).
+For COPASI and Tellurium/RoadRunner,
+we noted that its runtime depended on the number of evaluation points,
+something that does not seem to happen with SimBio (Figure~\ref{fig-runtime}, left).
+While SimBio's NumPy backend is slower than both COPASI and RoadRunner,
+we obtained an order of magnitude speed-up using the numba backend
+putting it on par with them.
+A user might have to consider the trade-off between compilation and run times,
+as the compilation of the \ac{RHS} code might take longer than the runtime itself,
+and not be worth it for running the model only once.
+Another speed-up in the runtime can be had by switching the LSODA \texttt{scipy} solver
+for a more efficient \texttt{numbalsoda} implementation that avoids the Python interpreter
+between each of the integration steps.
+This last combination beats all other methods,
+which is also true for the other models we tested (Figure~\ref{fig-runtime}, right).
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
