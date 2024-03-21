@@ -312,14 +312,13 @@ Additionally, SimBio features \texttt{MassAction},
 a subclass of \texttt{RateLaw},
 that intuitively incorporates reactants and their stoichiometry into the rate law (Figure~\ref{fig-simbio}).
 
-Several commonly used reactions are predefined as \texttt{MassAction}
-subclasses, such as \texttt{MichaelisMenten}
-(\(S + E \leftrightarrow ES \rightarrow P + E\)) and its approximate
-form without the intermediate species \(ES\), and it is also simple to
-implement your own as subclasses of \texttt{RateLaw} or
-\texttt{MassAction}. Additionally, SimBio supports importing from and
-exporting to \ac{SBML}, and downloading them directly from BioModels
-\cite{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
+Several commonly used reactions are predefined as \texttt{MassAction} subclasses,
+such as \texttt{MichaelisMenten} (\(S + E \leftrightarrow ES \rightarrow P + E\))
+and its approximate form without the intermediate species \(ES\),
+and it is also simple to implement used-defined ones
+as subclasses of \texttt{RateLaw} or \texttt{MassAction}.
+Additionally, SimBio supports importing models from \ac{SBML},
+and downloading them directly from BioModels \cite{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
 
 \input{latex/figure5.tex}
 
