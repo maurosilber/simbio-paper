@@ -304,15 +304,13 @@ however incurs in a compile time penalty for the first run that must be taken in
 \subsection{Extensible definition of reaction networks using
 SimBio}\label{extensible-definition-of-reaction-networks-using-simbio}}
 
-For the reaction networks, our focus is on first-order differential
-equations that describe the rate of change of species. SimBio simplifies
-the definition of these network models by introducing \texttt{Species},
-which consists of a \texttt{poincare.Variable} and a stoichiometric
-number, and \texttt{RateLaw}, a construct that converts reactants into
-products taking into account the stoichiometry
-(Figure~\ref{fig-simbio}). Additionally, SimBio features
-\texttt{MassAction}, a subclass of \texttt{RateLaw}, that intuitively
-incorporates reactants into the rate law (Figure~\ref{fig-simbio}).
+For the \acp{CRN},
+our focus is on first-order differential equations that describe the rate of change of species.
+SimBio simplifies the definition of these network models by introducing \texttt{Species},
+and \texttt{RateLaw}, a construct that converts reactant species into product species taking into account the stoichiometry (Figure~\ref{fig-simbio}).
+Additionally, SimBio features \texttt{MassAction},
+a subclass of \texttt{RateLaw},
+that intuitively incorporates reactants and their stoichiometry into the rate law (Figure~\ref{fig-simbio}).
 
 Several commonly used reactions are predefined as \texttt{MassAction}
 subclasses, such as \texttt{MichaelisMenten}
