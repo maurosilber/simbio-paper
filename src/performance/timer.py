@@ -120,6 +120,6 @@ if __name__ == "__main__":
         if model_path.exists():
             continue
         result = pd.DataFrame(
-            [run_model(model_id, 10.0**log_time, runner=runner) for _ in range(10)]
+            [run_model(model_id, 10.0**log_time, runner=runner) for _ in range(20)]
         )
         result.to_csv(model_path)
