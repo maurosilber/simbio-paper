@@ -112,88 +112,97 @@ modelling community.
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\Acp{CRN} are a fundamental concept of modelling
-in numerous fields including systems biology, biochemistry, chemical
-engineering and epidemiology. They are comprised of a set of chemical
-species or biological entities
-and a set of reactions that mediate transformations between them. These
-systems can be modelled and simulated through multiple approaches:
-deterministic \acp{ODE} to model
-macroscopic behavior, \acp{SDE} to model
-microscopic fluctuations, and jump processes (Gillespie-like
-simulations) to account for the discreteness of populations. Instead of
-directly writing the equations for each of these formulations, which is
-error-prone and difficult to reuse, these models can be written in a
-higher-level description that can be compiled for these different types
-of simulations.
+\Acp{CRN} are a fundamental concept of modelling in numerous fields
+including systems biology, biochemistry, chemical engineering and epidemiology.
+They are comprised of a set of chemical species or biological entities
+and a set of reactions that mediate transformations between them.
+These systems can be simulated through multiple approaches:
+deterministic \acp{ODE} to model macroscopic behavior,
+\acp{SDE} to model microscopic fluctuations,
+and jump processes (Gillespie-like simulations) to account for the discreteness of populations.
+Instead of directly writing the equations for each of these formulations,
+which is error-prone and difficult to reuse,
+these models can be \emph{defined} in a higher-level description
+that can be \emph{translated} into equations for the different types of simulations
+and, then, \emph{solved} numerically.
 
-Several tools already exist for defining and simulating \acp{CRN}.
-BioSimulators.org \cite{shaikhBioSimulatorsCentralRegistry2022}, a registry of simulation tools,
-list at least 15 Python software including COPASI \cite{hoopsCOPASICOmplexPAthway2006},
-Tellurium \cite{choiTelluriumExtensiblePythonbased2018} and PySB \cite{lopezProgrammingBiologicalModels2013}. COPASI is a
-standalone software with a \ac{GUI} for defining and simulating models. It's
-widely used for its user-friendly interface and comprehensive features.
-There are also python bindings and interfaces for COPASI to allow
-advanced scripting. Tellurium is a Python-based modeling environment,
-however, it uses a C++ library called libRoadRunner in the backend to
-simulate models. PySB is a Python library that created a \ac{DSL} using
-standard Python to define models, which are then compiled to \acp{ODE} using a
-Perl library called BioNetGen \cite{harrisBioNetGenAdvancesRulebased2016}.
+Several tools already exist to \emph{define}, \emph{translate} and \emph{solve} \acp{CRN}.
+BioSimulators.org \cite{shaikhBioSimulatorsCentralRegistry2022},
+a registry of simulation tools,
+lists at least 15 Python software including
+COPASI \cite{hoopsCOPASICOmplexPAthway2006},
+Tellurium \cite{choiTelluriumExtensiblePythonbased2018} and
+PySB \cite{lopezProgrammingBiologicalModels2013}.
+COPASI is a standalone software with a \ac{GUI}
+that is widely used for its user-friendly interface and comprehensive features.
+It also includes Python bindings \cite{bergmannBASICOSimplifiedPython2023b} that allow advanced scripting.
+Tellurium is a Python-based modeling environment
+that uses a C++ library called libRoadRunner in the backend to translate and solve models.
+PySB is a Python library that created a \ac{DSL} using standard Python to define models,
+which are then translated to \acp{ODE} using a Perl library called BioNetGen \cite{harrisBioNetGenAdvancesRulebased2016}.
 
-One limitation of these tools is that they are not extensible from
-Python, as they are not fully Python packages but wrap libraries in
-other languages to do the simulation. While they enable model definition
-and simulation control via Python scripts, they don't fully leverage
-Python's extensive package ecosystem. For example, in COPASI, users are
-restricted to predefined distributions for Random Parameter Scans and
-cannot utilize the diverse distributions available in
-\texttt{scipy.stats}. Similarly, Tellurium doesn't allow the use of
-Python solvers, as adding new integrators requires C++ implementation.
+One limitation of these tools is their extensibility from Python.
+As they wrap libraries in other languages for defining, translating and/or solving models,
+these steps cannot be altered or easily inspected from Python.
+While they enable model definition and running simulations via Python scripts,
+they cannot fully leverage Python's extensive package ecosystem.
+For example,
+COPASI and Tellurium do not allow the use of solvers defined in other Python packages,
+and adding new integrators requires working with C++.
+In particular, the step that translates into equations is not exposed by any of these tools.
+As such, it is not possible to apply custom optimizations to the equations
+or use automatic differentation packages such as JAX \cite{jax2018github} to compute the model's jacobian.
 
 \input{latex/figure1.tex}
 
-Another challenge is the way models are written. Many tools use a \ac{DSL} for coding, and support the
-\ac{SBML} as an exchange format \cite{huckaSBMLL3V2}, as
-direct \ac{SBML} coding is impractical. A \ac{DSL} allows reuse of code in
-different programming environments, but it will not be recognized by
-default in \acp{IDE}. Therefore \acp{DSL}
-cannot provide the development experience such as syntax highlighting,
-code completion, refactoring, and static analysis, unless such support
-is specifically developed. Tellurium uses a
-\ac{DSL} called Antimony \cite{smithAntimonyModularModel2009}, which can be translated to
-\ac{SBML}. An extension for Visual Studio Code was developed, but its
-maintenance could be a demanding task for the systems biology community.
-PySB, using Python's dynamic nature, created a \ac{DSL} within Python. By
-default, it uses global state to create species and parameters, without
-assigning them to Python variables or adding them explicitly to the
-model, but this approach is not fully compatible with \acp{IDE}, affecting
-the development experience.
+Another challenge is the way models are defined.
+Many tools support the \ac{SBML} \cite{huckaSBMLL3V2} as an exchange format,
+a \emph{de facto} standard for \acp{CRN} that defines species, parameters and reactions between species.
+As writing \ac{SBML} directly is impractical,
+Tellurium uses a \ac{DSL} called Antimony \cite{smithAntimonyModularModel2009} for defining models.
+\Acp{DSL} allows to reuse the same code in different programming environments,
+but are not recognized by default in \acp{IDE}
+and, therefore, they cannot provide syntax highlighting, code completion, refactoring, and static analysis.
+For Antimony, an extension providing this capabilities was developed for Visual Studio Code,
+but its maintenance could be a demanding task for the systems biology community.
+In the case of PySB,
+using Python's dynamic nature,
+it developers designed a \ac{DSL} within Python.
+By default, it uses the global scope to create species and parameters,
+without explicitly assigning them to Python variables or to the model,
+but this approach is not fully compatible with \acp{IDE},
+affecting the development experience.
 
-To overcome these limitations, we developed poincaré and SimBio,
-open-source Python packages for defining and simulating systems.
-Poincaré allows one to define differential equation systems, while SimBio
-builds on it for defining reaction networks. They are focused on
-providing an ergonomic experience to end-users by integrating well with
-\acp{IDE} and static analysis tools through the use of standard modern Python
-syntax. Since they are coded in Python, every part from model definition
-to simulation can be extended from Python syntax. Being the first-ever
-pure Python packages for systems modelling, they offer extensive
-extensibility, from simple tasks like reusing integrators defined in
-other packages, to complex ones like altering the compilation process to
-leverage some structure in the equations. For example, using a for-loop
-in the compiled equations could improve the runtime performance if there
-is some repetitive structure in the system, as happens in spatial
-modelling. The models built using these packages can be introspected to
-create other representations, such as graphs connecting species and/or
-reactions, or tables with parameters or equations. Furthermore, they
-have a modular architecture with a clear separation of concerns, making
-it easier to maintain or to contribute new code, which is beneficial for
-developers and maintainers. We showcased the reliability of these tools
-by benchmarking them against the simulation results from other tools. We
-also highlighted the substantial performance improvements our tools
-offer, as this is crucial for construction and simulation of models of
-whole cells and organisms, which necessitate the simulation of
-significantly large-scale models.
+To overcome these limitations,
+we developed poincaré and SimBio,
+open-source Python packages for defining, translating and solving systems.
+Poincaré allows one to define differential equation systems
+using variables, parameters and constants,
+and assiging rate equations to variables.
+For defining \acp{CRN},
+SimBio builds on top of poincaré providing species and reactions that keep track of stoichiometries.
+Both are focused on providing an ergonomic experience to end-users
+by integrating well with \acp{IDE} and static analysis tools
+through the use of standard modern Python syntax.
+Moreover, since they are coded in pure Python,
+each step from model definition, translation to equations or solving
+can be extended or debugged from Python.
+Being the first-ever pure Python packages for systems modelling,
+they offer extensive extensibility,
+from simple tasks like reusing integrators defined in other packages,
+to complex ones like altering the compilation process to leverage some structure in the equations.
+For example, using a for-loop in the compiled equations could improve the runtime performance
+if there is some repetitive structure in the system,
+as happens in spatial modelling.
+The models built using these packages can be introspected to create other representations,
+such as graphs connecting species and/or reactions, or tables with parameters or equations.
+Furthermore, they have a modular architecture with a clear separation of concerns,
+making it easier to maintain or to contribute new code,
+which is beneficial for developers and maintainers.
+We showcased the reliability of these tools by benchmarking them against the simulation results from other tools.
+We also highlighted the substantial performance improvements our tools offer,
+as this is crucial for construction and simulation of models of whole cells and organisms,
+which necessitate the simulation of significantly large-scale models.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
