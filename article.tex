@@ -168,7 +168,8 @@ but its maintenance could be a demanding task for the systems biology community.
 In the case of PySB,
 using Python's dynamic nature,
 it developers designed a \ac{DSL} within Python.
-By default, it uses the global scope to create species and parameters,
+To save keystrokes,
+it uses the global scope to create species and parameters,
 without explicitly assigning them to Python variables or to the model,
 but this approach is not fully compatible with \acp{IDE},
 affecting the development experience.
@@ -241,59 +242,63 @@ Poincaré}\label{versatile-modelling-and-simulation-of-dynamical-systems-with-po
 
 \input{latex/figure3.tex}
 
-Poincare is a package to define and simulate dynamical systems. It
-provides a \texttt{System} class, where one can define
-\texttt{Constant}s, \texttt{Parameter}s, \texttt{Variable}s, and create
-equations linking a variable's derivative with an expression
-(Figure~\ref{fig-first-order}). It also allows to define higher-order
-systems by assigning an initial condition to a \texttt{Derivative}
-(Figure~\ref{fig-second-order}).
+Poincare is a package to define and simulate dynamical systems.
+It provides a \texttt{System} class,
+where one can define
+\texttt{Constant}s; which can be numbers or refer to other constants;
+\texttt{Parameter}s, which can be numbers or time-dependent expressions;
+\texttt{Variable}s, which represent the state of the system and must be provided with an initial condition;
+and create equations linking a variable's derivative with an expression (Figure~\ref{fig-first-order}).
+It also allows to define higher-order systems
+by assigning an initial condition to a \texttt{Derivative} (Figure~\ref{fig-second-order}).
 
-Utilizing classes for system definition offers several advantages:
+Within the constraints imposed by Python's current typing and static analyzers,
+we define models utilizing Python classes
+such that we can benefit from \acp{IDE}' autocomplete and refactoring capabilities.
+This design offer several advantages:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  The variable name to which a component is assigned can be
-  automatically saved in the component for introspection (i.e.,
-  \texttt{Oscillator.x.name\ ==\ "x"}),
+  The variable name to which a component is assigned can be automatically saved in the component for introspection
+  (i.e., \texttt{Oscillator.x.name\ ==\ "x"}),
 \item
-  It provides a namespace that allows to easily define multiple
-  independent models in the same script,
+  It provides a namespace that allows to easily define multiple independent models in the same script,
 \item
   It allows \acp{IDE} to provide autocomplete and refactoring capabilities
-  (\texttt{Oscillator.\textless{}TAB\textgreater{}} shows \texttt{x},
-  \texttt{v} and \texttt{eq}),
+  (\texttt{Oscillator.\textless{}TAB\textgreater{}} shows \texttt{x}, \texttt{v} and \texttt{eq}),
 \item
-  It allows creation of instances that can be composed into a bigger
-  model (Figure~\ref{fig-composition}).
+  It allows creation of instances that can be composed into a bigger model (Figure~\ref{fig-composition}).
 \end{enumerate}
 
 \input{latex/figure4.tex}
 
-For this last point, \acp{IDE} that support \texttt{dataclass\_transform} \cite{debontePEP681Data2021}
-can provide a tooltip with the expected signature
-(Figure~\ref{fig-ide}). This requires the use of type
-annotations, which play a more significant role in static type checking
-as they can help to identify errors before running the code. For
-instance, to parameterize the initial conditions of variables we have to
-use a \texttt{Constant}. If we try to use a \texttt{Parameter}, which
-could be a time-dependent expression, it is flagged as a type error
-(Figure~\ref{fig-ide}).
+For this last point,
+\acp{IDE} that support \texttt{dataclass\_transform} \cite{debontePEP681Data2021}
+can provide a tooltip with the expected signature (Figure~\ref{fig-ide}).
+This requires the use of type annotations,
+which play a more significant role in static type checking
+as they can help to identify errors before running the code.
+For instance, to parameterize the initial conditions of variables
+we have to use a \texttt{Constant}.
+If we try to use a \texttt{Parameter},
+which could be a time-dependent expression,
+it is flagged as a type error (Figure~\ref{fig-ide}).
 
-To simulate a system, we created a \texttt{Simulator} instance
-(Figure~\ref{fig-sim}) that compiles the \ac{RHS} of a given system and interfaces
-with \ac{ODE} solvers. By default, it creates a first-order
-\ac{ODE} system using \texttt{numpy} as a backend. This can be
-easily switched to other solvers. The Simulator wraps the output in a
-\texttt{pandas.DataFrame}, which can be easily plotted with the standard
-\texttt{plot} method.
+To simulate a system,
+we created a \texttt{Simulator} instance (Figure~\ref{fig-sim})
+that translates the model into the \ac{RHS} equations
+and interfaces with \ac{ODE} solvers.
+By default,
+it creates a first-order \ac{ODE} system using \texttt{numpy} as a backend,
+and uses the LSODA solver from \texttt{scipy}.
+This can be easily switched to other solvers.
+The Simulator wraps the output in a \texttt{pandas.DataFrame},
+which can be easily plotted with the standard \texttt{plot} method.
 
-Switching backends to \texttt{"numba"} can improve model runtime by a
-factor up to x30 or more for big or long running models, however incurs
-in a compile time penalty for the first run that must be taken into
-account.
+Switching backends to \texttt{numba} can improve model runtime by a factor up to x30 or more for big or long running models,
+however incurs in a compile time penalty for the first run that must be taken into account.
 
 \hypertarget{extensible-definition-of-reaction-networks-using-simbio}{%
 \subsection{Extensible definition of reaction networks using
