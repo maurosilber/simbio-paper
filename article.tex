@@ -324,33 +324,36 @@ To evaluate SimBio's performance,
 we selected \ac{SBML} models from the curated section of BioModels \cite{malik-sheriffBioModels15Years2020}.
 Among the first 250 models,
 we considered the 117 that used supported \ac{SBML} features.
-We ran simulations using
-COPASI (with BasiCO) with the LSODA solver,
-RoadRunner (with Tellurium) with the comparable CVODE solver, and
-SimBio with the LSODA solver.
+We ran simulations
+on a Intel Xeon CPU E5-2620 v4
+using
+COPASI v4.42.284
+(with BasiCO v0.64) with the LSODA solver,
+RoadRunner v2.5.0 (with Tellurium v2.2.10) with the comparable CVODE solver, and
+SimBio v0.3.2 with the LSODA solver.
 For SimBio, we considered three variants:
-NumPy backend and scipy's LSODA solver,
-Numba backend and scipy's LSODA solver,
+NumPy (v1.26.4) backend and scipy (v1.12)'s LSODA solver,
+Numba (v0.59.0) backend and scipy's LSODA solver,
 Numba backend and numbalsoda's LSODA solver.
-In all cases, we used a relative tolerance of \(10^{-9}\) and absolute tolerances of \(10^{-9}\).
+In all cases, we used a relative tolerance of \(10^{-6}\) and absolute tolerances of \(10^{-9}\).
 We measured two simulation stages:
 an initial cold run that includes the reading of the \ac{SBML} model
 and subsequent warm runs.
 
 For COPASI and Tellurium,
-we noted that its runtime depended on the number of evaluation points,
-something that does not seem to happen with SimBio (Figure~\ref{fig-runtime}, left).
-While SimBio's NumPy backend is slower than both COPASI and RoadRunner,
-we obtained an order of magnitude speed-up using the numba backend
-putting it on par with them.
+we noted that its runtime depended on the number of intermediate evaluation points (Figure~\ref{fig-runtime}, left).
+For SimBio,
+its NumPy backend can be orders of magnitude slower than both COPASI and RoadRunner  (Figure~\ref{fig-runtime}, right).
+Nevertheless, switching to the numba backend,
+which \ac{JIT} compiles the \ac{RHS} equations,
+puts it on par with them.
+Another speed-up in the runtime can be had by switching the LSODA \texttt{scipy} solver
+for a more efficient \texttt{numbalsoda} implementation that avoids calling into the Python interpreter
+between each of the integration steps.
 A user might have to consider the trade-off between compilation and run times,
 as the compilation of the \ac{RHS} code might take longer than the runtime itself,
 and not be worth it for running the model only once.
-Another speed-up in the runtime can be had by switching the LSODA \texttt{scipy} solver
-for a more efficient \texttt{numbalsoda} implementation that avoids the Python interpreter
-between each of the integration steps.
-This last combination beats all other methods,
-which is also true for the other models we tested (Figure~\ref{fig-runtime}, right).
+
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
