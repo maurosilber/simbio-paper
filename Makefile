@@ -19,3 +19,6 @@ results: $(RESULTS)
 
 $(RESULTS): $(ROOT)/performance/models.txt
 	python -m performance.timer $(notdir $@)
+
+article.zip: article.tex bibliography.bib src/ide/* src/performance/figures/* latex/*
+	zip article.zip $^
