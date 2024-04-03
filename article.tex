@@ -62,7 +62,7 @@
 \acrodef{ODE}[ODE]{ordinary differential equation}
 \acrodef{PyPI}[PyPI]{Python package index}
 \acrodef{RHS}[RHS]{right-hand side}
-\acrodef{SBML}[SBML]{System Biology Markup Language}
+\acrodef{SBML}[SBML]{Systems Biology Markup Language}
 \acrodef{SDE}[SDE]{stochastic differential equation}
 \acrodef{TPU}[TPU]{tensor processing unit}
 
@@ -81,30 +81,30 @@
 \maketitle
 
 \begin{abstract}
-\Acf{CRN} play a pivotal role in diverse fields
-such as systems biology, biochemistry, chemical engineering, and
-epidemiology. High-level modelling of \acp{CRN} enables various simulation
-approaches, including deterministic and stochastic methods. However,
-existing Python tools for \ac{CRN} modelling typically wrap external C/C++
-libraries for modelling and simulation, limiting their extensibility and
-integration with the broader Python ecosystem. In response, we developed
-Poincaré and SimBio, two novel Python packages for the definition and
-simulation of dynamical systems and \acp{CRN}. Poincaré serves as a
-foundation for dynamical system modelling, while SimBio extends this
-functionality to \acp{CRN}, including support for the 
-SBML. Poincaré and SimBio are developed as pure Python
-packages enabling users to easily extend their simulation capabilities
-by writing new or leveraging other Python packages. Moreover, this does
-not compromise the performance, as code can be Just-In-Time compiled
-with Numba. Our benchmark tests using curated models from the BioModels
-repository demonstrate that these tools may provide a potentially
+\Acfp{CRN} play a pivotal role in diverse fields
+such as systems biology, biochemistry, chemical engineering, and epidemiology.
+High-level modelling of \acp{CRN} enables various simulation approaches,
+including deterministic and stochastic methods.
+However,
+existing Python tools for \ac{CRN} modelling typically wrap external C/C++ libraries for modelling and simulation,
+limiting their extensibility and integration with the broader Python ecosystem.
+In response, we developed Poincaré and SimBio,
+two novel Python packages for the definition and simulation of dynamical systems and \acp{CRN}.
+Poincaré serves as a foundation for dynamical systems modelling,
+while SimBio extends this functionality to \acp{CRN},
+including support for the \ac{SBML}.
+Poincaré and SimBio are developed as pure Python packages
+enabling users to easily extend their simulation capabilities
+by writing new or leveraging other Python packages.
+Moreover, this does not compromise the performance,
+as code can be \ac{JIT} compiled with Numba.
+Our benchmark tests using curated models from the BioModels repository
+demonstrate that these tools may provide a potentially
 superior performance advantage compared to other existing tools.
-Additionally, to ensure a user-friendly experience, our packages use
-standard typed modern Python syntax that provides a seamless integration
-with \acp{IDE}. Our Python-centric approach
-significantly enhances code analysis, error detection, and refactoring
-capabilities, positioning Poincaré and SimBio as valuable tools for the
-modelling community.
+Additionally, to ensure a user-friendly experience,
+our packages use standard typed modern Python syntax that provides a seamless integration with \acp{IDE}.
+Our Python-centric approach significantly enhances code analysis, error detection, and refactoring capabilities,
+positioning Poincaré and SimBio as valuable tools for the modelling community.
 \end{abstract}
 
 \acresetall % reset acronyms after abstract
