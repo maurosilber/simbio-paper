@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[a4paper, margin=3cm, bottom=4cm]{geometry}
+\usepackage[a4paper, margin=3cm]{geometry}
 
 \usepackage{amsmath}
 \usepackage[svgnames]{xcolor}
@@ -153,8 +153,6 @@ In particular, the step that translates into equations is not exposed by any of 
 As such, it is not possible to apply custom optimizations to the equations
 or use automatic differentation packages such as JAX \cite{jax2018github} to compute the model's jacobian.
 
-\input{latex/figure1.tex}
-
 Another challenge is the way models are defined.
 Many tools support the \ac{SBML} \cite{huckaSBMLL3V2} as an exchange format,
 a \emph{de facto} standard for \acp{CRN} that defines species, parameters and reactions between species.
@@ -208,8 +206,6 @@ which necessitate the simulation of significantly large-scale models.
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\input{latex/figure2.tex}
-
 Modular code architecture makes code reusable, extensible, and easier to maintain.
 Therefore, we split the code into three Python packages:
 symbolite, to create symbolic expressions;
@@ -240,8 +236,6 @@ library that support automatic differentiation and compilation to \acp{GPU} and 
 \subsection{Versatile modelling and simulation of dynamical systems with
 Poincaré}\label{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}}
 
-\input{latex/figure3.tex}
-
 Poincare is a package to define and simulate dynamical systems.
 It provides a \texttt{System} class,
 where one can define
@@ -271,8 +265,6 @@ This design offer several advantages:
 \item
   It allows creation of instances that can be composed into a bigger model (Figure~\ref{fig-composition}).
 \end{enumerate}
-
-\input{latex/figure4.tex}
 
 For this last point,
 \acp{IDE} that support \texttt{dataclass\_transform} \cite{debontePEP681Data2021}
@@ -317,13 +309,9 @@ as subclasses of \texttt{RateLaw} or \texttt{MassAction}.
 Additionally, SimBio supports importing models from \ac{SBML},
 and downloading them directly from BioModels \cite{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
 
-\input{latex/figure5.tex}
-
 \hypertarget{reproducibility-and-performance}{%
 \subsection{Reproducibility and
 performance}\label{reproducibility-and-performance}}
-
-\input{latex/figure6.tex}
 
 To evaluate SimBio's reproducibility,
 we used the \ac{SBML} test suite \cite{SBMLTestSuite},
@@ -401,5 +389,14 @@ Source code repositories for these packages can be found at
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
+
+\newpage
+
+\input{latex/figure1.tex}
+\input{latex/figure2.tex}
+\input{latex/figure3.tex}
+\input{latex/figure4.tex}
+\input{latex/figure5.tex}
+\input{latex/figure6.tex}
 
 \end{document}
