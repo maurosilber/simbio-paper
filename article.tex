@@ -245,8 +245,9 @@ where one can define
 \texttt{Parameter}s, which can be numbers or time-dependent expressions;
 \texttt{Variable}s, which represent the state of the system and must be provided with an initial condition;
 and create equations linking a variable's derivative with an expression (Figure~\ref{fig-first-order}).
-It also allows to define higher-order systems
-by assigning an initial condition to a \texttt{Derivative} (Figure~\ref{fig-second-order}).
+It also allows to
+create an \texttt{Independent} variable to define non-autonomous systems,
+and define higher-order systems by assigning an initial condition to a \texttt{Derivative} (Figure~\ref{fig-second-order}).
 
 Within the constraints imposed by Python's current typing and static analyzers,
 we define models utilizing Python (data)classes
