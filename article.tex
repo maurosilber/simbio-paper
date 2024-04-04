@@ -313,6 +313,10 @@ and it is also simple to implement used-defined ones
 as subclasses of \texttt{RateLaw} or \texttt{MassAction}.
 Additionally, SimBio supports importing models from \ac{SBML},
 and downloading them directly from BioModels \cite{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
+Work is in progress to support exporting to \ac{SBML} and add more \ac{SBML} features.
+Currently \ac{SBML} unsupported features include
+algebraic rules, constraints, events, reactions with the fast attribute or with math stoichiometry,
+units and compartments with size different from 1.
 
 \hypertarget{reproducibility-and-performance}{%
 \subsection{Reproducibility and
