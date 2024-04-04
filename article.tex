@@ -112,8 +112,10 @@ positioning Poincaré and SimBio as valuable tools for the modelling community.
 
 \acresetall % reset acronyms after abstract
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\hypertarget{introduction}{
+  \section{Introduction}
+  \label{introduction}
+}
 
 \Acp{CRN} are a fundamental concept of modelling in numerous fields
 including systems biology, biochemistry, chemical engineering and epidemiology.
@@ -206,8 +208,10 @@ We also highlighted the substantial performance improvements our tools offer,
 as this is crucial for construction and simulation of models of whole cells and organisms,
 which necessitate the simulation of significantly large-scale models.
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
+\hypertarget{results}{
+  \section{Results}
+  \label{results}
+}
 
 Modular code architecture makes code reusable, extensible, and easier to maintain.
 Therefore, we split the code into three Python packages:
@@ -235,9 +239,10 @@ SymPy \cite{meurerSymPySymbolicComputing2017};
 and JAX \cite{jax2018github}, a
 library that support automatic differentiation and compilation to \acp{GPU} and \acp{TPU}.
 
-\hypertarget{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}{%
-\subsection{Versatile modelling and simulation of dynamical systems with
-Poincaré}\label{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}}
+\hypertarget{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}{
+  \subsection{Versatile modelling and simulation of dynamical systems with Poincaré}
+  \label{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}
+}
 
 Poincare is a package to define and simulate dynamical systems.
 Based on Python inmutable dataclasses,
@@ -297,9 +302,10 @@ it uses \texttt{numpy} as a backend,
 and uses the LSODA solver from \texttt{scipy}.
 This can be easily switched to other solvers or backends, such as \texttt{numba}.
 
-\hypertarget{extensible-definition-of-reaction-networks-using-simbio}{%
-\subsection{Extensible definition of reaction networks using
-SimBio}\label{extensible-definition-of-reaction-networks-using-simbio}}
+\hypertarget{extensible-definition-of-reaction-networks-using-simbio}{
+  \subsection{Extensible definition of reaction networks usingSimBio}
+  \label{extensible-definition-of-reaction-networks-using-simbio}
+}
 
 For the \acp{CRN},
 our focus is on first-order differential equations that describe the rate of change of species.
@@ -321,9 +327,10 @@ Currently \ac{SBML} unsupported features include
 algebraic rules, constraints, events, reactions with the fast attribute or with math stoichiometry,
 units and compartments with size different from 1.
 
-\hypertarget{reproducibility-and-performance}{%
-\subsection{Reproducibility and
-performance}\label{reproducibility-and-performance}}
+\hypertarget{reproducibility-and-performance}{
+  \subsection{Reproducibility andperformance}
+  \label{reproducibility-and-performance}
+}
 
 To evaluate SimBio's reproducibility,
 we used the \ac{SBML} test suite \cite{SBMLTestSuite},
@@ -369,8 +376,10 @@ For the models considered,
 amortizing the compilation time required from 2 upto 200 runs.
 
 
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\hypertarget{discussion}{
+  \section{Discussion}
+  \label{discussion}
+}
 
 In this article,
 we introduced a suite of Python packages we developed
@@ -397,8 +406,10 @@ This clear separation of concerns also makes the packages more comprehensible,
 lowering the barrier for contributing improvements or new features.
 Such an architecture ensures their maintainability and ongoing development well into the future.
 
-\hypertarget{resources}{%
-\section{Resources}\label{resources}}
+\hypertarget{resources}{
+  \section{Resources}
+  \label{resources}
+}
 
 Source code repositories for these packages can be found at
 \url{https://github.com/maurosilber/poincare} and
