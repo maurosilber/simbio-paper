@@ -48,7 +48,7 @@ def plot_number_of_points(
     ax.set_xlabel("Number of evaluated time points")
     ax.set_ylabel("Run time [s]")
     ax.set_xlim(5e0, 5e3)
-    ax.set_ylim(5e-4, 5e-2)
+    ax.set_ylim(1e-4, 2e-2)
     ax.set_xscale("log")
     ax.set_yscale("log")
 
@@ -87,6 +87,7 @@ def plot_runtime(
             y=data["median"],
             yerr=data["iqr"],
             capsize=1,
+            capthick=3,
             linestyle="",
             color=metadata[method].color,
         )

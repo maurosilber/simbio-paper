@@ -335,16 +335,16 @@ we selected \ac{SBML} models from the curated section of BioModels \cite{malik-s
 Among the first 250 models,
 we considered the 117 that used supported \ac{SBML} features.
 We ran simulations
-on a MacBook Pro with M2 Pro CPU
-using
+on a MacBook Air with M2 CPU
+using Python 3.11.8,
 COPASI v4.42.284
-(with BasiCO v0.64) with the LSODA solver,
+(with BasiCO v0.58) with the LSODA solver,
 RoadRunner v2.5.0 (with Tellurium v2.2.10) with the comparable CVODE solver, and
 SimBio v0.3.2 with the LSODA solver.
 For SimBio, we considered three variants:
-NumPy (v1.26.4) backend and scipy (v1.12)'s LSODA solver,
+NumPy (v1.26.4) backend and scipy (v1.12.0)'s LSODA solver,
 Numba (v0.59.0) backend and scipy's LSODA solver,
-Numba backend and numbalsoda's LSODA solver.
+Numba backend and numbalsoda's (v0.3.5) LSODA solver.
 In all cases, we used a relative tolerance of \(10^{-6}\) and absolute tolerances of \(10^{-9}\).
 We measured two simulation stages:
 an initial cold run that includes the reading of the \ac{SBML} model
