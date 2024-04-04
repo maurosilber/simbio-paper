@@ -17,7 +17,7 @@ $(ROOT)/performance/figures/performance.png: $(RESULTS)
 
 results: $(RESULTS)
 
-$(RESULTS): $(ROOT)/performance/models.txt
+$(RESULTS): $(ROOT)/performance/models.csv
 	python -m performance.timer $(notdir $@)
 
 article.zip: article.tex bibliography.bib src/ide/* src/performance/figures/* latex/*
