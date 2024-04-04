@@ -84,13 +84,15 @@
 \begin{abstract}
 \Acfp{CRN} play a pivotal role in diverse fields
 such as systems biology, biochemistry, chemical engineering, and epidemiology.
-High-level modelling of \acp{CRN} enables various simulation approaches,
-including deterministic and stochastic methods.
+High-level definitions of \acp{CRN} enables to use various simulation approaches,
+including deterministic and stochastic methods,
+from the same model.
 However,
-existing Python tools for \ac{CRN} modelling typically wrap external C/C++ libraries for modelling and simulation,
+existing Python tools for simulation of \ac{CRN} typically wrap external C/C++ libraries for
+model definition, translation into equations and/or numerically solving them,
 limiting their extensibility and integration with the broader Python ecosystem.
 In response, we developed Poincaré and SimBio,
-two novel Python packages for the definition and simulation of dynamical systems and \acp{CRN}.
+two novel Python packages for simulation of dynamical systems and \acp{CRN}.
 Poincaré serves as a foundation for dynamical systems modelling,
 while SimBio extends this functionality to \acp{CRN},
 including support for the \ac{SBML}.
