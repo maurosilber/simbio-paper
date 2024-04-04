@@ -237,7 +237,8 @@ library that support automatic differentiation and compilation to \acp{GPU} and 
 Poincaré}\label{versatile-modelling-and-simulation-of-dynamical-systems-with-poincaruxe9}}
 
 Poincare is a package to define and simulate dynamical systems.
-It provides a \texttt{System} class,
+Based on Python inmutable dataclasses,
+it provides a \texttt{System} class,
 where one can define
 \texttt{Constant}s; which can be numbers or refer to other constants;
 \texttt{Parameter}s, which can be numbers or time-dependent expressions;
@@ -247,7 +248,7 @@ It also allows to define higher-order systems
 by assigning an initial condition to a \texttt{Derivative} (Figure~\ref{fig-second-order}).
 
 Within the constraints imposed by Python's current typing and static analyzers,
-we define models utilizing Python classes
+we define models utilizing Python (data)classes
 such that we can benefit from \acp{IDE}' autocomplete and refactoring capabilities.
 This design offer several advantages:
 
