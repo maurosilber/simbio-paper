@@ -20,5 +20,10 @@ results: $(RESULTS)
 $(RESULTS): $(ROOT)/performance/models.csv
 	python -m performance.timer $(notdir $@)
 
-article.zip: article.tex bibliography.bib src/ide/* src/performance/figures/* latex/*
+article.zip: article.tex \
+			 bibliography.bib \
+			 src/ide/* \
+			 src/performance/figures/* \
+			 latex/* \
+			 article_files/cell-9-output-1.*
 	zip article.zip $^
