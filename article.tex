@@ -360,7 +360,10 @@ an initial cold run that includes the reading of the \ac{SBML} model
 and subsequent warm runs.
 
 For COPASI and Tellurium,
-we noted that its runtime depended on the number of intermediate evaluation points (Figure~\ref{fig-runtime}, left).
+we noted that its runtime depended on the number of intermediate evaluation points returned to the user (Figure~\ref{fig-runtime}, left).
+We speculate that this is due to memory allocation and data transfer in the Python bindings, 
+as the number of total function evaluations (i.e. including those performed by the integrator steper)
+is around 3000 and therefore much larger than most part of the x-axis.
 For SimBio,
 its NumPy backend can be orders of magnitude slower than both COPASI and RoadRunner  (Figure~\ref{fig-runtime}, right).
 Nevertheless, switching to the numba backend,
@@ -400,6 +403,8 @@ as the \ac{RHS} functions can be \ac{JIT} compiled using Numba.
 The inclusion of \ac{SBML} support facilitates the effortless reuse of models created by the systems biology community,
 along with the vast collection of public models hosted in the BioModels repository.
 The modular architecture of these packages facilitates their reuse, enhancement, and extension by the wider Python community.
+Therefore, it should be also easy to integrate with existing infrastructure such a BioSimulators.org  \cite{shaikhBioSimulatorsCentralRegistry2022},
+or combine with other packages like SimService \cite{sego_simservice_2024} to build more complex simulations.
 For instance, an individual from outside the systems biology field could contribute a stochastic integrator to poincaré,
 which would then be available in SimBio.
 This clear separation of concerns also makes the packages more comprehensible,
@@ -411,7 +416,7 @@ Such an architecture ensures their maintainability and ongoing development well 
   \label{resources}
 }
 
-Source code repositories for these packages can be found at
+Source code repositories, example and documentation for these packages can be found at
 \url{https://github.com/maurosilber/poincare} and
 \url{https://github.com/hgrecco/simbio}.
 
