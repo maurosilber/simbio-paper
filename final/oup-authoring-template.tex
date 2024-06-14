@@ -176,19 +176,19 @@ that can be \emph{translated} into equations for the different types of simulati
 and, then, \emph{solved} numerically.
 
 Several tools already exist to \emph{define}, \emph{translate} and \emph{solve} \acp{CRN}.
-BioSimulators.org \cite{shaikhBioSimulatorsCentralRegistry2022},
+BioSimulators.org \citep{shaikhBioSimulatorsCentralRegistry2022},
 a registry of simulation tools,
 lists at least 15 softwares categorized under Python including
-COPASI \cite{hoopsCOPASICOmplexPAthway2006},
-Tellurium \cite{choiTelluriumExtensiblePythonbased2018} and
-PySB \cite{lopezProgrammingBiologicalModels2013}.
+COPASI \citep{hoopsCOPASICOmplexPAthway2006},
+Tellurium \citep{choiTelluriumExtensiblePythonbased2018} and
+PySB \citep{lopezProgrammingBiologicalModels2013}.
 COPASI is a standalone software with a \ac{GUI}
 that is widely used for its user-friendly interface and comprehensive features.
-It also includes Python bindings (BASICO \cite{bergmannBASICOSimplifiedPython2023b}) that allow advanced scripting.
+It also includes Python bindings, BASICO \citep{bergmannBASICOSimplifiedPython2023b}, that allow advanced scripting.
 Tellurium is a Python-based modeling environment
-that uses a C++ library called libRoadRunner \cite{welshLibRoadRunnerHighPerformance2023} in the backend to translate and solve models.
+that uses a C++ library called libRoadRunner \citep{welshLibRoadRunnerHighPerformance2023} in the backend to translate and solve models.
 PySB is a Python library that created a \ac{DSL} using standard Python to define models,
-which are then translated to \acp{ODE} using a Perl library called BioNetGen \cite{harrisBioNetGenAdvancesRulebased2016}.
+which are then translated to \acp{ODE} using a Perl library called BioNetGen \citep{harrisBioNetGenAdvancesRulebased2016}.
 
 One limitation of these tools is their extensibility from Python.
 As they wrap libraries in other languages for defining, translating and/or solving models,
@@ -200,13 +200,13 @@ COPASI and Tellurium do not allow the use of solvers defined in other Python pac
 and adding new integrators requires working with C++.
 In particular, the step that translates into equations is not exposed by any of these tools.
 As such, it is not possible to apply custom optimizations to the equations
-or use automatic differentation packages such as JAX \cite{jax2018github} to compute the model's jacobian.
+or use automatic differentation packages such as JAX \citep{jax2018github} to compute the model's jacobian.
 
 Another challenge is the way models are defined.
-Many tools support the \ac{SBML} \cite{huckaSBMLL3V2} as an exchange format,
+Many tools support the \ac{SBML} \citep{huckaSBMLL3V2} as an exchange format,
 a \emph{de facto} standard for \acp{CRN} that defines species, parameters and reactions between species.
 As writing \ac{SBML} directly is impractical,
-Tellurium uses a \ac{DSL} called Antimony \cite{smithAntimonyModularModel2009} for defining models.
+Tellurium uses a \ac{DSL} called Antimony \citep{smithAntimonyModularModel2009} for defining models.
 \Acp{DSL} allows to reuse the same code in different programming environments,
 but are not recognized by default in \acp{IDE}
 and, therefore, they cannot provide syntax highlighting, code completion, refactoring, and static analysis.
@@ -260,24 +260,24 @@ symbolite, to create symbolic expressions;
 poincaré, to define dynamical systems;
 and simbio, to define \acp{CRN} and interface with systems biology standards such as \ac{SBML}.
 These are pure Python packages with standard dependencies from the PyData scientific stack
-such as NumPy \cite{harrisArrayProgrammingNumPy2020} and pandas \cite{mckinneyDataStructuresStatistical2010}.
+such as NumPy \citep{harrisArrayProgrammingNumPy2020} and pandas \citep{mckinneyDataStructuresStatistical2010}.
 They are published in the \acf{PyPI},
 where links to the source code and documentation hosted in GitHub can be found,
 and can be easily installed with \texttt{pip\ install\ simbio},
 which installs symbolite and poincare as dependencies.
 
 Symbolite is a lightweight symbolics package to create algebraic mathematical expressions.
-Unlike SymPy \cite{meurerSymPySymbolicComputing2017},
+Unlike SymPy \citep{meurerSymPySymbolicComputing2017},
 a widely-used Python library for symbolic mathematics,
 it only provides the building of an expression tree
 which can be inspected and compiled to various backends.
 Symbolite is designed to facilitate the integration of new backends.
 Currently, we have implementations for
-NumPy \cite{harrisArrayProgrammingNumPy2020};
-Numba \cite{lamNumbaLLVMbasedPython2015},
+NumPy \citep{harrisArrayProgrammingNumPy2020};
+Numba \citep{lamNumbaLLVMbasedPython2015},
 a \ac{JIT} compiler to LLVM;
-SymPy \cite{meurerSymPySymbolicComputing2017};
-and JAX \cite{jax2018github}, a
+SymPy \citep{meurerSymPySymbolicComputing2017};
+and JAX \citep{jax2018github}, a
 library that support automatic differentiation and compilation to \acp{GPU} and \acp{TPU}.
 
 \subsection{Versatile modelling and simulation of dynamical systems with Poincaré}
@@ -314,7 +314,7 @@ This design offer several advantages:
 \end{enumerate}
 
 For this last point,
-\acp{IDE} that support \texttt{dataclass\_transform} \cite{debontePEP681Data2021}
+\acp{IDE} that support \texttt{dataclass\_transform} \citep{debontePEP681Data2021}
 can provide a tooltip with the expected signature (Figure~\ref{fig-ide}).
 This requires the use of type annotations,
 which play a more significant role in static type checking
@@ -356,7 +356,7 @@ and its approximate form without the intermediate species \(ES\),
 and it is also simple to implement used-defined ones
 as subclasses of \texttt{RateLaw} or \texttt{MassAction}.
 Additionally, SimBio supports importing models from \ac{SBML},
-and downloading them directly from BioModels \cite{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
+and downloading them directly from BioModels \citep{malik-sheriffBioModels15Years2020} (Figure~\ref{fig-simbio-io}).
 Work is in progress to support exporting to \ac{SBML} and add more \ac{SBML} features.
 Currently \ac{SBML} unsupported features include
 algebraic rules, constraints, events, reactions with the fast attribute or with math stoichiometry,
@@ -366,14 +366,14 @@ units and compartments with size different from 1.
 \label{reproducibility-and-performance}
 
 To evaluate SimBio's reproducibility,
-we used the \ac{SBML} test suite \cite{SBMLTestSuite},
+we used the \ac{SBML} test suite \citep{SBMLTestSuite},
 which provides a set of \ac{SBML} models
 and the expected result of a simulation.
 Excluding models that use \ac{SBML} features not yet supported by SimBio,
 every simulation returned correct results within the solver tolerances.
 
 To evaluate SimBio's performance,
-we selected \ac{SBML} models from the curated section of BioModels \cite{malik-sheriffBioModels15Years2020}.
+we selected \ac{SBML} models from the curated section of BioModels \citep{malik-sheriffBioModels15Years2020}.
 Among the first 250 models,
 we considered the 117 that used supported \ac{SBML} features.
 We ran simulations
@@ -433,8 +433,8 @@ as the \ac{RHS} functions can be \ac{JIT} compiled using Numba.
 The inclusion of \ac{SBML} support facilitates the effortless reuse of models created by the systems biology community,
 along with the vast collection of public models hosted in the BioModels repository.
 The modular architecture of these packages facilitates their reuse, enhancement, and extension by the wider Python community.
-Therefore, it should be also easy to integrate with existing infrastructure such a BioSimulators.org  \cite{shaikhBioSimulatorsCentralRegistry2022},
-or combine with other packages like SimService \cite{sego_simservice_2024} to build more complex simulations.
+Therefore, it should be also easy to integrate with existing infrastructure such a BioSimulators.org \citep{shaikhBioSimulatorsCentralRegistry2022},
+or combine with other packages like SimService \citep{sego_simservice_2024} to build more complex simulations.
 For instance, an individual from outside the systems biology field could contribute a stochastic integrator to poincaré,
 which would then be available in SimBio.
 This clear separation of concerns also makes the packages more comprehensible,
