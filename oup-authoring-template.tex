@@ -42,6 +42,8 @@
 \theoremstyle{thmstylethree}%
 \newtheorem{definition}{Definition}
 
+\usepackage{subcaption}
+
 \usepackage{acronym}
 \acrodef{CRN}[CRN]{chemical reaction network}
 \acrodef{DSL}[DSL]{domain-specific language}
@@ -473,7 +475,6 @@ The authors thank the anonymous reviewers for their valuable suggestions. This w
 
 % FIGURE 1
 \begin{figure*}[t]
-
   \begin{minipage}[t]{\linewidth}
   
   {\centering 
@@ -532,9 +533,9 @@ The authors thank the anonymous reviewers for their valuable suggestions. This w
   
   \end{minipage}%
   
-  % \subcaption{\label{fig-first-order}First-order system of an exponential decay. The variable
-  % \texttt{x} stores the initial condition for \(x\), and the variable
-  % \texttt{eq} stores the rate equation for \(x\).}
+  \subcaption{\label{fig-first-order}First-order system of an exponential decay. The variable
+  \texttt{x} stores the initial condition for \(x\), and the variable
+  \texttt{eq} stores the rate equation for \(x\).}
   
   }
   
@@ -588,9 +589,9 @@ The authors thank the anonymous reviewers for their valuable suggestions. This w
   
   \end{minipage}%
   
-  % \subcaption{\label{fig-second-order}Second-order system of an harmonic oscillator, where the
-  % variable \texttt{v} stores the derivative \(\frac{dx}{dt}\) and the rate
-  % equation is specified for the derivative \texttt{v}.}
+  \subcaption{\label{fig-second-order}Second-order system of an harmonic oscillator, where the
+  variable \texttt{v} stores the derivative \(\frac{dx}{dt}\) and the rate
+  equation is specified for the derivative \texttt{v}.}
   
   }
   
@@ -647,11 +648,11 @@ The authors thank the anonymous reviewers for their valuable suggestions. This w
   
   \end{minipage}%
   
-  % \subcaption{\label{fig-composition}First-order system of two exponential decays by composition of
-  % the \texttt{Decay} system. The subsystem \texttt{linked} has a reference
-  % to the outer variable \texttt{x}, while the subsystem
-  % \texttt{independent} defines a new variable with initial condition $2$,
-  % which on the corresponding mathematical expression was named \(x_{ind}\).}
+  \subcaption{\label{fig-composition}First-order system of two exponential decays by composition of
+  the \texttt{Decay} system. The subsystem \texttt{linked} has a reference
+  to the outer variable \texttt{x}, while the subsystem
+  \texttt{independent} defines a new variable with initial condition $2$,
+  which on the corresponding mathematical expression was named \(x_{ind}\).}
   
   }
   
