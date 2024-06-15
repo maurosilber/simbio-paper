@@ -1,27 +1,16 @@
 % FIGURE 1
-\begin{figure*}[t]
-    \begin{minipage}[t]{\columnwidth}
-    
-    {\centering 
-    
+\begin{figure}[t]
+    \begin{minipage}[t]{\columnwidth}    
     \begin{CodeInput}
 \begin{Highlighting}[]
-\KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Derivative}, \ClassTok{System}, \ClassTok{Variable}, \FunctionTok{initial}
+\KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} (\ClassTok{Derivative}, \ClassTok{System},
+                      \ClassTok{Variable}, \FunctionTok{initial})
 \end{Highlighting}
     \end{CodeInput}
-    
-    }
-    
     \end{minipage}%
     \newline
     \begin{minipage}[t]{\columnwidth}
-    
-    {\centering
-    
-    \begin{minipage}[c]{0.6\columnwidth}
-    
-    {\centering 
-    
+    \begin{minipage}[c]{\columnwidth}
     \begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{class} \ClassTok{Decay}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
@@ -29,51 +18,28 @@
     \VariableTok{eq} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
 \end{Highlighting}
     \end{CodeInput}
-    
-    }
-    
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\columnwidth}
-    
-    {\centering 
-    
+    \newline
+    \begin{minipage}[c]{0.5\columnwidth}
     \[
     \frac{dx}{dt} = -x
     \]
-    
-    }
-    
     \end{minipage}%
-    %
-    \begin{minipage}[c]{0.2\columnwidth}
-    
-    {\centering 
-    
+    \begin{minipage}[c]{0.5\columnwidth}
     \[
     x(0) = 1
     \]
-    
-    }
-    
     \end{minipage}%
     
     \subcaption{\label{fig-first-order}First-order system of an exponential decay. The variable
     \texttt{x} stores the initial condition for \(x\), and the variable
     \texttt{eq} stores the rate equation for \(x\).}
-    
-    }
-    
     \end{minipage}%
     \newline
     \begin{minipage}[t]{\columnwidth}
     
-    {\centering 
-    
-    \begin{minipage}[c]{0.6\columnwidth}
-    
-    {\centering 
-    
+    \begin{minipage}[c]{\columnwidth}    
     \begin{CodeInput}
 \begin{Highlighting}[]
 \KeywordTok{class} \ClassTok{Oscillator}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
@@ -83,50 +49,33 @@
 \end{Highlighting}
     \end{CodeInput}
     
-    }
-    
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\columnwidth}
-    
-    {\centering 
-    
+    \newline
+    \begin{minipage}[c]{0.5\columnwidth}
     \[
     \frac{d^2x}{dt^2} = -x
     \]
-    
-    }
-    
     \end{minipage}%
-    %
-    \begin{minipage}[c]{0.2\columnwidth}
-    
-    {\centering 
-    
+    \begin{minipage}[c]{0.5\columnwidth}
     \[
     \begin{cases}
         x(0) &= 1 \\
         \frac{dx}{dt}(0) &= 0
     \end{cases}
     \]
-    
-    }
-    
     \end{minipage}%
     
     \subcaption{\label{fig-second-order}Second-order system of an harmonic oscillator, where the
     variable \texttt{v} stores the derivative \(\frac{dx}{dt}\) and the rate
     equation is specified for the derivative \texttt{v}.}
-    
-    }
-    
     \end{minipage}%
     \newline
     \begin{minipage}[t]{\columnwidth}
     
     {\centering 
     
-    \begin{minipage}[c]{0.6\columnwidth}
+    \begin{minipage}[c]{\columnwidth}
     
     {\centering 
     
@@ -143,34 +92,22 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\columnwidth}
-    
-    {\centering 
-    
+    \newline
+    \begin{minipage}[c]{0.5\columnwidth}
     \[
     \begin{cases}
         \frac{dx}{dt} = -x \\
         \frac{dx_{ind}}{dt} = -x_{ind}
     \end{cases}
     \]
-    
-    }
-    
-    \end{minipage}%
-    %
-    \begin{minipage}[c]{0.2\columnwidth}
-    
-    {\centering 
-    
+  \end{minipage}%
+  \begin{minipage}[c]{0.5\columnwidth}
     \[
     \begin{cases}
         x(0) &= 1 \\
         x_{ind}(0) &= 2
     \end{cases}
     \]
-    
-    }
-    
     \end{minipage}%
     
     \subcaption{\label{fig-composition}First-order system of two exponential decays by composition of
@@ -186,7 +123,7 @@
     \caption{\label{fig-poincare}Code and corresponding mathematical
     expressions for different systems.}
     
-    \end{figure*}
+\end{figure}
     
   
 % FIGURE 2
