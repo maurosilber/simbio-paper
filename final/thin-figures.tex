@@ -1,6 +1,6 @@
 % FIGURE 1
 \begin{figure*}[t]
-    \begin{minipage}[t]{\linewidth}
+    \begin{minipage}[t]{\columnwidth}
     
     {\centering 
     
@@ -14,11 +14,11 @@
     
     \end{minipage}%
     \newline
-    \begin{minipage}[t]{\linewidth}
+    \begin{minipage}[t]{\columnwidth}
     
     {\centering
     
-    \begin{minipage}[c]{0.6\linewidth}
+    \begin{minipage}[c]{0.6\columnwidth}
     
     {\centering 
     
@@ -34,7 +34,7 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\linewidth}
+    \begin{minipage}[c]{0.2\columnwidth}
     
     {\centering 
     
@@ -46,7 +46,7 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\linewidth}
+    \begin{minipage}[c]{0.2\columnwidth}
     
     {\centering 
     
@@ -66,11 +66,11 @@
     
     \end{minipage}%
     \newline
-    \begin{minipage}[t]{\linewidth}
+    \begin{minipage}[t]{\columnwidth}
     
     {\centering 
     
-    \begin{minipage}[c]{0.6\linewidth}
+    \begin{minipage}[c]{0.6\columnwidth}
     
     {\centering 
     
@@ -87,7 +87,7 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\linewidth}
+    \begin{minipage}[c]{0.2\columnwidth}
     
     {\centering 
     
@@ -99,7 +99,7 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\linewidth}
+    \begin{minipage}[c]{0.2\columnwidth}
     
     {\centering 
     
@@ -122,11 +122,11 @@
     
     \end{minipage}%
     \newline
-    \begin{minipage}[t]{\linewidth}
+    \begin{minipage}[t]{\columnwidth}
     
     {\centering 
     
-    \begin{minipage}[c]{0.6\linewidth}
+    \begin{minipage}[c]{0.6\columnwidth}
     
     {\centering 
     
@@ -143,7 +143,7 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\linewidth}
+    \begin{minipage}[c]{0.2\columnwidth}
     
     {\centering 
     
@@ -158,7 +158,7 @@
     
     \end{minipage}%
     %
-    \begin{minipage}[c]{0.2\linewidth}
+    \begin{minipage}[c]{0.2\columnwidth}
     
     {\centering 
     
@@ -263,7 +263,7 @@
 \end{figure}
   
   
-  % FIGURE 4
+% FIGURE 4
 \begin{figure}[t]
   
     \begin{minipage}[t]{\columnwidth}
@@ -279,16 +279,16 @@
       \begin{minipage}[c]{0.75\columnwidth}
         \begin{CodeInput}
         \begin{Highlighting}[]
-          \KeywordTok{class}\ClassTok{ Model}\KeywordTok{(}\ClassTok{Compartment}\KeywordTok{)}:
-              \CommentTok{"""2A {-}\textgreater{} B"""}
-          
-          \VariableTok{    A}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{1}\KeywordTok{)}
-          \VariableTok{    B}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{0}\KeywordTok{)}
-          \VariableTok{    r }\OperatorTok{=}\ClassTok{ RateLaw}\KeywordTok{(}
-          \VariableTok{        reactants}\OperatorTok{=}\KeywordTok{[}\ValueTok{2} \OperatorTok{*}\VariableTok{ A}\KeywordTok{]},
-          \VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
-          \VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
-          \KeywordTok{    )}
+\KeywordTok{class}\ClassTok{ Model}\KeywordTok{(}\ClassTok{Compartment}\KeywordTok{)}:
+    \CommentTok{"""2A {-}\textgreater{} B"""}
+
+\VariableTok{    A}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{1}\KeywordTok{)}
+\VariableTok{    B}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{0}\KeywordTok{)}
+\VariableTok{    r }\OperatorTok{=}\ClassTok{ RateLaw}\KeywordTok{(}
+\VariableTok{        reactants}\OperatorTok{=}\KeywordTok{[}\ValueTok{2} \OperatorTok{*}\VariableTok{ A}\KeywordTok{]},
+\VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
+\VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
+\KeywordTok{    )}
         \end{Highlighting}
         \end{CodeInput}
       \end{minipage}%
@@ -313,19 +313,19 @@
     \begin{minipage}[t]{\columnwidth}
         \centering 
         \begin{minipage}[c]{0.75\columnwidth}
-            \centering 
-            \begin{CodeInput}
-            \begin{Highlighting}[]
-            \KeywordTok{class}\ClassTok{ Model}\KeywordTok{(}\ClassTok{Compartment}\KeywordTok{)}:
-                \CommentTok{"""2A {-}\textgreater{} B"""}
-            
-            \VariableTok{    A}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{1}\KeywordTok{)}
-            \VariableTok{    B}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{0}\KeywordTok{)}
-            \VariableTok{    r }\OperatorTok{=}\ClassTok{ MassAction}\KeywordTok{(}
-            \VariableTok{        reactants}\OperatorTok{=}\KeywordTok{[}\ValueTok{2} \OperatorTok{*}\VariableTok{ A}\KeywordTok{]},
-            \VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
-            \VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
-            \KeywordTok{    )}
+\centering 
+\begin{CodeInput}
+\begin{Highlighting}[]
+\KeywordTok{class}\ClassTok{ Model}\KeywordTok{(}\ClassTok{Compartment}\KeywordTok{)}:
+    \CommentTok{"""2A {-}\textgreater{} B"""}
+
+\VariableTok{    A}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{1}\KeywordTok{)}
+\VariableTok{    B}: \ClassTok{Species }\OperatorTok{=}\FunctionTok{ initial}\KeywordTok{(}\VariableTok{default}\OperatorTok{=}\ValueTok{0}\KeywordTok{)}
+\VariableTok{    r }\OperatorTok{=}\ClassTok{ MassAction}\KeywordTok{(}
+\VariableTok{        reactants}\OperatorTok{=}\KeywordTok{[}\ValueTok{2} \OperatorTok{*}\VariableTok{ A}\KeywordTok{]},
+\VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
+\VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
+\KeywordTok{    )}
             \end{Highlighting}
             \end{CodeInput}
         \end{minipage}%
