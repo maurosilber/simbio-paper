@@ -356,36 +356,38 @@
   \end{figure*}
   
   
-  % FIGURE 5
-  \begin{figure*}[t]
-    \centering
-    
-    \begin{CodeInput}
-    \begin{Highlighting}[]
-    \KeywordTok{from}\ClassTok{ simbio.io }\KeywordTok{import}\ClassTok{ biomodels, sbml}
+% FIGURE 5
+\begin{figure}[t]
+  \centering
   
-    \VariableTok{model }\OperatorTok{=}\ClassTok{ sbml}.\FunctionTok{load}\KeywordTok{(}\StringTok{"repressilator.sbml"}\KeywordTok{)}  \CommentTok{\# from existing SBML file}
-    \VariableTok{model }\OperatorTok{=}\ClassTok{ biomodels}.\FunctionTok{load}\KeywordTok{(}\StringTok{"BIOMD12"}\KeywordTok{)}  \CommentTok{\# from BioModels}
-    \VariableTok{model}
-    \end{Highlighting}
-    \end{CodeInput}
-      
-    \begin{CodeOutput}
-        \begin{tabular}{@{}lll@{}}
-            \multicolumn{3}{l}{Elowitz2000 - Repressilator} \\
-            \toprule
-            type & total & names \\
-            \midrule
-            variables  &  6 & PX, PY, PZ, X, Y, Z \\
-            parameters & 17 & cell, beta, alpha0, alpha, eff, n, KM, tau\_mRNA, tau\_prot, ... \\
-            equations  & 12 & Reaction1, Reaction2, Reaction3, Reaction4, Reaction5, ... \\
-            \botrule
-        \end{tabular}
-    \end{CodeOutput}
+  \begin{CodeInput}
+  \begin{Highlighting}[]
+  \KeywordTok{from}\ClassTok{ simbio.io }\KeywordTok{import}\ClassTok{ biomodels, sbml}
+
+  \CommentTok{\# from existing SBML file}
+  \VariableTok{model }\OperatorTok{=}\ClassTok{ sbml}.\FunctionTok{load}\KeywordTok{(}\StringTok{"repressilator.sbml"}\KeywordTok{)}
+  \CommentTok{\# from BioModels}
+  \VariableTok{model }\OperatorTok{=}\ClassTok{ biomodels}.\FunctionTok{load}\KeywordTok{(}\StringTok{"BIOMD12"}\KeywordTok{)}
+  \VariableTok{model}
+  \end{Highlighting}
+  \end{CodeInput}
     
-    \caption{Creation of a model from a local SBML file or one uploaded to BioModels.}
-    \label{fig-simbio-io}
-  \end{figure*}
+  \begin{CodeOutput}
+      \begin{tabular}{@{}lll@{}}
+          \multicolumn{3}{l}{Elowitz2000 - Repressilator} \\
+          \toprule
+          type & total & names \\
+          \midrule
+          variables  &  6 & PX, PY, PZ, X, Y, Z \\
+          parameters & 17 & cell, beta, alpha0, alpha, eff, n, ... \\
+          equations  & 12 & Reaction1, Reaction2, Reaction3, ... \\
+          \botrule
+      \end{tabular}
+  \end{CodeOutput}
+  
+  \caption{Creation of a model from a local SBML file or one uploaded to BioModels.}
+  \label{fig-simbio-io}
+\end{figure}
     
   % FIGURE 6
   \begin{figure*}[t]
