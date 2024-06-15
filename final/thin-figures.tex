@@ -5,9 +5,9 @@
     {\centering 
     
     \begin{CodeInput}
-    \begin{Highlighting}[]
-    \KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Derivative}, \ClassTok{System}, \ClassTok{Variable}, \FunctionTok{initial}
-    \end{Highlighting}
+\begin{Highlighting}[]
+\KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Derivative}, \ClassTok{System}, \ClassTok{Variable}, \FunctionTok{initial}
+\end{Highlighting}
     \end{CodeInput}
     
     }
@@ -23,11 +23,11 @@
     {\centering 
     
     \begin{CodeInput}
-    \begin{Highlighting}[]
-    \KeywordTok{class} \ClassTok{Decay}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
-        \VariableTok{x}\OperatorTok{:} \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
-        \VariableTok{eq} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
-    \end{Highlighting}
+\begin{Highlighting}[]
+\KeywordTok{class} \ClassTok{Decay}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
+    \VariableTok{x}\OperatorTok{:} \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
+    \VariableTok{eq} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
+\end{Highlighting}
     \end{CodeInput}
     
     }
@@ -75,12 +75,12 @@
     {\centering 
     
     \begin{CodeInput}
-    \begin{Highlighting}[]
-    \KeywordTok{class} \ClassTok{Oscillator}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
-        \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
-        \VariableTok{v}: \ClassTok{Derivative} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{(\VariableTok{initial}\OperatorTok{=}\ValueTok{0})}
-        \VariableTok{eq} \OperatorTok{=} \VariableTok{v}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
-    \end{Highlighting}
+\begin{Highlighting}[]
+\KeywordTok{class} \ClassTok{Oscillator}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}\OperatorTok{:}
+    \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
+    \VariableTok{v}: \ClassTok{Derivative} \OperatorTok{=} \VariableTok{x}.\FunctionTok{derive}\KeywordTok{(\VariableTok{initial}\OperatorTok{=}\ValueTok{0})}
+    \VariableTok{eq} \OperatorTok{=} \VariableTok{v}.\FunctionTok{derive}\KeywordTok{()} \OperatorTok{\textless{}\textless{}} \OperatorTok{-}\VariableTok{x}
+\end{Highlighting}
     \end{CodeInput}
     
     }
@@ -131,12 +131,12 @@
     {\centering 
     
     \begin{CodeInput}
-    \begin{Highlighting}[]
-    \KeywordTok{class} \ClassTok{BigModel}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}:
-        \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
-        \VariableTok{linked} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\VariableTok{x})}
-        \VariableTok{independent} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\ValueTok{2})}
-    \end{Highlighting}
+\begin{Highlighting}[]
+\KeywordTok{class} \ClassTok{BigModel}\KeywordTok{(}\ClassTok{System}\KeywordTok{)}:
+    \VariableTok{x}: \ClassTok{Variable} \OperatorTok{=} \FunctionTok{initial}\KeywordTok{(\VariableTok{default}\OperatorTok{=}\ValueTok{1})}
+    \VariableTok{linked} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\VariableTok{x})}
+    \VariableTok{independent} \OperatorTok{=} \ClassTok{Decay}\KeywordTok{(\VariableTok{x}\OperatorTok{=}\ValueTok{2})}
+\end{Highlighting}
     \end{CodeInput}
     
     }
@@ -219,14 +219,14 @@
 \begin{figure}[t]
   \begin{minipage}[t]{\columnwidth}
     \begin{CodeInput}
-    \begin{Highlighting}[]
-    \KeywordTok{import} \ClassTok{numpy} \KeywordTok{as} \ClassTok{np}
-    \KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Simulator}
-    
-    \VariableTok{sim} \OperatorTok{=} \ClassTok{Simulator}\KeywordTok{(\ClassTok{Oscillator})}
-    \VariableTok{df} \OperatorTok{=} \VariableTok{sim}.\FunctionTok{solve}\KeywordTok{(}\VariableTok{save\_at}\OperatorTok{=}\ClassTok{np}.\FunctionTok{linspace}\KeywordTok{(}\ValueTok{0}, \ValueTok{5}, \ValueTok{101}\KeywordTok{))}
-    \VariableTok{df}.\FunctionTok{head}\KeywordTok{()}
-    \end{Highlighting}
+\begin{Highlighting}[]
+\KeywordTok{import} \ClassTok{numpy} \KeywordTok{as} \ClassTok{np}
+\KeywordTok{from} \ClassTok{poincare} \KeywordTok{import} \ClassTok{Simulator}
+
+\VariableTok{sim} \OperatorTok{=} \ClassTok{Simulator}\KeywordTok{(\ClassTok{Oscillator})}
+\VariableTok{df} \OperatorTok{=} \VariableTok{sim}.\FunctionTok{solve}\KeywordTok{(}\VariableTok{save\_at}\OperatorTok{=}\ClassTok{np}.\FunctionTok{linspace}\KeywordTok{(}\ValueTok{0}, \ValueTok{5}, \ValueTok{101}\KeywordTok{))}
+\VariableTok{df}.\FunctionTok{head}\KeywordTok{()}
+\end{Highlighting}
     \end{CodeInput}
     \begin{CodeOutput}
         \begin{tabular}[]{@{}lll@{}}
@@ -246,9 +246,9 @@
   \hfill
   \begin{minipage}[t]{\columnwidth}
     \begin{CodeInput}
-    \begin{Highlighting}[]
-    \VariableTok{df}.\FunctionTok{plot}\KeywordTok{()}
-    \end{Highlighting}
+\begin{Highlighting}[]
+\VariableTok{df}.\FunctionTok{plot}\KeywordTok{()}
+\end{Highlighting}
     \end{CodeInput}
     %
     \begin{CodeOutput}
@@ -268,17 +268,17 @@
   
     \begin{minipage}[t]{\columnwidth}
       \begin{CodeInput}
-      \begin{Highlighting}[]
+\begin{Highlighting}[]
 \KeywordTok{from} \ClassTok{simbio} \KeywordTok{import} (\ClassTok{Compartment}, \ClassTok{MassAction},
                     \ClassTok{Species}, \ClassTok{RateLaw}, \FunctionTok{initial})
-      \end{Highlighting}
+\end{Highlighting}
       \end{CodeInput}
     \end{minipage}%
     \newline
     \begin{minipage}[t]{\columnwidth}
       \begin{minipage}[c]{0.75\columnwidth}
         \begin{CodeInput}
-        \begin{Highlighting}[]
+\begin{Highlighting}[]
 \KeywordTok{class}\ClassTok{ Model}\KeywordTok{(}\ClassTok{Compartment}\KeywordTok{)}:
     \CommentTok{"""2A {-}\textgreater{} B"""}
 
@@ -289,7 +289,7 @@
 \VariableTok{        products}\OperatorTok{=}\NormalTok{\KeywordTok{[}B\KeywordTok{]},}
 \VariableTok{        rate}\OperatorTok{=}\ValueTok{1}\NormalTok{,}
 \KeywordTok{    )}
-        \end{Highlighting}
+\end{Highlighting}
         \end{CodeInput}
       \end{minipage}%
       %
@@ -362,15 +362,15 @@
   \centering
   
   \begin{CodeInput}
-  \begin{Highlighting}[]
-  \KeywordTok{from}\ClassTok{ simbio.io }\KeywordTok{import}\ClassTok{ biomodels, sbml}
+\begin{Highlighting}[]
+\KeywordTok{from}\ClassTok{ simbio.io }\KeywordTok{import}\ClassTok{ biomodels, sbml}
 
-  \CommentTok{\# from existing SBML file}
-  \VariableTok{model }\OperatorTok{=}\ClassTok{ sbml}.\FunctionTok{load}\KeywordTok{(}\StringTok{"repressilator.sbml"}\KeywordTok{)}
-  \CommentTok{\# from BioModels}
-  \VariableTok{model }\OperatorTok{=}\ClassTok{ biomodels}.\FunctionTok{load}\KeywordTok{(}\StringTok{"BIOMD12"}\KeywordTok{)}
-  \VariableTok{model}
-  \end{Highlighting}
+\CommentTok{\# from existing SBML file}
+\VariableTok{model }\OperatorTok{=}\ClassTok{ sbml}.\FunctionTok{load}\KeywordTok{(}\StringTok{"repressilator.sbml"}\KeywordTok{)}
+\CommentTok{\# from BioModels}
+\VariableTok{model }\OperatorTok{=}\ClassTok{ biomodels}.\FunctionTok{load}\KeywordTok{(}\StringTok{"BIOMD12"}\KeywordTok{)}
+\VariableTok{model}
+\end{Highlighting}
   \end{CodeInput}
     
   \begin{CodeOutput}
