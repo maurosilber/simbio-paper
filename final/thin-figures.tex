@@ -264,21 +264,19 @@
   
   
   % FIGURE 4
-  \begin{figure*}[t]
+\begin{figure}[t]
   
-    \begin{minipage}[t]{\linewidth}
-      \centering 
+    \begin{minipage}[t]{\columnwidth}
       \begin{CodeInput}
       \begin{Highlighting}[]
-      \KeywordTok{from}\ClassTok{ simbio }\KeywordTok{import}\ClassTok{ Compartment, MassAction, Species, RateLaw, \FunctionTok{initial}}
+\KeywordTok{from} \ClassTok{simbio} \KeywordTok{import} (\ClassTok{Compartment}, \ClassTok{MassAction},
+                    \ClassTok{Species}, \ClassTok{RateLaw}, \FunctionTok{initial})
       \end{Highlighting}
       \end{CodeInput}
     \end{minipage}%
     \newline
-    \begin{minipage}[t]{\linewidth}
-      \centering 
-      \begin{minipage}[c]{0.60\linewidth}
-        \centering 
+    \begin{minipage}[t]{\columnwidth}
+      \begin{minipage}[c]{0.75\columnwidth}
         \begin{CodeInput}
         \begin{Highlighting}[]
           \KeywordTok{class}\ClassTok{ Model}\KeywordTok{(}\ClassTok{Compartment}\KeywordTok{)}:
@@ -295,24 +293,26 @@
         \end{CodeInput}
       \end{minipage}%
       %
-      \begin{minipage}[c]{0.40\linewidth}
+      \begin{minipage}[c]{0.25\columnwidth}
         \centering 
         \[
         \begin{cases}
             \frac{dA}{dt} = -2 \\
             \frac{dB}{dt} = +1
         \end{cases}
+        \]
+        \[
         \begin{cases}
-            A(0) &= 1 \\
-            B(0) &= 0
+            A(0) = 1 \\
+            B(0) = 0
         \end{cases}
         \]
       \end{minipage}%
     \end{minipage}%
     \newline
-    \begin{minipage}[t]{\linewidth}
+    \begin{minipage}[t]{\columnwidth}
         \centering 
-        \begin{minipage}[c]{0.60\linewidth}
+        \begin{minipage}[c]{0.75\columnwidth}
             \centering 
             \begin{CodeInput}
             \begin{Highlighting}[]
@@ -330,16 +330,17 @@
             \end{CodeInput}
         \end{minipage}%
         %
-        \begin{minipage}[c]{0.40\linewidth}
-            \centering 
+        \begin{minipage}[c]{0.25\columnwidth}
             \[
             \begin{cases}
                 \frac{dA}{dt} = -2 A^2 \\
                 \frac{dB}{dt} = +1 A^2
             \end{cases}
+            \]
+            \[
             \begin{cases}
-                A(0) &= 1 \\
-                B(0) &= 0
+                A(0) = 1 \\
+                B(0) = 0
             \end{cases}
             \]
         \end{minipage}%
@@ -353,7 +354,7 @@
       the reactants for \texttt{MassAction}.
     }
     \label{fig-simbio}
-  \end{figure*}
+  \end{figure}
   
   
 % FIGURE 5
