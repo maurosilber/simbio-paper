@@ -200,7 +200,7 @@ COPASI and Tellurium do not allow the use of solvers defined in other Python pac
 and adding new integrators requires working with C++.
 In particular, the step that translates into equations is not exposed by any of these tools.
 As such, it is not possible to apply custom optimizations to the equations
-or use automatic differentation packages such as JAX \citep{jax2018github} to compute the model's jacobian.
+or use automatic differentiation packages such as JAX \citep{jax2018github} to compute the model's jacobian.
 
 Another challenge is the way models are defined.
 Many tools support the \ac{SBML} \citep{huckaSBMLL3V2} as an exchange format,
@@ -226,7 +226,7 @@ we developed poincaré and SimBio,
 open-source Python packages for defining, translating and solving systems.
 Poincaré allows one to define differential equation systems
 using variables, parameters and constants,
-and assiging rate equations to variables.
+and assigning rate equations to variables.
 For defining \acp{CRN},
 SimBio builds on top of poincaré providing species and reactions that keep track of stoichiometries.
 Both are focused on providing an ergonomic experience to end-users
@@ -479,7 +479,7 @@ library that support automatic differentiation and compilation to \acp{GPU} and 
 \end{figure}
 
 Poincare is a package to define and simulate dynamical systems.
-Based on Python inmutable dataclasses,
+Based on Python immutable dataclasses,
 it provides a \texttt{System} class,
 where one can define
 \texttt{Constant}s; which can be numbers or refer to other constants;
@@ -690,7 +690,7 @@ units and compartments with size different from 1.
     (right) Run time for different models for 300 output points,
     using the geometric mean of the different softwares to order them.
     Each point corresponds to the median of 20 runs,
-    with a neglibible errorbar given by the interquartile range.
+    with a negligible error-bar given by the interquartile range.
   }
   \label{fig-runtime}
 \end{figure*}
@@ -725,7 +725,7 @@ and subsequent warm runs.
 For COPASI and Tellurium,
 we noted that its runtime depended on the number of intermediate evaluation points returned to the user (Figure~\ref{fig-runtime}, left).
 We speculate that this is due to memory allocation and data transfer in the Python bindings, 
-as the number of total function evaluations (i.e. including those performed by the integrator steper)
+as the number of total function evaluations (i.e. including those performed by the integrator stepper)
 is around 3000 and therefore much larger than most part of the x-axis.
 For SimBio,
 its NumPy backend can be orders of magnitude slower than both COPASI and RoadRunner  (Figure~\ref{fig-runtime}, right).
