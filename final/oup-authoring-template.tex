@@ -110,15 +110,8 @@
 
 %\editor{Associate Editor: Name}
 
-%\abstract{
-%\textbf{Motivation:} .\\
-%\textbf{Results:} .\\
-%\textbf{Availability:} .\\
-%\textbf{Contact:} \href{name@email.com}{name@email.com}\\
-%\textbf{Supplementary information:} Supplementary data are available at \textit{Journal Name}
-%online.}
-
 \abstract{
+\textbf{Motivation:}
   \Acfp{CRN} play a pivotal role in diverse fields
   such as systems biology, biochemistry, chemical engineering, and epidemiology.
   High-level definitions of \acp{CRN} enables to use various simulation approaches,
@@ -128,6 +121,7 @@
   existing Python tools for simulation of \ac{CRN} typically wrap external C/C++ libraries for
   model definition, translation into equations and/or numerically solving them,
   limiting their extensibility and integration with the broader Python ecosystem.
+\\ \textbf{Results:}
   In response, we developed Poincaré and SimBio,
   two novel Python packages for simulation of dynamical systems and \acp{CRN}.
   Poincaré serves as a foundation for dynamical systems modelling,
@@ -145,7 +139,15 @@
   our packages use standard typed modern Python syntax that provides a seamless integration with \acp{IDE}.
   Our Python-centric approach significantly enhances code analysis, error detection, and refactoring capabilities,
   positioning Poincaré and SimBio as valuable tools for the modelling community.
+\\ \textbf{Availability:}
+  Poincaré and SimBio are released under the MIT license.
+  their source code is available on GitHub
+  (\url{https://github.com/maurosilber/poincare}
+  and \url{https://github.com/hgrecco/simbio}).
+  and can be installed from PyPI or conda-forge.
+\\ \textbf{Contact:} \href{email:hgrecco@df.uba.ar}{hgrecco@df.uba.ar}
 }
+
 \keywords{poincare, SimBio, Python, ODE}
 \acresetall % reset acronyms after abstract
 
